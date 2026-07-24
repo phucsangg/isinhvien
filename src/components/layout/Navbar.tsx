@@ -34,13 +34,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks = [
     { id: 'roadmap', label: 'Lộ trình' },
     { id: 'courses', label: 'Khóa học' },
-    { id: 'livestream', label: 'Livestream', isExternal: true, href: 'https://2k9.livesctgv.sangsang.edu.vn/' },
+    { id: 'livestream', label: 'Livestream' },
     { id: 'knowledge', label: 'Tài liệu & Bài viết' },
   ];
 
   const exploreLinks = [
-    { id: 'topic-practice', label: 'Luyện tập theo Chuyên đề', icon: Target, desc: 'Luyện sâu từng môn: Toán, Tiếng Việt, Tiếng Anh, Logic', action: onOpenTopicPractice },
-    { id: 'exam-library', label: 'Kho Đề thi thử V-ACT 120 câu', icon: FileCheck, desc: 'Bộ đề thi thử ma trận chuẩn ĐHQG TP.HCM 2026', action: onOpenExamLibrary },
+    { id: 'topic-practice', label: 'Luyện tập theo Chuyên đề', icon: Target, desc: 'Luyện sâu từng môn: Toán, Tiếng Việt, Tiếng Anh, Logic' },
+    { id: 'exam-library', label: 'Kho Đề thi thử V-ACT 120 câu', icon: FileCheck, desc: 'Bộ đề thi thử ma trận chuẩn ĐHQG TP.HCM 2026' },
     { id: 'discussion', label: 'Diễn đàn Hỏi đáp 24/7', icon: MessageSquare, desc: 'Hỏi đáp bài tập trực tiếp với Thầy Bùi Văn Công' },
     { id: 'university-lookup', label: 'Tra cứu trường & ngành', icon: Search, desc: 'So sánh điểm chuẩn V-ACT 2023-2025' },
     { id: 'teachers', label: 'Giáo viên của tôi', icon: Users, desc: 'Thầy cô uy tín số 1 Sangsang' },
@@ -68,36 +68,20 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Center Container: Centered Navigation Menu Links Only */}
           <nav className="hidden lg:flex items-center justify-center gap-2 xl:gap-6 flex-1">
-            {navLinks.map((link) => {
-              if (link.isExternal) {
-                return (
-                  <a
-                    key={link.id}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-slate-600 hover:text-rose-600 hover:bg-rose-50/60 rounded-xl transition-colors whitespace-nowrap"
-                  >
-                    <Radio className="w-4 h-4 text-rose-500 animate-pulse" />
-                    <span>{link.label}</span>
-                  </a>
-                );
-              }
-
-              return (
-                <button
-                  key={link.id}
-                  onClick={() => setActiveTab(link.id)}
-                  className={`px-3 py-2 text-sm font-semibold rounded-xl transition-colors whitespace-nowrap ${
-                    activeTab === link.id
-                      ? 'text-rose-600 bg-rose-50 font-bold'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60'
-                  }`}
-                >
-                  {link.label}
-                </button>
-              );
-            })}
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => setActiveTab(link.id)}
+                className={`px-3 py-2 text-sm font-semibold rounded-xl transition-colors whitespace-nowrap flex items-center gap-1.5 ${
+                  activeTab === link.id
+                    ? 'text-rose-600 bg-rose-50 font-bold'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60'
+                }`}
+              >
+                {link.id === 'livestream' && <Radio className="w-4 h-4 text-rose-500 animate-pulse" />}
+                <span>{link.label}</span>
+              </button>
+            ))}
 
             {/* Submenu Dropdown: Khám phá */}
             <div className="relative">
@@ -123,8 +107,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       key={item.id}
                       onClick={() => {
                         setIsExploreOpen(false);
-                        if (item.action) item.action();
-                        else setActiveTab(item.id);
+                        setActiveTab(item.id);
                       }}
                       className="w-full text-left px-4 py-2.5 hover:bg-slate-50 flex items-start gap-3 transition-colors"
                     >
@@ -269,11 +252,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               key={link.id}
               onClick={() => {
                 setIsMobileMenuOpen(false);
-                if (link.isExternal) {
-                  window.open(link.href, '_blank');
-                } else {
-                  setActiveTab(link.id);
-                }
+                setActiveTab(link.id);
               }}
               className={`w-full text-left px-3 py-2.5 text-base font-medium rounded-xl ${
                 activeTab === link.id ? 'bg-rose-50 text-rose-700 font-bold' : 'text-slate-700 hover:bg-slate-50'

@@ -15,6 +15,7 @@ import { ProgressStoriesSection } from './components/home/ProgressStoriesSection
 import { CoursesPricingSection } from './components/home/CoursesPricingSection';
 import { KnowledgeHubSection } from './components/home/KnowledgeHubSection';
 import { FAQSection } from './components/home/FAQSection';
+import { LivestreamTab } from './components/learn/LivestreamTab';
 
 import { PreQuizModal } from './components/diagnostic/PreQuizModal';
 import { DiagnosticEngine } from './components/diagnostic/DiagnosticEngine';
@@ -35,10 +36,66 @@ import { StudentGoal, DiagnosticResult, DiagnosticQuestion } from './types';
 import { AuthService, UserProfile } from './services/auth-service';
 import { MockExamItem } from './data/mock-exams-library';
 
+const TAB_TO_PATH: Record<string, string> = {
+  'home': '/',
+  'roadmap': '/lo-trinh',
+  'courses': '/khoa-hoc',
+  'livestream': '/livestream',
+  'knowledge': '/tai-lieu',
+  'topic-practice': '/luyen-chuyen-de',
+  'exam-library': '/kho-de-thi',
+  'discussion': '/dien-dan',
+  'university-lookup': '/tra-cuu-truong',
+  'teachers': '/giao-vien',
+  'parent-dash': '/goc-phu-huynh',
+  'student-dash': '/bang-dieu-hanh',
+  'wrong-notebook': '/so-cau-sai',
+  'faq': '/hoi-dap',
+  'pricing': '/bang-gia',
+};
+
+const PATH_TO_TAB: Record<string, string> = Object.fromEntries(
+  Object.entries(TAB_TO_PATH).map(([tab, path]) => [path, tab])
+);
+
+const getInitialTabFromUrl = (): string => {
+  const path = window.location.pathname;
+  if (PATH_TO_TAB[path]) {
+    return PATH_TO_TAB[path];
+  }
+  return 'home';
+};
+
 export function App() {
-  const [activeTab, setActiveTab] = useState<string>('home');
+  const [activeTab, setActiveTabState] = useState<string>(getInitialTabFromUrl);
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(() => AuthService.getCurrentUser());
   const isLoggedIn = !!currentUser;
+
+  const setActiveTab = (tab: string) => {
+    setActiveTabState(tab);
+    if (tab === 'topic-practice') {
+      setIsTopicPracticeOpen(true);
+    } else if (tab === 'exam-library') {
+      setIsExamLibraryOpen(true);
+    }
+    const targetPath = TAB_TO_PATH[tab] || '/';
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ tab }, '', targetPath);
+    }
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (PATH_TO_TAB[path]) {
+        setActiveTabState(PATH_TO_TAB[path]);
+      } else {
+        setActiveTabState('home');
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
   
   // Quiz Flow State
   const [isPreQuizOpen, setIsPreQuizOpen] = useState<boolean>(false);
@@ -275,6 +332,11 @@ export function App() {
         {/* DEDICATED COURSES & PRICING TAB VIEW */}
         {(activeTab === 'courses' || activeTab === 'pricing') && (
           <CoursesPricingSection onOpenDiagnostic={handleStartPreQuiz} />
+        )}
+
+        {/* DEDICATED LIVESTREAM TAB VIEW */}
+        {activeTab === 'livestream' && (
+          <LivestreamTab />
         )}
 
         {/* DEDICATED TEACHERS TAB VIEW */}
