@@ -68,19 +68,63 @@ const getInitialTabFromUrl = (): string => {
 
 export function App() {
   const [activeTab, setActiveTabState] = useState<string>(getInitialTabFromUrl);
+  const [previousTab, setPreviousTab] = useState<string>('home');
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(() => AuthService.getCurrentUser());
   const isLoggedIn = !!currentUser;
 
   const setActiveTab = (tab: string) => {
-    setActiveTabState(tab);
     if (tab === 'topic-practice') {
+      if (activeTab !== 'topic-practice' && activeTab !== 'exam-library') {
+        setPreviousTab(activeTab);
+      }
       setIsTopicPracticeOpen(true);
+      if (window.location.pathname !== '/luyen-chuyen-de') {
+        window.history.pushState({ tab: 'topic-practice' }, '', '/luyen-chuyen-de');
+      }
     } else if (tab === 'exam-library') {
+      if (activeTab !== 'topic-practice' && activeTab !== 'exam-library') {
+        setPreviousTab(activeTab);
+      }
       setIsExamLibraryOpen(true);
+      if (window.location.pathname !== '/kho-de-thi') {
+        window.history.pushState({ tab: 'exam-library' }, '', '/kho-de-thi');
+      }
+    } else {
+      setActiveTabState(tab);
+      const targetPath = TAB_TO_PATH[tab] || '/';
+      if (window.location.pathname !== targetPath) {
+        window.history.pushState({ tab }, '', targetPath);
+      }
     }
-    const targetPath = TAB_TO_PATH[tab] || '/';
+  };
+
+  const handleCloseTopicPractice = () => {
+    setIsTopicPracticeOpen(false);
+    const returnTab = previousTab || 'home';
+    setActiveTabState(returnTab);
+    const targetPath = TAB_TO_PATH[returnTab] || '/';
     if (window.location.pathname !== targetPath) {
-      window.history.pushState({ tab }, '', targetPath);
+      window.history.pushState({ tab: returnTab }, '', targetPath);
+    }
+  };
+
+  const handleCloseExamLibrary = () => {
+    setIsExamLibraryOpen(false);
+    const returnTab = previousTab || 'home';
+    setActiveTabState(returnTab);
+    const targetPath = TAB_TO_PATH[returnTab] || '/';
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ tab: returnTab }, '', targetPath);
+    }
+  };
+
+  const handleClosePreQuiz = () => {
+    setIsPreQuizOpen(false);
+    const returnTab = previousTab || 'home';
+    setActiveTabState(returnTab);
+    const targetPath = TAB_TO_PATH[returnTab] || '/';
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ tab: returnTab }, '', targetPath);
     }
   };
 
@@ -421,14 +465,14 @@ export function App() {
       {/* Pre-Quiz Survey Modal */}
       <PreQuizModal
         isOpen={isPreQuizOpen}
-        onClose={() => setIsPreQuizOpen(false)}
+        onClose={handleClosePreQuiz}
         onStartQuiz={handleConfirmStartQuiz}
       />
 
       {/* Mock Exam Library Modal (Full 100+ Exam Repository from Sangsang V-ACT) */}
       <MockExamLibraryModal
         isOpen={isExamLibraryOpen}
-        onClose={() => setIsExamLibraryOpen(false)}
+        onClose={handleCloseExamLibrary}
         isLoggedIn={isLoggedIn}
         onOpenAuth={() => {
           setIsExamLibraryOpen(false);
@@ -441,7 +485,7 @@ export function App() {
       {/* Targeted Topic Practice Modal */}
       <TopicPracticeModal
         isOpen={isTopicPracticeOpen}
-        onClose={() => setIsTopicPracticeOpen(false)}
+        onClose={handleCloseTopicPractice}
         onStartTopicPractice={handleStartTopicPractice}
       />
 
