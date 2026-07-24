@@ -34,7 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks = [
     { id: 'roadmap', label: 'Lộ trình' },
     { id: 'courses', label: 'Khóa học' },
-    { id: 'livestream', label: 'Livestream' },
+    { id: 'livestream', label: 'Livestream', isExternal: true, href: 'https://2k9.livesctgv.sangsang.edu.vn/' },
     { id: 'knowledge', label: 'Tài liệu & Bài viết' },
   ];
 
@@ -68,20 +68,36 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Center Container: Centered Navigation Menu Links Only */}
           <nav className="hidden lg:flex items-center justify-center gap-2 xl:gap-6 flex-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => setActiveTab(link.id)}
-                className={`px-3 py-2 text-sm font-semibold rounded-xl transition-colors whitespace-nowrap flex items-center gap-1.5 ${
-                  activeTab === link.id
-                    ? 'text-rose-600 bg-rose-50 font-bold'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60'
-                }`}
-              >
-                {link.id === 'livestream' && <Radio className="w-4 h-4 text-rose-500 animate-pulse" />}
-                <span>{link.label}</span>
-              </button>
-            ))}
+            {navLinks.map((link) => {
+              if (link.isExternal) {
+                return (
+                  <a
+                    key={link.id}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-slate-600 hover:text-rose-600 hover:bg-rose-50/60 rounded-xl transition-colors whitespace-nowrap"
+                  >
+                    <Radio className="w-4 h-4 text-rose-500 animate-pulse" />
+                    <span>{link.label}</span>
+                  </a>
+                );
+              }
+
+              return (
+                <button
+                  key={link.id}
+                  onClick={() => setActiveTab(link.id)}
+                  className={`px-3 py-2 text-sm font-semibold rounded-xl transition-colors whitespace-nowrap ${
+                    activeTab === link.id
+                      ? 'text-rose-600 bg-rose-50 font-bold'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60'
+                  }`}
+                >
+                  {link.label}
+                </button>
+              );
+            })}
 
             {/* Submenu Dropdown: Khám phá */}
             <div className="relative">
@@ -252,7 +268,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               key={link.id}
               onClick={() => {
                 setIsMobileMenuOpen(false);
-                setActiveTab(link.id);
+                if (link.isExternal && link.href) {
+                  window.open(link.href, '_blank', 'noopener,noreferrer');
+                } else {
+                  setActiveTab(link.id);
+                }
               }}
               className={`w-full text-left px-3 py-2.5 text-base font-medium rounded-xl ${
                 activeTab === link.id ? 'bg-rose-50 text-rose-700 font-bold' : 'text-slate-700 hover:bg-slate-50'
