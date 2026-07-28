@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, ChevronDown, Menu, X, User, Compass, BookOpen, Target, Award, Users, Search, HelpCircle, Radio, MessageSquare, UserCheck, LogOut, LayoutDashboard, RotateCcw, FileCheck } from 'lucide-react';
+import { Sparkles, ChevronDown, ChevronRight, Menu, X, User, Compass, BookOpen, Target, Award, Users, Search, HelpCircle, Radio, MessageSquare, UserCheck, LogOut, LayoutDashboard, RotateCcw, FileCheck } from 'lucide-react';
 import { UserProfile } from '../../services/auth-service';
 
 interface NavbarProps {
@@ -249,38 +249,64 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 animate-fadeIn">
-          <div className="text-xs font-bold text-slate-400 uppercase tracking-wider px-2">Menu Sangsang</div>
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 animate-fadeIn">
+          <div className="text-xs font-bold text-slate-400 uppercase tracking-wider px-2">
+            Điều hướng nhanh
+          </div>
           
           <button
             onClick={() => {
               setIsMobileMenuOpen(false);
-              onOpenExamLibrary();
+              onOpenDiagnostic();
             }}
-            className="w-full text-left px-3 py-2.5 text-base font-bold bg-rose-50 text-rose-700 rounded-xl flex items-center gap-2"
+            className="w-full text-left px-4 py-3 text-sm font-extrabold bg-gradient-to-r from-rose-500 to-rose-600 text-white rounded-2xl flex items-center justify-between shadow-md active:scale-95 transition-transform"
           >
-            <FileCheck className="w-5 h-5 text-rose-600" />
-            <span>Kho 100+ Đề thi thử V-ACT 120 câu</span>
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
+              <span>Kiểm tra năng lực miễn phí (20 phút)</span>
+            </div>
+            <ChevronRight className="w-4 h-4" />
           </button>
 
-          {navLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                if (link.isExternal && link.href) {
-                  window.open(link.href, '_blank', 'noopener,noreferrer');
-                } else {
-                  setActiveTab(link.id);
-                }
-              }}
-              className={`w-full text-left px-3 py-2.5 text-base font-medium rounded-xl ${
-                activeTab === link.id ? 'bg-rose-50 text-rose-700 font-bold' : 'text-slate-700 hover:bg-slate-50'
-              }`}
-            >
-              {link.label}
-            </button>
-          ))}
+          <div className="space-y-1">
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  if (link.isExternal && link.href) {
+                    window.open(link.href, '_blank', 'noopener,noreferrer');
+                  } else {
+                    setActiveTab(link.id);
+                  }
+                }}
+                className={`w-full text-left px-3.5 py-2.5 text-sm font-bold rounded-xl transition-colors ${
+                  activeTab === link.id ? 'bg-rose-50 text-rose-700 font-extrabold' : 'text-slate-700 hover:bg-slate-50'
+                }`}
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="pt-2 border-t border-slate-100 space-y-1">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider px-2 mb-1">
+              Khám phá Hệ sinh thái Sangsang
+            </div>
+            {exploreLinks.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setActiveTab(item.id);
+                }}
+                className="w-full text-left px-3.5 py-2 hover:bg-slate-50 rounded-xl flex items-center gap-3 transition-colors"
+              >
+                <item.icon className="w-4 h-4 text-rose-500 shrink-0" />
+                <span className="text-xs font-bold text-slate-800">{item.label}</span>
+              </button>
+            ))}
+          </div>
 
           {isLoggedIn && onLogout && (
             <div className="pt-2 border-t border-slate-100">
@@ -289,9 +315,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                   setIsMobileMenuOpen(false);
                   onLogout();
                 }}
-                className="w-full text-left px-3 py-2.5 text-base font-bold text-rose-600 hover:bg-rose-50 rounded-xl flex items-center gap-2"
+                className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-rose-600 hover:bg-rose-50 rounded-xl flex items-center gap-2"
               >
-                <LogOut className="w-5 h-5 text-rose-600" />
+                <LogOut className="w-4 h-4 text-rose-600" />
                 <span>Đăng xuất tài khoản</span>
               </button>
             </div>

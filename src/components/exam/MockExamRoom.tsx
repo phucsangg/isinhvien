@@ -197,10 +197,10 @@ export const MockExamRoom: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             ) : !isSubmitted ? (
               <button
                 onClick={() => setIsSubmitted(true)}
-                className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs rounded-xl flex items-center gap-2"
+                className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-xs rounded-xl flex items-center gap-2 shadow-lg shadow-emerald-500/30 animate-pulse"
               >
                 <CheckCircle2 className="w-4 h-4" />
-                <span>Nộp bài thi thử</span>
+                <span>Nộp bài thi ({answeredCount}/{questions.length})</span>
               </button>
             ) : (
               <button

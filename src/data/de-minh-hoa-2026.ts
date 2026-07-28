@@ -458,7 +458,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-14",
     "domain": "tieng_viet",
     "domainName": "Tiếng Việt",
-    "questionText": "Câu 14: âu nào sau đây viết đúng?",
+    "questionText": "Câu 14:Câu nào sau đây viết đúng?",
     "options": [
       {
         "id": "A",
@@ -561,7 +561,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "domain": "tieng_viet",
     "domainName": "Tiếng Việt",
     "passageText": "“Sống có nghị lực mạnh mẽ sẽ giúp chúng ta vượt qua mọi thử thách, mọi trở ngại của hoàn cảnh và đạt được điều chúng ta mong ước; bởi vậy do đó, mỗi người cần giữ vững tinh thần, luôn hướng đến mục tiêu và nỗ lực hoàn thành mục tiêu”.",
-    "questionText": "Câu 17: âu trên mắc lỗi gì?",
+    "questionText": "Câu 17: Câu trên mắc lỗi gì?",
     "options": [
       {
         "id": "A",
@@ -629,7 +629,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-19",
     "domain": "tieng_viet",
     "domainName": "Tiếng Việt",
-    "questionText": "Câu 19: âu nào sau đây thể hiện phong cách ngôn ngữ sinh hoạt?",
+    "questionText": "Câu 19: Câu nào sau đây thể hiện phong cách ngôn ngữ sinh hoạt?",
     "options": [
       {
         "id": "A",
@@ -2185,7 +2185,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-64",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "questionText": "Câu 64: Cho a = log_2 5, b = log_5 3. Biết log_24 15 = (ma + ab)/(n + ab) với m, n là các số nguyên. Giá trị S = m² + n² là:",
+    "questionText": "Câu 64: Cho a = log₂ 5, b = log₅ 3. Biết log₂₄ 15 = (ma + ab)/(n + ab) với m, n là các số nguyên. Giá trị S = m² + n² là:",
     "options": [
       {
         "id": "A",
@@ -2219,7 +2219,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-65",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 65 đến 66 Có 6 thị trấn A, B, C, D, E và F được kết nối bởi các tuyến đường giao thông với khoảng cách giữa các thị trấn (km) được cho trong bảng ma trận: - Tuyến A - B: 1 km | A - D: 8 km | A - E: 4 km | A - F: 1 km - Tuyến B - C: 2 km | C - D: 3 km | D - E: 5 km | E - F: 1 km",
+    "passageText": "Ó 6 thị trấn A, B, C, D, E và F được kết nối bởi các tuyến đường giao thông với khoảng cách giữa các thị trấn (km) được cho trong bảng ma trận: - Tuyến A - B: 1 km | A - D: 8 km | A - E: 4 km | A - F: 1 km - Tuyến B - C: 2 km | C - D: 3 km | D - E: 5 km | E - F: 1 km",
     "questionText": "Câu 65: Tổng số tuyến đường kết nối các thị trấn với nhau là:",
     "options": [
       {
@@ -2254,7 +2254,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-66",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 65 đến 66 Có 6 thị trấn A, B, C, D, E và F được kết nối bởi các tuyến đường giao thông với khoảng cách giữa các thị trấn (km) được cho trong bảng ma trận: - Tuyến A - B: 1 km | A - D: 8 km | A - E: 4 km | A - F: 1 km - Tuyến B - C: 2 km | C - D: 3 km | D - E: 5 km | E - F: 1 km",
+    "passageText": "Ó 6 thị trấn A, B, C, D, E và F được kết nối bởi các tuyến đường giao thông với khoảng cách giữa các thị trấn (km) được cho trong bảng ma trận: - Tuyến A - B: 1 km | A - D: 8 km | A - E: 4 km | A - F: 1 km - Tuyến B - C: 2 km | C - D: 3 km | D - E: 5 km | E - F: 1 km",
     "questionText": "Câu 66: Một công ty viễn thông kéo cáp ngầm mở rộng mạng lưới dịch vụ nối 6 thị trấn A, B, C, D, E, F. Chi phí tối thiểu (nghìn đô la) để tất cả 6 thị trấn đều được kết nối là:",
     "options": [
       {
@@ -2357,7 +2357,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-69",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "questionText": "Câu 69: Cho hàm số f(x) = (x² - 4)/(x - 2) nếu x ≠ 2; = m + 1 nếu x = 2. Giá trị của m để hàm số liên tục tại x0 = 2 là:",
+    "questionText": "Câu 69: Cho hàm số f(x) = (x² - 4)/(x - 2) nếu x ≠ 2; = m + 1 nếu x = 2. Giá trị của m để hàm số liên tục tại x₀ = 2 là:",
     "options": [
       {
         "id": "A",
@@ -2493,7 +2493,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-73",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 73 đến 74 Một xưởng sản xuất hai loại bánh A và B. Để sản xuất 1 chiếc bánh A cần 200g bột mì và 25g thịt. Để sản xuất 1 chiếc bánh B cần 100g bột mì và 50g thịt. Xưởng hiện có sẵn 5 kg bột mì và 1 kg thịt. Lợi nhuận thu được từ mỗi chiếc bánh A là 10.000 đồng, mỗi chiếc bánh B là 15.000 đồng.",
+    "passageText": "Ột xưởng sản xuất hai loại bánh A và B. Để sản xuất 1 chiếc bánh A cần 200g bột mì và 25g thịt. Để sản xuất 1 chiếc bánh B cần 100g bột mì và 50g thịt. Xưởng hiện có sẵn 5 kg bột mì và 1 kg thịt. Lợi nhuận thu được từ mỗi chiếc bánh A là 10.000 đồng, mỗi chiếc bánh B là 15.000 đồng.",
     "questionText": "Câu 73: Gọi x là số bánh A, y là số bánh B. Hệ bất phương trình biểu diễn các ràng buộc nguyên liệu là:",
     "options": [
       {
@@ -2528,7 +2528,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-74",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 73 đến 74 Một xưởng sản xuất hai loại bánh A và B. Để sản xuất 1 chiếc bánh A cần 200g bột mì và 25g thịt. Để sản xuất 1 chiếc bánh B cần 100g bột mì và 50g thịt. Xưởng hiện có sẵn 5 kg bột mì và 1 kg thịt. Lợi nhuận thu được từ mỗi chiếc bánh A là 10.000 đồng, mỗi chiếc bánh B là 15.000 đồng.",
+    "passageText": "Ột xưởng sản xuất hai loại bánh A và B. Để sản xuất 1 chiếc bánh A cần 200g bột mì và 25g thịt. Để sản xuất 1 chiếc bánh B cần 100g bột mì và 50g thịt. Xưởng hiện có sẵn 5 kg bột mì và 1 kg thịt. Lợi nhuận thu được từ mỗi chiếc bánh A là 10.000 đồng, mỗi chiếc bánh B là 15.000 đồng.",
     "questionText": "Câu 74: Giả sử lợi nhuận mỗi chiếc bánh A là 10 nghìn đồng và B là 15 nghìn đồng. Lợi nhuận tối đa (nghìn đồng) có thể thu được là:",
     "options": [
       {
@@ -2563,7 +2563,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-75",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 75 đến 76 Cho cấp số cộng (un) có các số hạng thỏa mãn hệ phương trình: u1 + u5 = 12; u2 + u6 = 16.",
+    "passageText": "Ho cấp số cộng (un) có các số hạng thỏa mãn hệ phương trình: u1 + u5 = 12; u2 + u6 = 16.",
     "questionText": "Câu 75: Công sai d của cấp số cộng (un) là:",
     "options": [
       {
@@ -2598,8 +2598,8 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-76",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 75 đến 76 Cho cấp số cộng (un) có các số hạng thỏa mãn hệ phương trình: u1 + u5 = 12; u2 + u6 = 16.",
-    "questionText": "Câu 76: Tính giá trị giới hạn lim(n->∞) (5u_n - 3)/(n + 2).",
+    "passageText": "Ho cấp số cộng (un) có các số hạng thỏa mãn hệ phương trình: u1 + u5 = 12; u2 + u6 = 16.",
+    "questionText": "Câu 76: Tính giá trị giới hạn lim (n → ∞) (5u_n - 3)/(n + 2).",
     "options": [
       {
         "id": "A",
@@ -2633,7 +2633,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-77",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 77 đến 78 Trong không gian với hệ tọa độ Oxyz, cho điểm A(2; 2; -3) và hai mặt phẳng (P): 2x + y - 2z = 0, (Q): 2x - y + z = 0.",
+    "passageText": "Rong không gian với hệ tọa độ Oxyz, cho điểm A(2; 2; -3) và hai mặt phẳng (P): 2x + y - 2z = 0, (Q): 2x - y + z = 0.",
     "questionText": "Câu 77: Khoảng cách từ điểm A đến mặt phẳng (P) bằng:",
     "options": [
       {
@@ -2668,7 +2668,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-78",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 77 đến 78 Trong không gian với hệ tọa độ Oxyz, cho điểm A(2; 2; -3) và hai mặt phẳng (P): 2x + y - 2z = 0, (Q): 2x - y + z = 0.",
+    "passageText": "Rong không gian với hệ tọa độ Oxyz, cho điểm A(2; 2; -3) và hai mặt phẳng (P): 2x + y - 2z = 0, (Q): 2x - y + z = 0.",
     "questionText": "Câu 78: Mặt phẳng đi qua A và vuông góc với (P) và (Q) có phương trình:",
     "options": [
       {
@@ -2806,7 +2806,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-82",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 82 đến 84 Có hai lô hàng sản phẩm. Lô A có 10 sản phẩm (gồm 7 sản phẩm tốt và 3 sản phẩm lỗi). Lô B có 15 sản phẩm (gồm 10 sản phẩm tốt và 5 sản phẩm lỗi).",
+    "passageText": "Ó hai lô hàng sản phẩm. Lô A có 10 sản phẩm (gồm 7 sản phẩm tốt và 3 sản phẩm lỗi). Lô B có 15 sản phẩm (gồm 10 sản phẩm tốt và 5 sản phẩm lỗi).",
     "questionText": "Câu 82: Từ lô A chọn ngẫu nhiên đồng thời 2 sản phẩm, xác suất lấy được 2 sản phẩm tốt là:",
     "options": [
       {
@@ -2841,7 +2841,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-83",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 82 đến 84 Có hai lô hàng sản phẩm. Lô A có 10 sản phẩm (gồm 7 sản phẩm tốt và 3 sản phẩm lỗi). Lô B có 15 sản phẩm (gồm 10 sản phẩm tốt và 5 sản phẩm lỗi).",
+    "passageText": "Ó hai lô hàng sản phẩm. Lô A có 10 sản phẩm (gồm 7 sản phẩm tốt và 3 sản phẩm lỗi). Lô B có 15 sản phẩm (gồm 10 sản phẩm tốt và 5 sản phẩm lỗi).",
     "questionText": "Câu 83: Chọn ngẫu nhiên một lô hàng, rồi từ lô hàng đó chọn ra 2 sản phẩm. Xác suất để lấy được 2 sản phẩm tốt là:",
     "options": [
       {
@@ -2876,7 +2876,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-84",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 82 đến 84 Có hai lô hàng sản phẩm. Lô A có 10 sản phẩm (gồm 7 sản phẩm tốt và 3 sản phẩm lỗi). Lô B có 15 sản phẩm (gồm 10 sản phẩm tốt và 5 sản phẩm lỗi).",
+    "passageText": "Ó hai lô hàng sản phẩm. Lô A có 10 sản phẩm (gồm 7 sản phẩm tốt và 3 sản phẩm lỗi). Lô B có 15 sản phẩm (gồm 10 sản phẩm tốt và 5 sản phẩm lỗi).",
     "questionText": "Câu 84: Chọn ngẫu nhiên một lô hàng, rồi từ lô hàng đó chọn ra 1 sản phẩm. Biết sản phẩm được chọn là sản phẩm lỗi. Xác suất để lô được chọn là lô B là:",
     "options": [
       {
@@ -2911,7 +2911,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-85",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 85 đến 87 Trong mặt phẳng tọa độ Oxy, cho tam giác ABC có tọa độ các đỉnh A(-5; 1), B(1; 5) và C(7; -3).",
+    "passageText": "Rong mặt phẳng tọa độ Oxy, cho tam giác ABC có tọa độ các đỉnh A(-5; 1), B(1; 5) và C(7; -3).",
     "questionText": "Câu 85: Gọi G là trọng tâm tam giác ABC. Khoảng cách OG là:",
     "options": [
       {
@@ -2946,7 +2946,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-86",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 85 đến 87 Trong mặt phẳng tọa độ Oxy, cho tam giác ABC có tọa độ các đỉnh A(-5; 1), B(1; 5) và C(7; -3).",
+    "passageText": "Rong mặt phẳng tọa độ Oxy, cho tam giác ABC có tọa độ các đỉnh A(-5; 1), B(1; 5) và C(7; -3).",
     "questionText": "Câu 86: Gọi M là trung điểm AC. Gọi N là điểm sao cho BMCN là hình bình hành. Tổng hoành độ và tung độ của N bằng:",
     "options": [
       {
@@ -2981,7 +2981,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-87",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 85 đến 87 Trong mặt phẳng tọa độ Oxy, cho tam giác ABC có tọa độ các đỉnh A(-5; 1), B(1; 5) và C(7; -3).",
+    "passageText": "Rong mặt phẳng tọa độ Oxy, cho tam giác ABC có tọa độ các đỉnh A(-5; 1), B(1; 5) và C(7; -3).",
     "questionText": "Câu 87: Gọi D là điểm nằm trên cạnh BC sao cho đường tròn đường kính DB tiếp xúc trục tung. Hiệu hoành độ và tung độ của D là:",
     "options": [
       {
@@ -3016,7 +3016,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-88",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 88 đến 90 Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a. Hình chiếu vuông góc H của đỉnh S lên mặt phẳng đáy (ABCD) là trung điểm của cạnh AB. Biết chiều cao SH = a.",
+    "passageText": "Ho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a. Hình chiếu vuông góc H của đỉnh S lên mặt phẳng đáy (ABCD) là trung điểm của cạnh AB. Biết chiều cao SH = a.",
     "questionText": "Câu 88: Thể tích hình chóp S.BHD là:",
     "options": [
       {
@@ -3051,7 +3051,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-89",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 88 đến 90 Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a. Hình chiếu vuông góc H của đỉnh S lên mặt phẳng đáy (ABCD) là trung điểm của cạnh AB. Biết chiều cao SH = a.",
+    "passageText": "Ho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a. Hình chiếu vuông góc H của đỉnh S lên mặt phẳng đáy (ABCD) là trung điểm của cạnh AB. Biết chiều cao SH = a.",
     "questionText": "Câu 89: Chu vi tam giác SBD là:",
     "options": [
       {
@@ -3086,7 +3086,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-90",
     "domain": "toan_hoc",
     "domainName": "Toán học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 88 đến 90 Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a. Hình chiếu vuông góc H của đỉnh S lên mặt phẳng đáy (ABCD) là trung điểm của cạnh AB. Biết chiều cao SH = a.",
+    "passageText": "Ho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a. Hình chiếu vuông góc H của đỉnh S lên mặt phẳng đáy (ABCD) là trung điểm của cạnh AB. Biết chiều cao SH = a.",
     "questionText": "Câu 90: Khoảng cách từ H đến mặt phẳng (SBD) xấp xỉ:",
     "options": [
       {
@@ -3121,7 +3121,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-91",
     "domain": "logic",
     "domainName": "Tư duy Logic",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 91 đến 93 Nhân dịp tổ chức buổi lễ 20/11, đội văn nghệ trường định biểu diễn 5 tiết mục: đơn ca nam, đơn ca nữ, song ca nam nữ, tốp ca học sinh và tốp ca giáo viên. Thứ tự biểu diễn tuân theo các ràng buộc sau: - Song ca nam nữ phải được biểu diễn trước đơn ca nữ. - Tốp ca học sinh phải được biểu diễn trước tốp ca giáo viên. - Đơn ca nam và tốp ca học sinh phải biểu diễn ở hai vị trí liền kề nhau.",
+    "passageText": "Hân dịp tổ chức buổi lễ 20/11, đội văn nghệ trường định biểu diễn 5 tiết mục: đơn ca nam, đơn ca nữ, song ca nam nữ, tốp ca học sinh và tốp ca giáo viên. Thứ tự biểu diễn tuân theo các ràng buộc sau: - Song ca nam nữ phải được biểu diễn trước đơn ca nữ. - Tốp ca học sinh phải được biểu diễn trước tốp ca giáo viên. - Đơn ca nam và tốp ca học sinh phải biểu diễn ở hai vị trí liền kề nhau.",
     "questionText": "Câu 91: Có bao nhiêu tiết mục có thể biểu diễn ở vị trí thứ hai?",
     "options": [
       {
@@ -3156,7 +3156,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-92",
     "domain": "logic",
     "domainName": "Tư duy Logic",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 91 đến 93 Nhân dịp tổ chức buổi lễ 20/11, đội văn nghệ trường định biểu diễn 5 tiết mục: đơn ca nam, đơn ca nữ, song ca nam nữ, tốp ca học sinh và tốp ca giáo viên. Thứ tự biểu diễn tuân theo các ràng buộc sau: - Song ca nam nữ phải được biểu diễn trước đơn ca nữ. - Tốp ca học sinh phải được biểu diễn trước tốp ca giáo viên. - Đơn ca nam và tốp ca học sinh phải biểu diễn ở hai vị trí liền kề nhau.",
+    "passageText": "Hân dịp tổ chức buổi lễ 20/11, đội văn nghệ trường định biểu diễn 5 tiết mục: đơn ca nam, đơn ca nữ, song ca nam nữ, tốp ca học sinh và tốp ca giáo viên. Thứ tự biểu diễn tuân theo các ràng buộc sau: - Song ca nam nữ phải được biểu diễn trước đơn ca nữ. - Tốp ca học sinh phải được biểu diễn trước tốp ca giáo viên. - Đơn ca nam và tốp ca học sinh phải biểu diễn ở hai vị trí liền kề nhau.",
     "questionText": "Câu 92: Nếu tốp ca giáo viên được biểu diễn trước đơn ca nữ thì điều nào sau đây KHÔNG ĐÚNG?",
     "options": [
       {
@@ -3191,7 +3191,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-93",
     "domain": "logic",
     "domainName": "Tư duy Logic",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 91 đến 93 Nhân dịp tổ chức buổi lễ 20/11, đội văn nghệ trường định biểu diễn 5 tiết mục: đơn ca nam, đơn ca nữ, song ca nam nữ, tốp ca học sinh và tốp ca giáo viên. Thứ tự biểu diễn tuân theo các ràng buộc sau: - Song ca nam nữ phải được biểu diễn trước đơn ca nữ. - Tốp ca học sinh phải được biểu diễn trước tốp ca giáo viên. - Đơn ca nam và tốp ca học sinh phải biểu diễn ở hai vị trí liền kề nhau.",
+    "passageText": "Hân dịp tổ chức buổi lễ 20/11, đội văn nghệ trường định biểu diễn 5 tiết mục: đơn ca nam, đơn ca nữ, song ca nam nữ, tốp ca học sinh và tốp ca giáo viên. Thứ tự biểu diễn tuân theo các ràng buộc sau: - Song ca nam nữ phải được biểu diễn trước đơn ca nữ. - Tốp ca học sinh phải được biểu diễn trước tốp ca giáo viên. - Đơn ca nam và tốp ca học sinh phải biểu diễn ở hai vị trí liền kề nhau.",
     "questionText": "Câu 93: Nếu đơn ca nữ và tốp ca giáo viên không được biểu diễn kề nhau thì điều nào sau đây có thể đúng?",
     "options": [
       {
@@ -3226,7 +3226,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-94",
     "domain": "logic",
     "domainName": "Tư duy Logic",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 94 đến 96 Ban cán sự lớp gồm 5 đại diện (trong đó có 1 lớp trưởng) được chọn từ 5 học sinh nam F, G, J, K, M và 4 học sinh nữ P, Q, R, S. Việc lựa chọn tuân theo các quy tắc sau: - Mỗi nhóm nam/nữ phải có ít nhất 2 đại diện. - Lớp trưởng phải thuộc nhóm giới tính có đúng 2 đại diện trong ban cán sự. - Nếu F được chọn thì Q cũng phải được chọn. - Nếu G được chọn thì K cũng phải được chọn. - J hoặc M được chọn thì người kia cũng phải được chọn. - M và P không thể cùng được chọn trong ban cán sự.",
+    "passageText": "An cán sự lớp gồm 5 đại diện (trong đó có 1 lớp trưởng) được chọn từ 5 học sinh nam F, G, J, K, M và 4 học sinh nữ P, Q, R, S. Việc lựa chọn tuân theo các quy tắc sau: - Mỗi nhóm nam/nữ phải có ít nhất 2 đại diện. - Lớp trưởng phải thuộc nhóm giới tính có đúng 2 đại diện trong ban cán sự. - Nếu F được chọn thì Q cũng phải được chọn. - Nếu G được chọn thì K cũng phải được chọn. - J hoặc M được chọn thì người kia cũng phải được chọn. - M và P không thể cùng được chọn trong ban cán sự.",
     "questionText": "Câu 94: Trong số các lựa chọn dưới đây, tổ hợp nào là một lựa chọn hợp lệ?",
     "options": [
       {
@@ -3261,7 +3261,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-95",
     "domain": "logic",
     "domainName": "Tư duy Logic",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 94 đến 96 Ban cán sự lớp gồm 5 đại diện (trong đó có 1 lớp trưởng) được chọn từ 5 học sinh nam F, G, J, K, M và 4 học sinh nữ P, Q, R, S. Việc lựa chọn tuân theo các quy tắc sau: - Mỗi nhóm nam/nữ phải có ít nhất 2 đại diện. - Lớp trưởng phải thuộc nhóm giới tính có đúng 2 đại diện trong ban cán sự. - Nếu F được chọn thì Q cũng phải được chọn. - Nếu G được chọn thì K cũng phải được chọn. - J hoặc M được chọn thì người kia cũng phải được chọn. - M và P không thể cùng được chọn trong ban cán sự.",
+    "passageText": "An cán sự lớp gồm 5 đại diện (trong đó có 1 lớp trưởng) được chọn từ 5 học sinh nam F, G, J, K, M và 4 học sinh nữ P, Q, R, S. Việc lựa chọn tuân theo các quy tắc sau: - Mỗi nhóm nam/nữ phải có ít nhất 2 đại diện. - Lớp trưởng phải thuộc nhóm giới tính có đúng 2 đại diện trong ban cán sự. - Nếu F được chọn thì Q cũng phải được chọn. - Nếu G được chọn thì K cũng phải được chọn. - J hoặc M được chọn thì người kia cũng phải được chọn. - M và P không thể cùng được chọn trong ban cán sự.",
     "questionText": "Câu 95: Nếu cả F lẫn K đều không được chọn, thì điều nào sau đây có thể đúng?",
     "options": [
       {
@@ -3296,7 +3296,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-96",
     "domain": "logic",
     "domainName": "Tư duy Logic",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 94 đến 96 Ban cán sự lớp gồm 5 đại diện (trong đó có 1 lớp trưởng) được chọn từ 5 học sinh nam F, G, J, K, M và 4 học sinh nữ P, Q, R, S. Việc lựa chọn tuân theo các quy tắc sau: - Mỗi nhóm nam/nữ phải có ít nhất 2 đại diện. - Lớp trưởng phải thuộc nhóm giới tính có đúng 2 đại diện trong ban cán sự. - Nếu F được chọn thì Q cũng phải được chọn. - Nếu G được chọn thì K cũng phải được chọn. - J hoặc M được chọn thì người kia cũng phải được chọn. - M và P không thể cùng được chọn trong ban cán sự.",
+    "passageText": "An cán sự lớp gồm 5 đại diện (trong đó có 1 lớp trưởng) được chọn từ 5 học sinh nam F, G, J, K, M và 4 học sinh nữ P, Q, R, S. Việc lựa chọn tuân theo các quy tắc sau: - Mỗi nhóm nam/nữ phải có ít nhất 2 đại diện. - Lớp trưởng phải thuộc nhóm giới tính có đúng 2 đại diện trong ban cán sự. - Nếu F được chọn thì Q cũng phải được chọn. - Nếu G được chọn thì K cũng phải được chọn. - J hoặc M được chọn thì người kia cũng phải được chọn. - M và P không thể cùng được chọn trong ban cán sự.",
     "questionText": "Câu 96: Nếu lớp trưởng là một nữ sinh, thì điều nào sau đây phải đúng?",
     "options": [
       {
@@ -3331,7 +3331,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-97",
     "domain": "so_lieu",
     "domainName": "Phân tích số liệu",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 97 đến 99 Biểu đồ tròn thống kê thị phần điện thoại di động tại một quốc gia vào năm 2015 (tổng quy mô 50 triệu chiếc) và năm 2025 (tổng quy mô 95 triệu chiếc): - Năm 2015: Công ty X (38%), Công ty Y (20%), Các hãng khác (42%). - Năm 2025: Công ty X (66%), Công ty Y (28%), Các hãng khác (6%).",
+    "passageText": "Iểu đồ tròn thống kê thị phần điện thoại di động tại một quốc gia vào năm 2015 (tổng quy mô 50 triệu chiếc) và năm 2025 (tổng quy mô 95 triệu chiếc): - Năm 2015: Công ty X (38%), Công ty Y (20%), Các hãng khác (42%). - Năm 2025: Công ty X (66%), Công ty Y (28%), Các hãng khác (6%).",
     "questionText": "Câu 97: Số lượng điện thoại công ty X bán ra năm 2025 tăng bao nhiêu phần trăm so với năm 2015?",
     "options": [
       {
@@ -3366,7 +3366,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-98",
     "domain": "so_lieu",
     "domainName": "Phân tích số liệu",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 97 đến 99 Biểu đồ tròn thống kê thị phần điện thoại di động tại một quốc gia vào năm 2015 (tổng quy mô 50 triệu chiếc) và năm 2025 (tổng quy mô 95 triệu chiếc): - Năm 2015: Công ty X (38%), Công ty Y (20%), Các hãng khác (42%). - Năm 2025: Công ty X (66%), Công ty Y (28%), Các hãng khác (6%).",
+    "passageText": "Iểu đồ tròn thống kê thị phần điện thoại di động tại một quốc gia vào năm 2015 (tổng quy mô 50 triệu chiếc) và năm 2025 (tổng quy mô 95 triệu chiếc): - Năm 2015: Công ty X (38%), Công ty Y (20%), Các hãng khác (42%). - Năm 2025: Công ty X (66%), Công ty Y (28%), Các hãng khác (6%).",
     "questionText": "Câu 98: Giả sử số lượng điện thoại công ty X bán ra tăng theo tốc độ tăng trưởng kép hằng năm (CAGR) không đổi 2015-2025. CAGR của công ty X xấp xỉ:",
     "options": [
       {
@@ -3401,7 +3401,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-99",
     "domain": "so_lieu",
     "domainName": "Phân tích số liệu",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 97 đến 99 Biểu đồ tròn thống kê thị phần điện thoại di động tại một quốc gia vào năm 2015 (tổng quy mô 50 triệu chiếc) và năm 2025 (tổng quy mô 95 triệu chiếc): - Năm 2015: Công ty X (38%), Công ty Y (20%), Các hãng khác (42%). - Năm 2025: Công ty X (66%), Công ty Y (28%), Các hãng khác (6%).",
+    "passageText": "Iểu đồ tròn thống kê thị phần điện thoại di động tại một quốc gia vào năm 2015 (tổng quy mô 50 triệu chiếc) và năm 2025 (tổng quy mô 95 triệu chiếc): - Năm 2015: Công ty X (38%), Công ty Y (20%), Các hãng khác (42%). - Năm 2025: Công ty X (66%), Công ty Y (28%), Các hãng khác (6%).",
     "questionText": "Câu 99: Giả sử từ năm 2024 đến 2025, tổng số điện thoại bán ra tăng 11%, và công ty Y bán ra tăng 5%. Thị phần công ty Y năm 2024 xấp xỉ:",
     "options": [
       {
@@ -3436,7 +3436,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-100",
     "domain": "so_lieu",
     "domainName": "Phân tích số liệu",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 100 đến 102 Bảng thống kê cân nặng (kg) của 1.500 trẻ sơ sinh tại một bệnh viện phụ sản được ghi nhận như sau: - Khoảng cân nặng [0,0; 1,0): 1 trẻ - Khoảng cân nặng [1,0; 2,0): 6 trẻ - Khoảng cân nặng [2,0; 2,5): 60 trẻ - Khoảng cân nặng [2,5; 3,0): 280 trẻ - Khoảng cân nặng [3,0; 3,5): 820 trẻ - Khoảng cân nặng [3,5; 4,0): 320 trẻ - Khoảng cân nặng [4,0; 5,0): 10 trẻ - Khoảng cân nặng [5,0; 6,0]: 3 trẻ",
+    "passageText": "Ảng thống kê cân nặng (kg) của 1.500 trẻ sơ sinh tại một bệnh viện phụ sản được ghi nhận như sau: - Khoảng cân nặng [0,0; 1,0): 1 trẻ - Khoảng cân nặng [1,0; 2,0): 6 trẻ - Khoảng cân nặng [2,0; 2,5): 60 trẻ - Khoảng cân nặng [2,5; 3,0): 280 trẻ - Khoảng cân nặng [3,0; 3,5): 820 trẻ - Khoảng cân nặng [3,5; 4,0): 320 trẻ - Khoảng cân nặng [4,0; 5,0): 10 trẻ - Khoảng cân nặng [5,0; 6,0]: 3 trẻ",
     "questionText": "Câu 100: Khoảng chứa trung vị là:",
     "options": [
       {
@@ -3471,7 +3471,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-101",
     "domain": "so_lieu",
     "domainName": "Phân tích số liệu",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 100 đến 102 Bảng thống kê cân nặng (kg) của 1.500 trẻ sơ sinh tại một bệnh viện phụ sản được ghi nhận như sau: - Khoảng cân nặng [0,0; 1,0): 1 trẻ - Khoảng cân nặng [1,0; 2,0): 6 trẻ - Khoảng cân nặng [2,0; 2,5): 60 trẻ - Khoảng cân nặng [2,5; 3,0): 280 trẻ - Khoảng cân nặng [3,0; 3,5): 820 trẻ - Khoảng cân nặng [3,5; 4,0): 320 trẻ - Khoảng cân nặng [4,0; 5,0): 10 trẻ - Khoảng cân nặng [5,0; 6,0]: 3 trẻ",
+    "passageText": "Ảng thống kê cân nặng (kg) của 1.500 trẻ sơ sinh tại một bệnh viện phụ sản được ghi nhận như sau: - Khoảng cân nặng [0,0; 1,0): 1 trẻ - Khoảng cân nặng [1,0; 2,0): 6 trẻ - Khoảng cân nặng [2,0; 2,5): 60 trẻ - Khoảng cân nặng [2,5; 3,0): 280 trẻ - Khoảng cân nặng [3,0; 3,5): 820 trẻ - Khoảng cân nặng [3,5; 4,0): 320 trẻ - Khoảng cân nặng [4,0; 5,0): 10 trẻ - Khoảng cân nặng [5,0; 6,0]: 3 trẻ",
     "questionText": "Câu 101: Trung vị cân nặng (kg) của 1.500 trẻ sơ sinh xấp xỉ:",
     "options": [
       {
@@ -3506,8 +3506,8 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-102",
     "domain": "so_lieu",
     "domainName": "Phân tích số liệu",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 100 đến 102 Bảng thống kê cân nặng (kg) của 1.500 trẻ sơ sinh tại một bệnh viện phụ sản được ghi nhận như sau: - Khoảng cân nặng [0,0; 1,0): 1 trẻ - Khoảng cân nặng [1,0; 2,0): 6 trẻ - Khoảng cân nặng [2,0; 2,5): 60 trẻ - Khoảng cân nặng [2,5; 3,0): 280 trẻ - Khoảng cân nặng [3,0; 3,5): 820 trẻ - Khoảng cân nặng [3,5; 4,0): 320 trẻ - Khoảng cân nặng [4,0; 5,0): 10 trẻ - Khoảng cân nặng [5,0; 6,0]: 3 trẻ",
-    "questionText": "Câu 102: Cho x_bar và s lần lượt là trung bình mẫu và độ lệch chuẩn mẫu cân nặng 1.500 trẻ sơ sinh. Giá trị x_bar - s xấp xỉ:",
+    "passageText": "Ảng thống kê cân nặng (kg) của 1.500 trẻ sơ sinh tại một bệnh viện phụ sản được ghi nhận như sau: - Khoảng cân nặng [0,0; 1,0): 1 trẻ - Khoảng cân nặng [1,0; 2,0): 6 trẻ - Khoảng cân nặng [2,0; 2,5): 60 trẻ - Khoảng cân nặng [2,5; 3,0): 280 trẻ - Khoảng cân nặng [3,0; 3,5): 820 trẻ - Khoảng cân nặng [3,5; 4,0): 320 trẻ - Khoảng cân nặng [4,0; 5,0): 10 trẻ - Khoảng cân nặng [5,0; 6,0]: 3 trẻ",
+    "questionText": "Câu 102: Cho x̄ và s lần lượt là trung bình mẫu và độ lệch chuẩn mẫu cân nặng 1.500 trẻ sơ sinh. Giá trị x̄ - s xấp xỉ:",
     "options": [
       {
         "id": "A",
@@ -3541,7 +3541,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-103",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 103 đến 105 Áp suất hơi bão hòa của dung dịch chứa chất tan không bay hơi tuân theo Định luật Raoult: P_A = P_A^0 . (n_A / (n_A + n_B)), trong đó P_A^0 là áp suất hơi bão hòa của dung môi nguyên chất, n_A là số mol dung môi và n_B là số mol chất tan. Thí nghiệm: Hòa tan 24 g urea (M = 60 g/mol) vào 200 g nước (M = 18 g/mol) ở 25°C. Áp suất hơi bão hòa của nước nguyên chất ở 25°C là P_0 = 23,8 mmHg. Dung dịch thu được gọi là dung dịch X.",
+    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 103 đến 105:\n\nÁp suất hơi bão hòa của dung dịch chứa chất tan không bay hơi tuân theo Định luật Raoult:\n  P_A = P_A⁰ · [n_A / (n_A + n_B)]\n\nTrong đó:\n- P_A⁰ là áp suất hơi bão hòa của dung môi nguyên chất\n- n_A là số mol dung môi\n- n_B là số mol chất tan\n\nThí nghiệm: Hòa tan 24 g urea (M = 60 g/mol) vào 200 g nước (M = 18 g/mol) ở 25°C. Áp suất hơi bão hòa của nước nguyên chất ở 25°C là P₀ = 23,8 mmHg. Dung dịch thu được gọi là dung dịch X.",
     "questionText": "Câu 103: Nhận xét nào sau đây sai?",
     "options": [
       {
@@ -3576,7 +3576,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-104",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 103 đến 105 Áp suất hơi bão hòa của dung dịch chứa chất tan không bay hơi tuân theo Định luật Raoult: P_A = P_A^0 . (n_A / (n_A + n_B)), trong đó P_A^0 là áp suất hơi bão hòa của dung môi nguyên chất, n_A là số mol dung môi và n_B là số mol chất tan. Thí nghiệm: Hòa tan 24 g urea (M = 60 g/mol) vào 200 g nước (M = 18 g/mol) ở 25°C. Áp suất hơi bão hòa của nước nguyên chất ở 25°C là P_0 = 23,8 mmHg. Dung dịch thu được gọi là dung dịch X.",
+    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 103 đến 105:\n\nÁp suất hơi bão hòa của dung dịch chứa chất tan không bay hơi tuân theo Định luật Raoult:\n  P_A = P_A⁰ · [n_A / (n_A + n_B)]\n\nTrong đó:\n- P_A⁰ là áp suất hơi bão hòa của dung môi nguyên chất\n- n_A là số mol dung môi\n- n_B là số mol chất tan\n\nThí nghiệm: Hòa tan 24 g urea (M = 60 g/mol) vào 200 g nước (M = 18 g/mol) ở 25°C. Áp suất hơi bão hòa của nước nguyên chất ở 25°C là P₀ = 23,8 mmHg. Dung dịch thu được gọi là dung dịch X.",
     "questionText": "Câu 104: Hòa tan cùng khối lượng saccharose (X1), maltose (X2), glycerol (X3), sorbitol (X4) vào cùng lượng nước. Chọn nhận xét đúng về P1, P2, P3, P4:",
     "options": [
       {
@@ -3611,7 +3611,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-105",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 103 đến 105 Áp suất hơi bão hòa của dung dịch chứa chất tan không bay hơi tuân theo Định luật Raoult: P_A = P_A^0 . (n_A / (n_A + n_B)), trong đó P_A^0 là áp suất hơi bão hòa của dung môi nguyên chất, n_A là số mol dung môi và n_B là số mol chất tan. Thí nghiệm: Hòa tan 24 g urea (M = 60 g/mol) vào 200 g nước (M = 18 g/mol) ở 25°C. Áp suất hơi bão hòa của nước nguyên chất ở 25°C là P_0 = 23,8 mmHg. Dung dịch thu được gọi là dung dịch X.",
+    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 103 đến 105:\n\nÁp suất hơi bão hòa của dung dịch chứa chất tan không bay hơi tuân theo Định luật Raoult:\n  P_A = P_A⁰ · [n_A / (n_A + n_B)]\n\nTrong đó:\n- P_A⁰ là áp suất hơi bão hòa của dung môi nguyên chất\n- n_A là số mol dung môi\n- n_B là số mol chất tan\n\nThí nghiệm: Hòa tan 24 g urea (M = 60 g/mol) vào 200 g nước (M = 18 g/mol) ở 25°C. Áp suất hơi bão hòa của nước nguyên chất ở 25°C là P₀ = 23,8 mmHg. Dung dịch thu được gọi là dung dịch X.",
     "questionText": "Câu 105: Cần hòa tan bao nhiêu gam glucose (180 g/mol) vào 200 g nước để tạo thành dung dịch có áp suất hơi bão hòa bằng dung dịch X?",
     "options": [
       {
@@ -3646,7 +3646,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-106",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 106 đến 108 Trong thế kỷ XIX, các nhà vật lý tin rằng ánh sáng là một loại sóng cơ học lan truyền trong một môi trường giả định gọi là \"ê-te\". Tuy nhiên, thí nghiệm nổi tiếng của Michelson và Morley năm 1887 đã không tìm thấy bằng chứng nào về sự tồn tại của ê-te, mở đường cho sự phát triển của Thuyết tương đối và các quan điểm hiện đại về bản chất ánh sáng. Ngày nay, ánh sáng được xác định là sóng điện từ có thể lan truyền trong chân không với tốc độ c ≈ 3.10^8 m/s, vừa có tính chất sóng vừa có tính chất hạt (lưỡng tính sóng - hạt). Kính thiên văn không gian James Webb của NASA được trang bị các cảm biến hồng ngoại hiện đại, thu nhận sóng điện từ có bước sóng trong khoảng từ 0,6 μm đến 28,3 μm để quan sát các thiên thể xa xôi và nghiên cứu lịch sử vũ trụ. Năng lượng photon ánh sáng được tính theo công thức ε = h.f = h.c/λ, trong đó h = 6,625.10^-34 J.s là hằng số Planck.",
+    "passageText": "Rong thế kỷ XIX, các nhà vật lý tin rằng ánh sáng là một loại sóng cơ học lan truyền trong một môi trường giả định gọi là \"ê-te\". Tuy nhiên, thí nghiệm nổi tiếng của Michelson và Morley năm 1887 đã không tìm thấy bằng chứng nào về sự tồn tại của ê-te, mở đường cho sự phát triển của Thuyết tương đối và các quan điểm hiện đại về bản chất ánh sáng. Ngày nay, ánh sáng được xác định là sóng điện từ có thể lan truyền trong chân không với tốc độ c ≈ 3.10^8 m/s, vừa có tính chất sóng vừa có tính chất hạt (lưỡng tính sóng - hạt). Kính thiên văn không gian James Webb của NASA được trang bị các cảm biến hồng ngoại hiện đại, thu nhận sóng điện từ có bước sóng trong khoảng từ 0,6 μm đến 28,3 μm để quan sát các thiên thể xa xôi và nghiên cứu lịch sử vũ trụ. Năng lượng photon ánh sáng được tính theo công thức ε = h.f = h.c/λ, trong đó h = 6,625.10^-34 J.s là hằng số Planck.",
     "questionText": "Câu 106: Phát biểu nào sau đây đúng?",
     "options": [
       {
@@ -3681,7 +3681,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-107",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 106 đến 108 Trong thế kỷ XIX, các nhà vật lý tin rằng ánh sáng là một loại sóng cơ học lan truyền trong một môi trường giả định gọi là \"ê-te\". Tuy nhiên, thí nghiệm nổi tiếng của Michelson và Morley năm 1887 đã không tìm thấy bằng chứng nào về sự tồn tại của ê-te, mở đường cho sự phát triển của Thuyết tương đối và các quan điểm hiện đại về bản chất ánh sáng. Ngày nay, ánh sáng được xác định là sóng điện từ có thể lan truyền trong chân không với tốc độ c ≈ 3.10^8 m/s, vừa có tính chất sóng vừa có tính chất hạt (lưỡng tính sóng - hạt). Kính thiên văn không gian James Webb của NASA được trang bị các cảm biến hồng ngoại hiện đại, thu nhận sóng điện từ có bước sóng trong khoảng từ 0,6 μm đến 28,3 μm để quan sát các thiên thể xa xôi và nghiên cứu lịch sử vũ trụ. Năng lượng photon ánh sáng được tính theo công thức ε = h.f = h.c/λ, trong đó h = 6,625.10^-34 J.s là hằng số Planck.",
+    "passageText": "Rong thế kỷ XIX, các nhà vật lý tin rằng ánh sáng là một loại sóng cơ học lan truyền trong một môi trường giả định gọi là \"ê-te\". Tuy nhiên, thí nghiệm nổi tiếng của Michelson và Morley năm 1887 đã không tìm thấy bằng chứng nào về sự tồn tại của ê-te, mở đường cho sự phát triển của Thuyết tương đối và các quan điểm hiện đại về bản chất ánh sáng. Ngày nay, ánh sáng được xác định là sóng điện từ có thể lan truyền trong chân không với tốc độ c ≈ 3.10^8 m/s, vừa có tính chất sóng vừa có tính chất hạt (lưỡng tính sóng - hạt). Kính thiên văn không gian James Webb của NASA được trang bị các cảm biến hồng ngoại hiện đại, thu nhận sóng điện từ có bước sóng trong khoảng từ 0,6 μm đến 28,3 μm để quan sát các thiên thể xa xôi và nghiên cứu lịch sử vũ trụ. Năng lượng photon ánh sáng được tính theo công thức ε = h.f = h.c/λ, trong đó h = 6,625.10^-34 J.s là hằng số Planck.",
     "questionText": "Câu 107: Tần số ánh sáng nhỏ nhất mà kính thiên văn James Webb có thể thu được gần đúng là:",
     "options": [
       {
@@ -3716,7 +3716,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-108",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 106 đến 108 Trong thế kỷ XIX, các nhà vật lý tin rằng ánh sáng là một loại sóng cơ học lan truyền trong một môi trường giả định gọi là \"ê-te\". Tuy nhiên, thí nghiệm nổi tiếng của Michelson và Morley năm 1887 đã không tìm thấy bằng chứng nào về sự tồn tại của ê-te, mở đường cho sự phát triển của Thuyết tương đối và các quan điểm hiện đại về bản chất ánh sáng. Ngày nay, ánh sáng được xác định là sóng điện từ có thể lan truyền trong chân không với tốc độ c ≈ 3.10^8 m/s, vừa có tính chất sóng vừa có tính chất hạt (lưỡng tính sóng - hạt). Kính thiên văn không gian James Webb của NASA được trang bị các cảm biến hồng ngoại hiện đại, thu nhận sóng điện từ có bước sóng trong khoảng từ 0,6 μm đến 28,3 μm để quan sát các thiên thể xa xôi và nghiên cứu lịch sử vũ trụ. Năng lượng photon ánh sáng được tính theo công thức ε = h.f = h.c/λ, trong đó h = 6,625.10^-34 J.s là hằng số Planck.",
+    "passageText": "Rong thế kỷ XIX, các nhà vật lý tin rằng ánh sáng là một loại sóng cơ học lan truyền trong một môi trường giả định gọi là \"ê-te\". Tuy nhiên, thí nghiệm nổi tiếng của Michelson và Morley năm 1887 đã không tìm thấy bằng chứng nào về sự tồn tại của ê-te, mở đường cho sự phát triển của Thuyết tương đối và các quan điểm hiện đại về bản chất ánh sáng. Ngày nay, ánh sáng được xác định là sóng điện từ có thể lan truyền trong chân không với tốc độ c ≈ 3.10^8 m/s, vừa có tính chất sóng vừa có tính chất hạt (lưỡng tính sóng - hạt). Kính thiên văn không gian James Webb của NASA được trang bị các cảm biến hồng ngoại hiện đại, thu nhận sóng điện từ có bước sóng trong khoảng từ 0,6 μm đến 28,3 μm để quan sát các thiên thể xa xôi và nghiên cứu lịch sử vũ trụ. Năng lượng photon ánh sáng được tính theo công thức ε = h.f = h.c/λ, trong đó h = 6,625.10^-34 J.s là hằng số Planck.",
     "questionText": "Câu 108: Cho các phát biểu: (1) Năng lượng photon tia cực tím gây bỏng da chủ yếu > 3,88 eV. (2) Tia cực tím luôn có hại. (3) Kính James Webb chỉ quan sát vùng hồng ngoại. (4) Ánh sáng là sóng điện từ. Phát biểu đúng:",
     "options": [
       {
@@ -3751,7 +3751,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-109",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 109 đến 111 Betacyanin là một sắc tố tự nhiên màu đỏ thẫm có trong tế bào củ cải đường (Beta vulgaris), nằm trong không bào và được bao bọc bởi màng tế bào. Khi màng tế bào bị tổn thương, betacyanin sẽ thoát ra ngoài làm cho dung dịch xung quanh có màu đỏ. Độ đậm nhạt của màu sắc (đo bằng độ hấp thụ quang A ở bước sóng 460 nm) phản ánh mức độ tổn thương của màng tế bào. Để nghiên cứu ảnh hưởng của chất tẩy rửa và nước thải sinh hoạt đến màng tế bào, một nhóm học sinh tiến hành thí nghiệm với các mẫu củ cải đường có cùng kích thước và khối lượng ngâm trong 5 mL các dung dịch nghiệm thức ở 25°C trong 30 phút. Kết quả đo giá trị hấp thụ quang A460 thu được như sau: - NT1 (Nước cất): A460 = 0,090 - NT2 (Nước thải sinh hoạt 25% + Nước cất 75%): A460 = 0,150 - NT3 (Nước thải sinh hoạt 100%): A460 = 0,400 - NT4 (Nước thải sinh hoạt 50% được xử lý qua cột lọc than hoạt tính): A460 = 0,130 - NT5 (Dung dịch chất tẩy rửa tổng hợp 0,1%): A460 = 0,520",
+    "passageText": "Etacyanin là một sắc tố tự nhiên màu đỏ thẫm có trong tế bào củ cải đường (Beta vulgaris), nằm trong không bào và được bao bọc bởi màng tế bào. Khi màng tế bào bị tổn thương, betacyanin sẽ thoát ra ngoài làm cho dung dịch xung quanh có màu đỏ. Độ đậm nhạt của màu sắc (đo bằng độ hấp thụ quang A ở bước sóng 460 nm) phản ánh mức độ tổn thương của màng tế bào. Để nghiên cứu ảnh hưởng của chất tẩy rửa và nước thải sinh hoạt đến màng tế bào, một nhóm học sinh tiến hành thí nghiệm với các mẫu củ cải đường có cùng kích thước và khối lượng ngâm trong 5 mL các dung dịch nghiệm thức ở 25°C trong 30 phút. Kết quả đo giá trị hấp thụ quang A460 thu được như sau: - NT1 (Nước cất): A460 = 0,090 - NT2 (Nước thải sinh hoạt 25% + Nước cất 75%): A460 = 0,150 - NT3 (Nước thải sinh hoạt 100%): A460 = 0,400 - NT4 (Nước thải sinh hoạt 50% được xử lý qua cột lọc than hoạt tính): A460 = 0,130 - NT5 (Dung dịch chất tẩy rửa tổng hợp 0,1%): A460 = 0,520",
     "questionText": "Câu 109: Dung dịch trong ống nghiệm có nồng độ betacyanin cao nhất ở nghiệm thức nào?",
     "options": [
       {
@@ -3786,7 +3786,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-110",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 109 đến 111 Betacyanin là một sắc tố tự nhiên màu đỏ thẫm có trong tế bào củ cải đường (Beta vulgaris), nằm trong không bào và được bao bọc bởi màng tế bào. Khi màng tế bào bị tổn thương, betacyanin sẽ thoát ra ngoài làm cho dung dịch xung quanh có màu đỏ. Độ đậm nhạt của màu sắc (đo bằng độ hấp thụ quang A ở bước sóng 460 nm) phản ánh mức độ tổn thương của màng tế bào. Để nghiên cứu ảnh hưởng của chất tẩy rửa và nước thải sinh hoạt đến màng tế bào, một nhóm học sinh tiến hành thí nghiệm với các mẫu củ cải đường có cùng kích thước và khối lượng ngâm trong 5 mL các dung dịch nghiệm thức ở 25°C trong 30 phút. Kết quả đo giá trị hấp thụ quang A460 thu được như sau: - NT1 (Nước cất): A460 = 0,090 - NT2 (Nước thải sinh hoạt 25% + Nước cất 75%): A460 = 0,150 - NT3 (Nước thải sinh hoạt 100%): A460 = 0,400 - NT4 (Nước thải sinh hoạt 50% được xử lý qua cột lọc than hoạt tính): A460 = 0,130 - NT5 (Dung dịch chất tẩy rửa tổng hợp 0,1%): A460 = 0,520",
+    "passageText": "Etacyanin là một sắc tố tự nhiên màu đỏ thẫm có trong tế bào củ cải đường (Beta vulgaris), nằm trong không bào và được bao bọc bởi màng tế bào. Khi màng tế bào bị tổn thương, betacyanin sẽ thoát ra ngoài làm cho dung dịch xung quanh có màu đỏ. Độ đậm nhạt của màu sắc (đo bằng độ hấp thụ quang A ở bước sóng 460 nm) phản ánh mức độ tổn thương của màng tế bào. Để nghiên cứu ảnh hưởng của chất tẩy rửa và nước thải sinh hoạt đến màng tế bào, một nhóm học sinh tiến hành thí nghiệm với các mẫu củ cải đường có cùng kích thước và khối lượng ngâm trong 5 mL các dung dịch nghiệm thức ở 25°C trong 30 phút. Kết quả đo giá trị hấp thụ quang A460 thu được như sau: - NT1 (Nước cất): A460 = 0,090 - NT2 (Nước thải sinh hoạt 25% + Nước cất 75%): A460 = 0,150 - NT3 (Nước thải sinh hoạt 100%): A460 = 0,400 - NT4 (Nước thải sinh hoạt 50% được xử lý qua cột lọc than hoạt tính): A460 = 0,130 - NT5 (Dung dịch chất tẩy rửa tổng hợp 0,1%): A460 = 0,520",
     "questionText": "Câu 110: Từ kết quả thí nghiệm, giải pháp nào sau đây nên được ưu tiên sử dụng để xử lý nước thải sinh hoạt, đồng thời giảm thiểu tổn thương màng tế bào sinh vật?",
     "options": [
       {
@@ -3821,7 +3821,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-111",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 109 đến 111 Betacyanin là một sắc tố tự nhiên màu đỏ thẫm có trong tế bào củ cải đường (Beta vulgaris), nằm trong không bào và được bao bọc bởi màng tế bào. Khi màng tế bào bị tổn thương, betacyanin sẽ thoát ra ngoài làm cho dung dịch xung quanh có màu đỏ. Độ đậm nhạt của màu sắc (đo bằng độ hấp thụ quang A ở bước sóng 460 nm) phản ánh mức độ tổn thương của màng tế bào. Để nghiên cứu ảnh hưởng của chất tẩy rửa và nước thải sinh hoạt đến màng tế bào, một nhóm học sinh tiến hành thí nghiệm với các mẫu củ cải đường có cùng kích thước và khối lượng ngâm trong 5 mL các dung dịch nghiệm thức ở 25°C trong 30 phút. Kết quả đo giá trị hấp thụ quang A460 thu được như sau: - NT1 (Nước cất): A460 = 0,090 - NT2 (Nước thải sinh hoạt 25% + Nước cất 75%): A460 = 0,150 - NT3 (Nước thải sinh hoạt 100%): A460 = 0,400 - NT4 (Nước thải sinh hoạt 50% được xử lý qua cột lọc than hoạt tính): A460 = 0,130 - NT5 (Dung dịch chất tẩy rửa tổng hợp 0,1%): A460 = 0,520",
+    "passageText": "Etacyanin là một sắc tố tự nhiên màu đỏ thẫm có trong tế bào củ cải đường (Beta vulgaris), nằm trong không bào và được bao bọc bởi màng tế bào. Khi màng tế bào bị tổn thương, betacyanin sẽ thoát ra ngoài làm cho dung dịch xung quanh có màu đỏ. Độ đậm nhạt của màu sắc (đo bằng độ hấp thụ quang A ở bước sóng 460 nm) phản ánh mức độ tổn thương của màng tế bào. Để nghiên cứu ảnh hưởng của chất tẩy rửa và nước thải sinh hoạt đến màng tế bào, một nhóm học sinh tiến hành thí nghiệm với các mẫu củ cải đường có cùng kích thước và khối lượng ngâm trong 5 mL các dung dịch nghiệm thức ở 25°C trong 30 phút. Kết quả đo giá trị hấp thụ quang A460 thu được như sau: - NT1 (Nước cất): A460 = 0,090 - NT2 (Nước thải sinh hoạt 25% + Nước cất 75%): A460 = 0,150 - NT3 (Nước thải sinh hoạt 100%): A460 = 0,400 - NT4 (Nước thải sinh hoạt 50% được xử lý qua cột lọc than hoạt tính): A460 = 0,130 - NT5 (Dung dịch chất tẩy rửa tổng hợp 0,1%): A460 = 0,520",
     "questionText": "Câu 111: Cho các nhận định: I. Nước thải không pha loãng làm giảm tính thấm màng tế bào. II. Than hoạt tính làm tăng tính thấm... III. NT3 đáng tin hơn NT2... IV. Thí nghiệm ở 4°C hấp thụ A460 có thể thay đổi. Nhận định đúng:",
     "options": [
       {
@@ -3856,7 +3856,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-112",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 112 đến 114 Theo kết quả từ Tổng điều tra dân số Hoa Kỳ công bố năm 2023, tuổi trung vị của dân số quốc gia này đã tăng lên mức 38,9 tuổi vào năm 2022, đánh dấu mức cao nhất trong lịch sử nước này. Để so sánh, vào năm 1980, tuổi trung vị của người Mỹ là 30 tuổi và năm 2000 là 35,3 tuổi. Sự gia tăng tuổi trung vị này phản ánh xu hướng già hóa dân số đang diễn ra nhanh chóng tại Hoa Kỳ. Một trong những nguyên nhân chính được chỉ ra là do tỷ lệ sinh giảm mạnh. Nữ giới thuộc thế hệ Gen Y (sinh từ năm 1981 đến 1996) xu hướng trì hoãn việc sinh con hoặc sinh ít con hơn để tập trung cho học tập và phát triển sự nghiệp. Bên cạnh đó, sự cải thiện của hệ thống y tế và chăm sóc sức khỏe đã giúp kéo dài tuổi thọ trung bình của người dân, khiến tỷ lệ người cao tuổi trong tổng dân số tăng cao đáng kể, gây ra nhiều áp lực đối với lực lượng lao động và chi phí an sinh xã hội. (Ngọc Đức, Vì sao dân số Mỹ già quá nhanh?)",
+    "passageText": "Heo kết quả từ Tổng điều tra dân số Hoa Kỳ công bố năm 2023, tuổi trung vị của dân số quốc gia này đã tăng lên mức 38,9 tuổi vào năm 2022, đánh dấu mức cao nhất trong lịch sử nước này. Để so sánh, vào năm 1980, tuổi trung vị của người Mỹ là 30 tuổi và năm 2000 là 35,3 tuổi. Sự gia tăng tuổi trung vị này phản ánh xu hướng già hóa dân số đang diễn ra nhanh chóng tại Hoa Kỳ. Một trong những nguyên nhân chính được chỉ ra là do tỷ lệ sinh giảm mạnh. Nữ giới thuộc thế hệ Gen Y (sinh từ năm 1981 đến 1996) xu hướng trì hoãn việc sinh con hoặc sinh ít con hơn để tập trung cho học tập và phát triển sự nghiệp. Bên cạnh đó, sự cải thiện của hệ thống y tế và chăm sóc sức khỏe đã giúp kéo dài tuổi thọ trung bình của người dân, khiến tỷ lệ người cao tuổi trong tổng dân số tăng cao đáng kể, gây ra nhiều áp lực đối với lực lượng lao động và chi phí an sinh xã hội. (Ngọc Đức, Vì sao dân số Mỹ già quá nhanh?)",
     "questionText": "Câu 112: Nhận định nào sau đây phản ánh đúng về tuổi trung vị của dân số Hoa Kỳ?",
     "options": [
       {
@@ -3891,7 +3891,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-113",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 112 đến 114 Theo kết quả từ Tổng điều tra dân số Hoa Kỳ công bố năm 2023, tuổi trung vị của dân số quốc gia này đã tăng lên mức 38,9 tuổi vào năm 2022, đánh dấu mức cao nhất trong lịch sử nước này. Để so sánh, vào năm 1980, tuổi trung vị của người Mỹ là 30 tuổi và năm 2000 là 35,3 tuổi. Sự gia tăng tuổi trung vị này phản ánh xu hướng già hóa dân số đang diễn ra nhanh chóng tại Hoa Kỳ. Một trong những nguyên nhân chính được chỉ ra là do tỷ lệ sinh giảm mạnh. Nữ giới thuộc thế hệ Gen Y (sinh từ năm 1981 đến 1996) xu hướng trì hoãn việc sinh con hoặc sinh ít con hơn để tập trung cho học tập và phát triển sự nghiệp. Bên cạnh đó, sự cải thiện của hệ thống y tế và chăm sóc sức khỏe đã giúp kéo dài tuổi thọ trung bình của người dân, khiến tỷ lệ người cao tuổi trong tổng dân số tăng cao đáng kể, gây ra nhiều áp lực đối với lực lượng lao động và chi phí an sinh xã hội. (Ngọc Đức, Vì sao dân số Mỹ già quá nhanh?)",
+    "passageText": "Heo kết quả từ Tổng điều tra dân số Hoa Kỳ công bố năm 2023, tuổi trung vị của dân số quốc gia này đã tăng lên mức 38,9 tuổi vào năm 2022, đánh dấu mức cao nhất trong lịch sử nước này. Để so sánh, vào năm 1980, tuổi trung vị của người Mỹ là 30 tuổi và năm 2000 là 35,3 tuổi. Sự gia tăng tuổi trung vị này phản ánh xu hướng già hóa dân số đang diễn ra nhanh chóng tại Hoa Kỳ. Một trong những nguyên nhân chính được chỉ ra là do tỷ lệ sinh giảm mạnh. Nữ giới thuộc thế hệ Gen Y (sinh từ năm 1981 đến 1996) xu hướng trì hoãn việc sinh con hoặc sinh ít con hơn để tập trung cho học tập và phát triển sự nghiệp. Bên cạnh đó, sự cải thiện của hệ thống y tế và chăm sóc sức khỏe đã giúp kéo dài tuổi thọ trung bình của người dân, khiến tỷ lệ người cao tuổi trong tổng dân số tăng cao đáng kể, gây ra nhiều áp lực đối với lực lượng lao động và chi phí an sinh xã hội. (Ngọc Đức, Vì sao dân số Mỹ già quá nhanh?)",
     "questionText": "Câu 113: Nhận định nào sau đây KHÔNG phải là thách thức đối với Hoa Kỳ khi tuổi trung vị ngày càng gia tăng?",
     "options": [
       {
@@ -3926,7 +3926,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-114",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 112 đến 114 Theo kết quả từ Tổng điều tra dân số Hoa Kỳ công bố năm 2023, tuổi trung vị của dân số quốc gia này đã tăng lên mức 38,9 tuổi vào năm 2022, đánh dấu mức cao nhất trong lịch sử nước này. Để so sánh, vào năm 1980, tuổi trung vị của người Mỹ là 30 tuổi và năm 2000 là 35,3 tuổi. Sự gia tăng tuổi trung vị này phản ánh xu hướng già hóa dân số đang diễn ra nhanh chóng tại Hoa Kỳ. Một trong những nguyên nhân chính được chỉ ra là do tỷ lệ sinh giảm mạnh. Nữ giới thuộc thế hệ Gen Y (sinh từ năm 1981 đến 1996) xu hướng trì hoãn việc sinh con hoặc sinh ít con hơn để tập trung cho học tập và phát triển sự nghiệp. Bên cạnh đó, sự cải thiện của hệ thống y tế và chăm sóc sức khỏe đã giúp kéo dài tuổi thọ trung bình của người dân, khiến tỷ lệ người cao tuổi trong tổng dân số tăng cao đáng kể, gây ra nhiều áp lực đối với lực lượng lao động và chi phí an sinh xã hội. (Ngọc Đức, Vì sao dân số Mỹ già quá nhanh?)",
+    "passageText": "Heo kết quả từ Tổng điều tra dân số Hoa Kỳ công bố năm 2023, tuổi trung vị của dân số quốc gia này đã tăng lên mức 38,9 tuổi vào năm 2022, đánh dấu mức cao nhất trong lịch sử nước này. Để so sánh, vào năm 1980, tuổi trung vị của người Mỹ là 30 tuổi và năm 2000 là 35,3 tuổi. Sự gia tăng tuổi trung vị này phản ánh xu hướng già hóa dân số đang diễn ra nhanh chóng tại Hoa Kỳ. Một trong những nguyên nhân chính được chỉ ra là do tỷ lệ sinh giảm mạnh. Nữ giới thuộc thế hệ Gen Y (sinh từ năm 1981 đến 1996) xu hướng trì hoãn việc sinh con hoặc sinh ít con hơn để tập trung cho học tập và phát triển sự nghiệp. Bên cạnh đó, sự cải thiện của hệ thống y tế và chăm sóc sức khỏe đã giúp kéo dài tuổi thọ trung bình của người dân, khiến tỷ lệ người cao tuổi trong tổng dân số tăng cao đáng kể, gây ra nhiều áp lực đối với lực lượng lao động và chi phí an sinh xã hội. (Ngọc Đức, Vì sao dân số Mỹ già quá nhanh?)",
     "questionText": "Câu 114: Yếu tố nào sau đây có ảnh hưởng sâu sắc đến sự gia tăng tuổi trung vị ở Hoa Kỳ?",
     "options": [
       {
@@ -3961,7 +3961,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-115",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 115 đến 117 Văn hóa Tây Âu thế kỷ V-X dựa trên nền tảng nền kinh tế tự cung tự cấp, sự giao lưu trao đổi rất hạn chế, văn hóa vì vậy cũng phát triển không đáng kể. Tới thế kỷ XIV, với sự phát triển kinh tế công thương ở các thành thị, quan hệ sản xuất tư bản chủ nghĩa dần dần hình thành và ngày càng lớn mạnh. Các nhà tư tưởng của giai cấp tư sản không còn chịu chấp nhận những giáo lí phong kiến lỗi thời, họ vận động khôi phục lại sự huy hoàng của văn hóa Tây Âu thời cổ đại. Họ tìm thấy trong nền văn hóa cổ đại những yếu tố phù hợp với mình, có lợi cho mình để đấu tranh chống lại những trói buộc của nền văn hóa trung cổ. Phong trào Văn hóa Phục hưng xuất hiện đầu tiên ở Ý, vì ở đây thế kỷ XIV đã xuất hiện các thành thị tự do như những quốc gia nhỏ. Quan hệ sản xuất tư bản đã chiếm địa vị chi phối đời sống văn hóa. Ý lại là trung tâm của đế quốc Rôma cổ đại, vì vậy ở đây còn giữ lại nhiều di sản văn hóa cổ đại của Hy Lạp - Rôma. Hơn ai hết, các nhà văn hóa Ý có điều kiện khôi phục lại nền văn hóa trước tiên khi có điều kiện. Từ Ý, phong trào lan sang Anh, Pháp, Tây Ban Nha, Đức... (Vũ Dương Ninh, Lịch sử văn minh thế giới)",
+    "passageText": ".\n\năn hóa Tây Âu thế kỷ V-X dựa trên nền tảng nền kinh tế tự cung tự cấp, sự giao lưu trao đổi rất hạn chế, văn hóa vì vậy cũng phát triển không đáng kể. Tới thế kỷ XIV, với sự phát triển kinh tế công thương ở các thành thị, quan hệ sản xuất tư bản chủ nghĩa dần dần hình thành và ngày càng lớn mạnh. Các nhà tư tưởng của giai cấp tư sản không còn chịu chấp nhận những giáo lí phong kiến lỗi thời, họ vận động khôi phục lại sự huy hoàng của văn hóa Tây Âu thời cổ đại. Họ tìm thấy trong nền văn hóa cổ đại những yếu tố phù hợp với mình, có lợi cho mình để đấu tranh chống lại những trói buộc của nền văn hóa trung cổ. Phong trào Văn hóa Phục hưng xuất hiện đầu tiên ở Ý, vì ở đây thế kỷ XIV đã xuất hiện các thành thị tự do như những quốc gia nhỏ. Quan hệ sản xuất tư bản đã chiếm địa vị chi phối đời sống văn hóa. Ý lại là trung tâm của đế quốc Rôma cổ đại, vì vậy ở đây còn giữ lại nhiều di sản văn hóa cổ đại của Hy Lạp - Rôma. Hơn ai hết, các nhà văn hóa Ý có điều kiện khôi phục lại nền văn hóa trước tiên khi có điều kiện. Từ Ý, phong trào lan sang Anh, Pháp, Tây Ban Nha, Đức... (Vũ Dương Ninh, Lịch sử văn minh thế giới)",
     "questionText": "Câu 115: Phong trào Văn hóa Phục hưng ở Tây Âu thời trung đại ra đời trong bối cảnh nào?",
     "options": [
       {
@@ -3996,7 +3996,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-116",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 115 đến 117 Văn hóa Tây Âu thế kỷ V-X dựa trên nền tảng nền kinh tế tự cung tự cấp, sự giao lưu trao đổi rất hạn chế, văn hóa vì vậy cũng phát triển không đáng kể. Tới thế kỷ XIV, với sự phát triển kinh tế công thương ở các thành thị, quan hệ sản xuất tư bản chủ nghĩa dần dần hình thành và ngày càng lớn mạnh. Các nhà tư tưởng của giai cấp tư sản không còn chịu chấp nhận những giáo lí phong kiến lỗi thời, họ vận động khôi phục lại sự huy hoàng của văn hóa Tây Âu thời cổ đại. Họ tìm thấy trong nền văn hóa cổ đại những yếu tố phù hợp với mình, có lợi cho mình để đấu tranh chống lại những trói buộc của nền văn hóa trung cổ. Phong trào Văn hóa Phục hưng xuất hiện đầu tiên ở Ý, vì ở đây thế kỷ XIV đã xuất hiện các thành thị tự do như những quốc gia nhỏ. Quan hệ sản xuất tư bản đã chiếm địa vị chi phối đời sống văn hóa. Ý lại là trung tâm của đế quốc Rôma cổ đại, vì vậy ở đây còn giữ lại nhiều di sản văn hóa cổ đại của Hy Lạp - Rôma. Hơn ai hết, các nhà văn hóa Ý có điều kiện khôi phục lại nền văn hóa trước tiên khi có điều kiện. Từ Ý, phong trào lan sang Anh, Pháp, Tây Ban Nha, Đức... (Vũ Dương Ninh, Lịch sử văn minh thế giới)",
+    "passageText": ".\n\năn hóa Tây Âu thế kỷ V-X dựa trên nền tảng nền kinh tế tự cung tự cấp, sự giao lưu trao đổi rất hạn chế, văn hóa vì vậy cũng phát triển không đáng kể. Tới thế kỷ XIV, với sự phát triển kinh tế công thương ở các thành thị, quan hệ sản xuất tư bản chủ nghĩa dần dần hình thành và ngày càng lớn mạnh. Các nhà tư tưởng của giai cấp tư sản không còn chịu chấp nhận những giáo lí phong kiến lỗi thời, họ vận động khôi phục lại sự huy hoàng của văn hóa Tây Âu thời cổ đại. Họ tìm thấy trong nền văn hóa cổ đại những yếu tố phù hợp với mình, có lợi cho mình để đấu tranh chống lại những trói buộc của nền văn hóa trung cổ. Phong trào Văn hóa Phục hưng xuất hiện đầu tiên ở Ý, vì ở đây thế kỷ XIV đã xuất hiện các thành thị tự do như những quốc gia nhỏ. Quan hệ sản xuất tư bản đã chiếm địa vị chi phối đời sống văn hóa. Ý lại là trung tâm của đế quốc Rôma cổ đại, vì vậy ở đây còn giữ lại nhiều di sản văn hóa cổ đại của Hy Lạp - Rôma. Hơn ai hết, các nhà văn hóa Ý có điều kiện khôi phục lại nền văn hóa trước tiên khi có điều kiện. Từ Ý, phong trào lan sang Anh, Pháp, Tây Ban Nha, Đức... (Vũ Dương Ninh, Lịch sử văn minh thế giới)",
     "questionText": "Câu 116: Phong trào Văn hóa Phục hưng do giai cấp nào lãnh đạo?",
     "options": [
       {
@@ -4031,7 +4031,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-117",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 115 đến 117 Văn hóa Tây Âu thế kỷ V-X dựa trên nền tảng nền kinh tế tự cung tự cấp, sự giao lưu trao đổi rất hạn chế, văn hóa vì vậy cũng phát triển không đáng kể. Tới thế kỷ XIV, với sự phát triển kinh tế công thương ở các thành thị, quan hệ sản xuất tư bản chủ nghĩa dần dần hình thành và ngày càng lớn mạnh. Các nhà tư tưởng của giai cấp tư sản không còn chịu chấp nhận những giáo lí phong kiến lỗi thời, họ vận động khôi phục lại sự huy hoàng của văn hóa Tây Âu thời cổ đại. Họ tìm thấy trong nền văn hóa cổ đại những yếu tố phù hợp với mình, có lợi cho mình để đấu tranh chống lại những trói buộc của nền văn hóa trung cổ. Phong trào Văn hóa Phục hưng xuất hiện đầu tiên ở Ý, vì ở đây thế kỷ XIV đã xuất hiện các thành thị tự do như những quốc gia nhỏ. Quan hệ sản xuất tư bản đã chiếm địa vị chi phối đời sống văn hóa. Ý lại là trung tâm của đế quốc Rôma cổ đại, vì vậy ở đây còn giữ lại nhiều di sản văn hóa cổ đại của Hy Lạp - Rôma. Hơn ai hết, các nhà văn hóa Ý có điều kiện khôi phục lại nền văn hóa trước tiên khi có điều kiện. Từ Ý, phong trào lan sang Anh, Pháp, Tây Ban Nha, Đức... (Vũ Dương Ninh, Lịch sử văn minh thế giới)",
+    "passageText": ".\n\năn hóa Tây Âu thế kỷ V-X dựa trên nền tảng nền kinh tế tự cung tự cấp, sự giao lưu trao đổi rất hạn chế, văn hóa vì vậy cũng phát triển không đáng kể. Tới thế kỷ XIV, với sự phát triển kinh tế công thương ở các thành thị, quan hệ sản xuất tư bản chủ nghĩa dần dần hình thành và ngày càng lớn mạnh. Các nhà tư tưởng của giai cấp tư sản không còn chịu chấp nhận những giáo lí phong kiến lỗi thời, họ vận động khôi phục lại sự huy hoàng của văn hóa Tây Âu thời cổ đại. Họ tìm thấy trong nền văn hóa cổ đại những yếu tố phù hợp với mình, có lợi cho mình để đấu tranh chống lại những trói buộc của nền văn hóa trung cổ. Phong trào Văn hóa Phục hưng xuất hiện đầu tiên ở Ý, vì ở đây thế kỷ XIV đã xuất hiện các thành thị tự do như những quốc gia nhỏ. Quan hệ sản xuất tư bản đã chiếm địa vị chi phối đời sống văn hóa. Ý lại là trung tâm của đế quốc Rôma cổ đại, vì vậy ở đây còn giữ lại nhiều di sản văn hóa cổ đại của Hy Lạp - Rôma. Hơn ai hết, các nhà văn hóa Ý có điều kiện khôi phục lại nền văn hóa trước tiên khi có điều kiện. Từ Ý, phong trào lan sang Anh, Pháp, Tây Ban Nha, Đức... (Vũ Dương Ninh, Lịch sử văn minh thế giới)",
     "questionText": "Câu 117: Vì sao phong trào Văn hóa Phục hưng ở châu Âu vừa mang tính “kế thừa” vừa mang tính “cách mạng”?",
     "options": [
       {
@@ -4066,7 +4066,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-118",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 118 đến 120 An và Khang quyết định khởi nghiệp với ý tưởng mở một cửa hàng bánh ngọt kết hợp quán cà phê. Sau khi lên ý tưởng, họ đã thiết kế thực đơn bao gồm nhiều loại bánh ngọt và đồ uống đa dạng, với giá cả phù hợp cho nhóm khách hàng mục tiêu là giới trẻ. Trong quá trình chuẩn bị, An đảm nhận việc quảng bá và tuyển dụng nhân sự, trong khi Khang lo phần tài chính và quản lý nguồn nguyên liệu. Họ dự định sử dụng bao bì và vật dụng thân thiện với môi trường như túi giấy và ống hút tre như là một hành động bảo vệ môi trường. Với niềm tin vào ý tưởng độc đáo và lượng khách hàng tiềm năng, An và Khang tin rằng họ sẽ dễ dàng nhận được nguồn vốn vay từ ngân hàng để thực hiện hoạt động kinh doanh.",
+    "passageText": "N và Khang quyết định khởi nghiệp với ý tưởng mở một cửa hàng bánh ngọt kết hợp quán cà phê. Sau khi lên ý tưởng, họ đã thiết kế thực đơn bao gồm nhiều loại bánh ngọt và đồ uống đa dạng, với giá cả phù hợp cho nhóm khách hàng mục tiêu là giới trẻ. Trong quá trình chuẩn bị, An đảm nhận việc quảng bá và tuyển dụng nhân sự, trong khi Khang lo phần tài chính và quản lý nguồn nguyên liệu. Họ dự định sử dụng bao bì và vật dụng thân thiện với môi trường như túi giấy và ống hút tre như là một hành động bảo vệ môi trường. Với niềm tin vào ý tưởng độc đáo và lượng khách hàng tiềm năng, An và Khang tin rằng họ sẽ dễ dàng nhận được nguồn vốn vay từ ngân hàng để thực hiện hoạt động kinh doanh.",
     "questionText": "Câu 118: Việc sử dụng túi giấy và ống hút tre là biểu hiện của trách nhiệm xã hội nào?",
     "options": [
       {
@@ -4101,7 +4101,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-119",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 118 đến 120 An và Khang quyết định khởi nghiệp với ý tưởng mở một cửa hàng bánh ngọt kết hợp quán cà phê. Sau khi lên ý tưởng, họ đã thiết kế thực đơn bao gồm nhiều loại bánh ngọt và đồ uống đa dạng, với giá cả phù hợp cho nhóm khách hàng mục tiêu là giới trẻ. Trong quá trình chuẩn bị, An đảm nhận việc quảng bá và tuyển dụng nhân sự, trong khi Khang lo phần tài chính và quản lý nguồn nguyên liệu. Họ dự định sử dụng bao bì và vật dụng thân thiện với môi trường như túi giấy và ống hút tre như là một hành động bảo vệ môi trường. Với niềm tin vào ý tưởng độc đáo và lượng khách hàng tiềm năng, An và Khang tin rằng họ sẽ dễ dàng nhận được nguồn vốn vay từ ngân hàng để thực hiện hoạt động kinh doanh.",
+    "passageText": "N và Khang quyết định khởi nghiệp với ý tưởng mở một cửa hàng bánh ngọt kết hợp quán cà phê. Sau khi lên ý tưởng, họ đã thiết kế thực đơn bao gồm nhiều loại bánh ngọt và đồ uống đa dạng, với giá cả phù hợp cho nhóm khách hàng mục tiêu là giới trẻ. Trong quá trình chuẩn bị, An đảm nhận việc quảng bá và tuyển dụng nhân sự, trong khi Khang lo phần tài chính và quản lý nguồn nguyên liệu. Họ dự định sử dụng bao bì và vật dụng thân thiện với môi trường như túi giấy và ống hút tre như là một hành động bảo vệ môi trường. Với niềm tin vào ý tưởng độc đáo và lượng khách hàng tiềm năng, An và Khang tin rằng họ sẽ dễ dàng nhận được nguồn vốn vay từ ngân hàng để thực hiện hoạt động kinh doanh.",
     "questionText": "Câu 119: Yếu tố nào quan trọng nhất để ngân hàng đồng ý cấp tín dụng cho dự án khởi nghiệp của An và Khang?",
     "options": [
       {
@@ -4136,7 +4136,7 @@ export const DE_MINH_HOA_2026_QUESTIONS: DiagnosticQuestion[] = [
     "id": "q-120",
     "domain": "khoa_hoc",
     "domainName": "Suy luận Khoa học",
-    "passageText": "Dựa vào thông tin dưới đây để trả lời các câu từ 118 đến 120 An và Khang quyết định khởi nghiệp với ý tưởng mở một cửa hàng bánh ngọt kết hợp quán cà phê. Sau khi lên ý tưởng, họ đã thiết kế thực đơn bao gồm nhiều loại bánh ngọt và đồ uống đa dạng, với giá cả phù hợp cho nhóm khách hàng mục tiêu là giới trẻ. Trong quá trình chuẩn bị, An đảm nhận việc quảng bá và tuyển dụng nhân sự, trong khi Khang lo phần tài chính và quản lý nguồn nguyên liệu. Họ dự định sử dụng bao bì và vật dụng thân thiện với môi trường như túi giấy và ống hút tre như là một hành động bảo vệ môi trường. Với niềm tin vào ý tưởng độc đáo và lượng khách hàng tiềm năng, An và Khang tin rằng họ sẽ dễ dàng nhận được nguồn vốn vay từ ngân hàng để thực hiện hoạt động kinh doanh.",
+    "passageText": "N và Khang quyết định khởi nghiệp với ý tưởng mở một cửa hàng bánh ngọt kết hợp quán cà phê. Sau khi lên ý tưởng, họ đã thiết kế thực đơn bao gồm nhiều loại bánh ngọt và đồ uống đa dạng, với giá cả phù hợp cho nhóm khách hàng mục tiêu là giới trẻ. Trong quá trình chuẩn bị, An đảm nhận việc quảng bá và tuyển dụng nhân sự, trong khi Khang lo phần tài chính và quản lý nguồn nguyên liệu. Họ dự định sử dụng bao bì và vật dụng thân thiện với môi trường như túi giấy và ống hút tre như là một hành động bảo vệ môi trường. Với niềm tin vào ý tưởng độc đáo và lượng khách hàng tiềm năng, An và Khang tin rằng họ sẽ dễ dàng nhận được nguồn vốn vay từ ngân hàng để thực hiện hoạt động kinh doanh.",
     "questionText": "Câu 120: Theo tình huống trên, bước nào trong quá trình lập kế hoạch kinh doanh đã được An và Khang thực hiện?",
     "options": [
       {

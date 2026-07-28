@@ -457,10 +457,8 @@ export function App() {
         onOpenTopicPractice={() => setIsTopicPracticeOpen(true)}
       />
 
-      {/* Mobile Bottom Bar for Logged-In / Mobile Navigation */}
-      {isLoggedIn && (
-        <MobileBottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
-      )}
+      {/* Mobile Bottom Bar Navigation */}
+      <MobileBottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Pre-Quiz Survey Modal */}
       <PreQuizModal

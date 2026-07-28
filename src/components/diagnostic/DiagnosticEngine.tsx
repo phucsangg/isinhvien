@@ -475,15 +475,24 @@ export const DiagnosticEngine: React.FC<DiagnosticEngineProps> = ({ goal, select
               <span>{currentIndex + 1}/{questions.length}</span>
             </button>
 
-            {/* Mobile Next Button */}
-            <button
-              onClick={() => setCurrentIndex(prev => Math.min(questions.length - 1, prev + 1))}
-              disabled={currentIndex === questions.length - 1}
-              className="md:hidden px-3 py-2 bg-rose-500 hover:bg-rose-600 disabled:opacity-30 text-white font-extrabold text-xs rounded-xl flex items-center gap-1"
-            >
-              <span>Tiếp</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            {/* Mobile Next / Submit Button */}
+            {currentIndex < questions.length - 1 ? (
+              <button
+                onClick={() => setCurrentIndex(prev => Math.min(questions.length - 1, prev + 1))}
+                className="md:hidden px-3 py-2 bg-rose-500 hover:bg-rose-600 text-white font-extrabold text-xs rounded-xl flex items-center gap-1 shadow-md shadow-rose-500/20"
+              >
+                <span>Tiếp</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            ) : (
+              <button
+                onClick={handleSubmitTest}
+                className="md:hidden px-3 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-xs rounded-xl flex items-center gap-1 shadow-md shadow-emerald-500/30 animate-pulse"
+              >
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Nộp bài ({answeredCount}/{questions.length})</span>
+              </button>
+            )}
           </div>
 
           {/* Center: Clean Continuous Horizontal Question Strip (1..N) */}
@@ -516,7 +525,7 @@ export const DiagnosticEngine: React.FC<DiagnosticEngineProps> = ({ goal, select
             })}
           </div>
 
-          {/* Right: Grid Drawer Trigger & Next Button */}
+          {/* Right: Grid Drawer Trigger & Next / Submit Button */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <button
               onClick={() => setShowPaletteModal(true)}
@@ -530,14 +539,23 @@ export const DiagnosticEngine: React.FC<DiagnosticEngineProps> = ({ goal, select
               </span>
             </button>
 
-            <button
-              onClick={() => setCurrentIndex(prev => Math.min(questions.length - 1, prev + 1))}
-              disabled={currentIndex === questions.length - 1}
-              className="px-4 py-2 bg-rose-500 hover:bg-rose-600 disabled:opacity-30 text-white font-extrabold text-xs rounded-xl transition-all flex items-center gap-1.5 shadow-md shadow-rose-500/20"
-            >
-              <span className="hidden sm:inline">Câu tiếp theo</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            {currentIndex < questions.length - 1 ? (
+              <button
+                onClick={() => setCurrentIndex(prev => Math.min(questions.length - 1, prev + 1))}
+                className="px-4 py-2 bg-rose-500 hover:bg-rose-600 text-white font-extrabold text-xs rounded-xl transition-all flex items-center gap-1.5 shadow-md shadow-rose-500/20"
+              >
+                <span className="hidden sm:inline">Câu tiếp theo</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            ) : (
+              <button
+                onClick={handleSubmitTest}
+                className="px-5 py-2 bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white font-black text-xs rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-rose-500/30 animate-pulse"
+              >
+                <CheckCircle2 className="w-4 h-4 text-amber-300" />
+                <span>Nộp bài thi ({answeredCount}/{questions.length})</span>
+              </button>
+            )}
           </div>
 
         </div>
