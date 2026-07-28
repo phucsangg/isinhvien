@@ -646,23 +646,26 @@ export const UniversityLookupTool: React.FC = () => {
           </div>
         )}
 
-        {/* Side-by-Side Major Comparison Modal Panel */}
+        {/* Side-by-Side Major Comparison Modal Panel (z-[99999] to prevent navbar overlap) */}
         {isCompareOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fade-in">
-            <div className="bg-white border border-slate-300 rounded-3xl p-6 max-w-5xl w-full max-h-[90vh] overflow-y-auto space-y-6 shadow-2xl">
+          <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 pt-16 pb-6 bg-slate-950/75 backdrop-blur-md animate-fade-in overflow-y-auto">
+            <div className="bg-white border border-slate-300 rounded-3xl p-6 sm:p-7 max-w-5xl w-full max-h-[85vh] overflow-y-auto space-y-6 shadow-2xl my-auto">
+              
+              {/* Header */}
               <div className="flex justify-between items-center border-b border-slate-200 pb-4">
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 bg-sky-100 rounded-xl text-sky-700">
-                    <Layers className="w-5 h-5" />
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 bg-rose-100 border border-rose-200 rounded-2xl text-rose-600 shadow-sm">
+                    <Layers className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-black text-slate-900">Bảng So Sánh Trực Diện Ngành Mục Tiêu</h3>
-                    <p className="text-xs text-slate-500">So sánh chỉ số điểm chuẩn 4 năm, chênh lệch cơ hội & phương thức tuyển sinh</p>
+                    <h3 className="text-xl font-black text-slate-900">Bảng So Sánh Trực Diện Ngành Mục Tiêu</h3>
+                    <p className="text-xs text-slate-500 font-medium">So sánh chỉ số điểm chuẩn 4 năm, chênh lệch cơ hội & phương thức tuyển sinh</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsCompareOpen(false)}
-                  className="p-2 text-slate-400 hover:text-slate-700 rounded-xl bg-slate-100"
+                  className="p-2.5 text-slate-500 hover:text-slate-900 rounded-2xl bg-slate-100 hover:bg-slate-200 transition-all border border-slate-200"
+                  title="Đóng bảng so sánh"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -676,55 +679,76 @@ export const UniversityLookupTool: React.FC = () => {
                     <div key={item.id} className="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-4 shadow-sm flex flex-col justify-between">
                       <div className="space-y-3">
                         <div className="flex justify-between items-start">
-                          <span className="text-rose-600 font-mono text-xs font-black px-2 py-0.5 bg-rose-50 border border-rose-200 rounded">
+                          <span className="text-rose-600 font-mono text-xs font-black px-2.5 py-1 bg-rose-50 border border-rose-200 rounded-lg shadow-sm">
                             {item.code}
                           </span>
-                          <span className="text-[10px] text-slate-500 font-bold">{item.location}</span>
+                          <span className="text-xs text-slate-500 font-bold">{item.location}</span>
                         </div>
                         <div>
                           <h4 className="font-black text-sm text-slate-900 leading-snug">{item.name}</h4>
-                          <div className="text-xs text-rose-600 font-black mt-0.5">{item.major}</div>
+                          <div className="text-xs text-rose-600 font-black mt-1">{item.major}</div>
                         </div>
 
-                        <div className="space-y-2 border-t border-b border-slate-200 py-3 text-xs">
-                          <div className="flex justify-between text-slate-700">
-                            <span>Điểm chuẩn 2024 (Thực tế):</span>
-                            <strong className="text-sky-700 font-mono font-bold">{item.score2024}</strong>
+                        {/* Scores List */}
+                        <div className="space-y-2.5 border-t border-b border-slate-200 py-3.5 text-xs">
+                          <div className="flex justify-between items-center text-slate-700">
+                            <span className="font-bold">Điểm 2024 (Thực tế):</span>
+                            <span className="text-sky-800 font-mono font-black text-sm bg-sky-50 px-2 py-0.5 rounded border border-sky-200">{item.score2024}</span>
                           </div>
-                          <div className="flex justify-between text-slate-700">
-                            <span>Điểm dự báo 2025:</span>
-                            <strong className="text-amber-800 font-mono font-black">{item.score2025}</strong>
+                          <div className="flex justify-between items-center text-slate-700">
+                            <span className="font-bold">Điểm 2025 (Dự báo):</span>
+                            <span className="text-amber-900 font-mono font-black text-sm bg-amber-50 px-2 py-0.5 rounded border border-amber-300">{item.score2025}</span>
                           </div>
-                          <div className="flex justify-between text-slate-700">
-                            <span>Chênh lệch so với điểm bạn ({userScore}đ):</span>
-                            <strong className={`font-mono font-black ${diff >= 0 ? 'text-emerald-700' : 'text-rose-600'}`}>
-                              {diff >= 0 ? `+${diff.toFixed(0)}đ (Đỗ)` : `${diff.toFixed(0)}đ (Cần tăng)`}
-                            </strong>
+                          <div className="flex justify-between items-center text-slate-800 pt-1 border-t border-slate-200/60">
+                            <span className="font-black text-slate-900">Chênh lệch điểm thi ({userScore}đ):</span>
+                            <span className={`font-mono font-black text-xs px-2 py-1 rounded-lg border shadow-sm ${
+                              diff >= 0 
+                                ? 'bg-emerald-100 text-emerald-900 border-emerald-300' 
+                                : 'bg-rose-100 text-rose-900 border-rose-300'
+                            }`}>
+                              {diff >= 0 ? `+${diff.toFixed(0)}đ (An toàn)` : `${diff.toFixed(0)}đ (Cần tăng)`}
+                            </span>
                           </div>
                         </div>
 
-                        <div className="bg-white p-3 rounded-xl border border-slate-200 text-[11px] text-slate-600 space-y-1">
-                          <div className="font-bold text-slate-800">Phương thức & Ghi chú:</div>
-                          <div className="text-emerald-700 font-bold">✓ {item.admissionMethod}</div>
-                          <div className="leading-relaxed">{item.notes}</div>
+                        {/* Admission Notes */}
+                        <div className="bg-white p-3.5 rounded-xl border border-slate-200 text-[11px] text-slate-600 space-y-1.5 shadow-sm">
+                          <div className="font-black text-slate-800 uppercase tracking-wider text-[10px]">Phương thức tuyển sinh:</div>
+                          <div className="text-emerald-700 font-black text-xs">✓ {item.admissionMethod}</div>
+                          <div className="leading-relaxed text-slate-600 font-medium">{item.notes}</div>
                         </div>
                       </div>
 
                       <button
                         onClick={() => toggleCompare(item.id)}
-                        className="w-full py-2 mt-4 bg-slate-200 hover:bg-rose-100 hover:text-rose-700 text-slate-700 text-xs font-bold rounded-xl transition-all"
+                        className="w-full py-2.5 mt-4 bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white text-xs font-black rounded-xl border border-rose-200 transition-all shadow-sm flex items-center justify-center gap-1.5"
                       >
-                        Bỏ khỏi bảng so sánh
+                        <X className="w-4 h-4" />
+                        <span>Bỏ khỏi bảng so sánh</span>
                       </button>
                     </div>
                   );
                 })}
+
+                {/* Empty Slot Placeholder if < 3 items */}
+                {compareItems.length < 3 && (
+                  <div className="bg-slate-50/50 rounded-2xl p-6 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center text-center space-y-3 min-h-[300px]">
+                    <div className="p-3 bg-slate-100 rounded-full text-slate-400">
+                      <Plus className="w-6 h-6" />
+                    </div>
+                    <div className="space-y-1">
+                      <div className="font-black text-xs text-slate-700">Thêm ngành khác để so sánh</div>
+                      <p className="text-[11px] text-slate-500 max-w-[200px]">Bạn có thể chọn tối đa 3 ngành để so sánh chỉ số điểm trúng tuyển trực diện.</p>
+                    </div>
+                  </div>
+                )}
               </div>
 
-              <div className="flex justify-end pt-2">
+              {/* Modal Footer */}
+              <div className="flex justify-end pt-2 border-t border-slate-100">
                 <button
                   onClick={() => setIsCompareOpen(false)}
-                  className="px-6 py-2.5 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition-all"
+                  className="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-black rounded-xl transition-all shadow-md"
                 >
                   Đóng Bảng So Sánh
                 </button>
