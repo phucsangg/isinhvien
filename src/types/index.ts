@@ -89,11 +89,13 @@ export interface UniversityCutoff {
   name: string;
   major: string;
   group: string;
+  score2022?: number;
   score2023: number;
   score2024: number;
   score2025: number;
   notes: string;
   location: string;
+  admissionMethod?: string;
 }
 
 export interface Teacher {

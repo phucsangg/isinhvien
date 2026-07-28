@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { UNIVERSITIES_DATA } from '../../data/universities-data';
-import { Search, Filter, AlertCircle, ArrowUpDown, Bookmark, CheckCircle, Info } from 'lucide-react';
+import { Search, Filter, AlertCircle, ArrowUpDown, Bookmark, CheckCircle, Info, Sparkles, School, TrendingUp, TrendingDown, Minus, MapPin, Award, CheckCircle2, ChevronRight, ExternalLink } from 'lucide-react';
 
 export const UniversityLookupTool: React.FC = () => {
-  const [userScore, setUserScore] = useState<number>(780);
+  const [userScore, setUserScore] = useState<number>(820);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedGroup, setSelectedGroup] = useState<string>('all');
-  const [savedIds, setSavedIds] = useState<string[]>(['hcmut-cs']);
+  const [selectedLocation, setSelectedLocation] = useState<string>('all');
+  const [selectedSafety, setSelectedSafety] = useState<string>('all');
+  const [sortBy, setSortBy] = useState<'score2025-desc' | 'score2025-asc' | 'code-asc' | 'trend'>('score2025-desc');
+  const [savedIds, setSavedIds] = useState<string[]>(['hcmut-cs', 'uit-ai']);
+  const [showSavedOnly, setShowSavedOnly] = useState<boolean>(false);
 
   const groups = [
     { id: 'all', label: 'Tất cả nhóm ngành' },
@@ -16,185 +20,418 @@ export const UniversityLookupTool: React.FC = () => {
     { id: 'Y Dược & Sinh học', label: 'Y Dược & Sinh học' }
   ];
 
-  const filteredUnis = UNIVERSITIES_DATA.filter(uni => {
-    const matchesSearch = uni.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          uni.major.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          uni.code.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesGroup = selectedGroup === 'all' || uni.group === selectedGroup;
-    return matchesSearch && matchesGroup;
-  });
+  const locations = [
+    { id: 'all', label: 'Tất cả khu vực' },
+    { id: 'TP. Hồ Chí Minh', label: 'TP. Hồ Chí Minh' },
+    { id: 'Bình Dương / TP.HCM', label: 'Bình Dương' },
+    { id: 'Hà Nội', label: 'Hà Nội' }
+  ];
+
+  const safetyFilters = [
+    { id: 'all', label: 'Tất cả mức độ' },
+    { id: 'safe', label: '🟢 An toàn (> +15 đ)' },
+    { id: 'competitive', label: '🟡 Cạnh tranh (-30 đ đến +15 đ)' },
+    { id: 'hard', label: '🔴 Cần cố gắng (< -30 đ)' }
+  ];
+
+  // Filter and Sort Logic
+  const filteredUnis = useMemo(() => {
+    return UNIVERSITIES_DATA.filter(uni => {
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch = !q || 
+        uni.name.toLowerCase().includes(q) || 
+        uni.major.toLowerCase().includes(q) ||
+        uni.code.toLowerCase().includes(q);
+
+      const matchesGroup = selectedGroup === 'all' || uni.group === selectedGroup;
+      const matchesLoc = selectedLocation === 'all' || uni.location.includes(selectedLocation.replace(' / TP.HCM', ''));
+      const isSavedMatch = !showSavedOnly || savedIds.includes(uni.id);
+
+      const diff2025 = userScore - uni.score2025;
+      let safetyCategory = 'safe';
+      if (diff2025 < -30) safetyCategory = 'hard';
+      else if (diff2025 <= 15) safetyCategory = 'competitive';
+
+      const matchesSafety = selectedSafety === 'all' || selectedSafety === safetyCategory;
+
+      return matchesSearch && matchesGroup && matchesLoc && isSavedMatch && matchesSafety;
+    }).sort((a, b) => {
+      if (sortBy === 'score2025-desc') return b.score2025 - a.score2025;
+      if (sortBy === 'score2025-asc') return a.score2025 - b.score2025;
+      if (sortBy === 'code-asc') return a.code.localeCompare(b.code);
+      if (sortBy === 'trend') {
+        const trendA = a.score2025 - (a.score2022 || a.score2023);
+        const trendB = b.score2025 - (b.score2022 || b.score2023);
+        return trendB - trendA;
+      }
+      return 0;
+    });
+  }, [searchQuery, selectedGroup, selectedLocation, selectedSafety, sortBy, showSavedOnly, savedIds, userScore]);
+
+  // Statistics Summary
+  const stats = useMemo(() => {
+    let safeCount = 0;
+    let compCount = 0;
+    let hardCount = 0;
+
+    filteredUnis.forEach(u => {
+      const diff = userScore - u.score2025;
+      if (diff > 15) safeCount++;
+      else if (diff >= -30) compCount++;
+      else hardCount++;
+    });
+
+    return { safeCount, compCount, hardCount, total: filteredUnis.length };
+  }, [filteredUnis, userScore]);
 
   const toggleSave = (id: string) => {
     setSavedIds(prev => prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]);
   };
 
   return (
-    <div className="py-12 bg-slate-50 min-h-screen">
+    <div className="py-10 bg-slate-900 min-h-screen text-slate-100 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Title Header Banner */}
-        <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
-            Dữ liệu tra cứu V-ACT 2023 – 2025
-          </span>
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Tra Cứu Điểm Chuẩn Trường & Ngành Xét Tuyển V-ACT
+        <div className="text-center max-w-4xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-amber-400 bg-amber-500/10 border border-amber-500/30 px-4 py-1.5 rounded-full">
+            <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
+            <span>Dữ liệu Điểm chuẩn Chính thức V-ACT (2022 - 2025)</span>
+          </div>
+          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+            Tra Cứu Điểm Chuẩn Trường & Ngành V-ACT 2026
           </h1>
-          <p className="text-slate-600 text-sm sm:text-base">
-            Nhập điểm dự báo hoặc điểm thi của bạn để so sánh khoảng điểm trúng tuyển tham khảo của các trường ĐHQG TP.HCM.
+          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
+            Hệ thống tổng hợp điểm chuẩn thi ĐGNL ĐHQG TP.HCM trong <strong className="text-amber-300">4 năm liên tiếp (2022, 2023, 2024, 2025)</strong> của 40+ trường Đại học hàng đầu.
           </p>
         </div>
 
-        {/* Mandatory Transparency Box */}
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex items-center gap-3 text-xs sm:text-sm text-amber-900 max-w-4xl mx-auto">
-          <AlertCircle className="w-5 h-5 text-amber-600 shrink-0" />
-          <div>
-            <strong>Thông tin dữ liệu:</strong> Dữ liệu điểm chuẩn được tổng hợp từ cổng thông tin tuyển sinh các năm 2023, 2024 và 2025. Cập nhật ngày 15/01/2026. Điểm chuẩn có thể thay đổi tùy thuộc vào chỉ tiêu và số lượng thí sinh đăng ký từng năm. Hệ thống không đưa ra tuyên bố chắc chắn đỗ hoặc rớt.
+        {/* Mandatory Transparency Disclaimer Box */}
+        <div className="bg-slate-850 border border-amber-500/30 rounded-3xl p-4 sm:p-5 flex items-start sm:items-center gap-3.5 text-xs sm:text-sm text-slate-200 shadow-xl">
+          <AlertCircle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5 sm:mt-0" />
+          <div className="leading-relaxed">
+            <strong className="text-amber-300">Lưu ý chuyên môn:</strong> Dữ liệu điểm chuẩn được trích xuất từ cổng tuyển sinh chính thức các năm 2022 - 2025. Cập nhật mới nhất tháng 01/2026. Điểm chuẩn hàng năm biến động dựa trên chỉ tiêu và chất lượng thí sinh. Hệ thống cung cấp chỉ số dự báo tham khảo giúp thí sinh lập chiến lược nguyện vọng tối ưu.
           </div>
         </div>
 
-        {/* Score Calculator Bar */}
-        <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-md max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
-          <div className="sm:col-span-4">
-            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-              Nhập điểm V-ACT của bạn
-            </label>
-            <div className="relative">
-              <input
-                type="number"
-                min={300}
-                max={1200}
+        {/* Score Assessment Control Bar */}
+        <div className="bg-slate-850 rounded-3xl p-6 border border-slate-750 shadow-2xl max-w-5xl mx-auto space-y-5">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            
+            {/* Input Score */}
+            <div className="md:col-span-5 space-y-2">
+              <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-slate-300">
+                <span>Nhập Điểm V-ACT Của Bạn:</span>
+                <span className="text-amber-400 font-mono text-sm">{userScore} / 1.200 đ</span>
+              </div>
+              <div className="relative">
+                <input
+                  type="number"
+                  min={300}
+                  max={1200}
+                  step={10}
+                  value={userScore}
+                  onChange={(e) => setUserScore(Math.min(1200, Math.max(300, Number(e.target.value))))}
+                  className="w-full p-3.5 bg-slate-900 border border-slate-700 rounded-2xl text-xl font-black text-rose-400 focus:border-rose-500 outline-none font-mono shadow-inner"
+                />
+                <div className="absolute right-3.5 top-3.5 flex items-center gap-1.5 text-xs text-slate-400 font-bold">
+                  <span>Điểm V-ACT</span>
+                </div>
+              </div>
+
+              {/* Slider Controller */}
+              <input 
+                type="range"
+                min={400}
+                max={1100}
+                step={5}
                 value={userScore}
                 onChange={(e) => setUserScore(Number(e.target.value))}
-                className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-lg font-black text-blue-600 focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full accent-rose-500 bg-slate-800 h-2 rounded-lg cursor-pointer"
               />
-              <span className="absolute right-3 top-3.5 text-xs text-slate-400 font-bold">/ 1.200</span>
             </div>
-          </div>
 
-          <div className="sm:col-span-8 space-y-2">
-            <div className="flex justify-between text-xs font-bold text-slate-700">
-              <span>Đánh giá mức độ an toàn so với điểm chuẩn 2025</span>
-              <span className="text-blue-600">{userScore} Điểm</span>
+            {/* Assessment Progress Gauge */}
+            <div className="md:col-span-7 space-y-3 bg-slate-900/80 p-4 rounded-2xl border border-slate-750">
+              <div className="flex justify-between text-xs font-extrabold text-slate-200">
+                <span>Phân bổ cơ hội với {stats.total} ngành đang chọn</span>
+                <span className="text-rose-400 font-mono">{userScore} Điểm</span>
+              </div>
+
+              {/* Progress bar */}
+              <div className="w-full bg-slate-800 h-3.5 rounded-full overflow-hidden flex shadow-inner">
+                <div 
+                  style={{ width: `${stats.total > 0 ? (stats.safeCount / stats.total) * 100 : 0}%` }}
+                  className="bg-emerald-500 h-full transition-all duration-300" 
+                  title={`An toàn: ${stats.safeCount} ngành`}
+                />
+                <div 
+                  style={{ width: `${stats.total > 0 ? (stats.compCount / stats.total) * 100 : 0}%` }}
+                  className="bg-amber-400 h-full transition-all duration-300" 
+                  title={`Cạnh tranh: ${stats.compCount} ngành`}
+                />
+                <div 
+                  style={{ width: `${stats.total > 0 ? (stats.hardCount / stats.total) * 100 : 0}%` }}
+                  className="bg-rose-500 h-full transition-all duration-300" 
+                  title={`Cần cố gắng: ${stats.hardCount} ngành`}
+                />
+              </div>
+
+              {/* Badges Count */}
+              <div className="grid grid-cols-3 gap-2 text-center text-[11px] font-bold pt-1">
+                <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 p-2 rounded-xl">
+                  🟢 An toàn: <strong className="text-white text-xs">{stats.safeCount}</strong> ngành
+                </div>
+                <div className="bg-amber-500/10 border border-amber-500/20 text-amber-300 p-2 rounded-xl">
+                  🟡 Cạnh tranh: <strong className="text-white text-xs">{stats.compCount}</strong> ngành
+                </div>
+                <div className="bg-rose-500/10 border border-rose-500/20 text-rose-400 p-2 rounded-xl">
+                  🔴 Thách thức: <strong className="text-white text-xs">{stats.hardCount}</strong> ngành
+                </div>
+              </div>
             </div>
-            <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden flex">
-              <div className="bg-rose-400 h-full w-[60%]" title="Rủi ro (< 700)"></div>
-              <div className="bg-amber-400 h-full w-[20%]" title="Cạnh tranh (700 - 850)"></div>
-              <div className="bg-emerald-500 h-full w-[20%]" title="An toàn (> 850)"></div>
-            </div>
-            <div className="flex justify-between text-[10px] text-slate-400 font-semibold">
-              <span>&lt; 650: Nguy cơ</span>
-              <span>750 - 850: Cạnh tranh</span>
-              <span>&gt; 880: An toàn cao</span>
-            </div>
+
           </div>
         </div>
 
-        {/* Filter Controls Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-7xl mx-auto">
-          {/* Search Input */}
-          <div className="relative w-full sm:w-80">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Tìm theo tên trường, ngành hoặc mã..."
-              className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm"
-            />
+        {/* Multi-criteria Filter Controls Bar */}
+        <div className="bg-slate-850 rounded-3xl p-5 border border-slate-750 shadow-xl space-y-4">
+          
+          {/* Row 1: Search + Sorting + Saved Filter */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            {/* Search Input */}
+            <div className="relative w-full md:w-96">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Tìm theo tên trường, ngành hoặc mã (QSB, QSC, UEH...)..."
+                className="w-full pl-10 pr-4 py-2.5 bg-slate-900 border border-slate-700 rounded-2xl text-xs font-bold text-white focus:border-rose-500 outline-none shadow-sm placeholder:text-slate-500"
+              />
+            </div>
+
+            {/* Sort Selector & Saved Filter Toggle */}
+            <div className="flex items-center gap-3 w-full md:w-auto justify-end">
+              <div className="flex items-center gap-2 text-xs text-slate-300 font-bold">
+                <ArrowUpDown className="w-3.5 h-3.5 text-amber-400" />
+                <span>Sắp xếp:</span>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as any)}
+                  className="bg-slate-900 border border-slate-700 text-white rounded-xl text-xs font-extrabold px-3 py-2 outline-none focus:border-rose-500 cursor-pointer"
+                >
+                  <option value="score2025-desc">Điểm 2025 (Cao xuống Thấp)</option>
+                  <option value="score2025-asc">Điểm 2025 (Thấp lên Cao)</option>
+                  <option value="trend">Mức độ tăng điểm (2022-2025)</option>
+                  <option value="code-asc">Mã trường (A - Z)</option>
+                </select>
+              </div>
+
+              <button
+                onClick={() => setShowSavedOnly(!showSavedOnly)}
+                className={`px-3.5 py-2 rounded-xl text-xs font-extrabold border transition-all flex items-center gap-1.5 ${
+                  showSavedOnly
+                    ? 'bg-amber-500 text-slate-950 border-amber-400 font-black shadow-md'
+                    : 'bg-slate-900 border-slate-700 text-slate-300 hover:text-white'
+                }`}
+              >
+                <Bookmark className={`w-3.5 h-3.5 ${showSavedOnly ? 'fill-slate-950' : ''}`} />
+                <span>Đã lưu ({savedIds.length})</span>
+              </button>
+            </div>
+
           </div>
 
-          {/* Group Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2">
+          {/* Row 2: Group Category Pills */}
+          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800">
+            <span className="text-xs font-bold text-slate-400 mr-1 flex items-center gap-1">
+              <Filter className="w-3.5 h-3.5 text-rose-500" />
+              <span>Khối ngành:</span>
+            </span>
             {groups.map(g => (
               <button
                 key={g.id}
                 onClick={() => setSelectedGroup(g.id)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   selectedGroup === g.id
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
+                    ? 'bg-rose-600 text-white shadow-md shadow-rose-600/30 font-black'
+                    : 'bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-750'
                 }`}
               >
                 {g.label}
               </button>
             ))}
           </div>
+
+          {/* Row 3: Location & Opportunity Filters */}
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="flex items-center gap-2">
+              <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="text-xs font-bold text-slate-400">Khu vực:</span>
+              <select
+                value={selectedLocation}
+                onChange={(e) => setSelectedLocation(e.target.value)}
+                className="bg-slate-900 border border-slate-700 text-slate-200 text-xs font-extrabold rounded-xl px-3 py-1.5 outline-none cursor-pointer"
+              >
+                {locations.map(loc => (
+                  <option key={loc.id} value={loc.id}>{loc.label}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Award className="w-3.5 h-3.5 text-amber-400" />
+              <span className="text-xs font-bold text-slate-400">Mức cơ hội:</span>
+              <select
+                value={selectedSafety}
+                onChange={(e) => setSelectedSafety(e.target.value)}
+                className="bg-slate-900 border border-slate-700 text-slate-200 text-xs font-extrabold rounded-xl px-3 py-1.5 outline-none cursor-pointer"
+              >
+                {safetyFilters.map(sf => (
+                  <option key={sf.id} value={sf.id}>{sf.label}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
         </div>
 
-        {/* Table View */}
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+        {/* Data Table */}
+        <div className="bg-slate-850 rounded-3xl border border-slate-750 shadow-2xl overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                <tr className="bg-slate-900 border-b border-slate-750 text-[11px] font-black text-slate-400 uppercase tracking-wider">
                   <th className="py-4 px-6">Mã & Trường Đại Học</th>
-                  <th className="py-4 px-6">Ngành Đào Tạo</th>
-                  <th className="py-4 px-6 text-center">Điểm 2023</th>
-                  <th className="py-4 px-6 text-center">Điểm 2024</th>
-                  <th className="py-4 px-6 text-center">Điểm 2025</th>
-                  <th className="py-4 px-6 text-center">Đánh giá khả năng</th>
+                  <th className="py-4 px-6">Ngành Đào Tạo & Ghi Chú</th>
+                  <th className="py-4 px-6 text-center">2022</th>
+                  <th className="py-4 px-6 text-center">2023</th>
+                  <th className="py-4 px-6 text-center">2024</th>
+                  <th className="py-4 px-6 text-center text-amber-300">2025</th>
+                  <th className="py-4 px-6 text-center">Xu hướng</th>
+                  <th className="py-4 px-6 text-center">Đánh giá cơ hội</th>
                   <th className="py-4 px-6 text-center">Lưu</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-xs">
-                {filteredUnis.map((uni) => {
-                  const isSaved = savedIds.includes(uni.id);
-                  const diff2025 = userScore - uni.score2025;
+              <tbody className="divide-y divide-slate-800 text-xs">
+                {filteredUnis.length > 0 ? (
+                  filteredUnis.map((uni) => {
+                    const isSaved = savedIds.includes(uni.id);
+                    const diff2025 = userScore - uni.score2025;
+                    const scoreOldest = uni.score2022 || uni.score2023;
+                    const totalDiff4Years = uni.score2025 - scoreOldest;
 
-                  let statusBadge = (
-                    <span className="bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full text-[11px]">
-                      An toàn (+{diff2025})
-                    </span>
-                  );
-                  if (diff2025 < -30) {
-                    statusBadge = (
-                      <span className="bg-rose-100 text-rose-800 font-bold px-2.5 py-1 rounded-full text-[11px]">
-                        Cần cố gắng ({diff2025})
+                    let statusBadge = (
+                      <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-extrabold px-3 py-1.5 rounded-xl text-[11px] inline-block shadow-sm">
+                        🟢 An toàn (+{diff2025}đ)
                       </span>
                     );
-                  } else if (diff2025 < 0) {
-                    statusBadge = (
-                      <span className="bg-amber-100 text-amber-800 font-bold px-2.5 py-1 rounded-full text-[11px]">
-                        Cạnh tranh ({diff2025})
-                      </span>
+                    if (diff2025 < -30) {
+                      statusBadge = (
+                        <span className="bg-rose-500/20 text-rose-300 border border-rose-500/30 font-extrabold px-3 py-1.5 rounded-xl text-[11px] inline-block shadow-sm">
+                          🔴 Thách thức ({diff2025}đ)
+                        </span>
+                      );
+                    } else if (diff2025 <= 15) {
+                      statusBadge = (
+                        <span className="bg-amber-500/20 text-amber-300 border border-amber-500/30 font-extrabold px-3 py-1.5 rounded-xl text-[11px] inline-block shadow-sm">
+                          🟡 Cạnh tranh ({diff2025 >= 0 ? `+${diff2025}` : diff2025}đ)
+                        </span>
+                      );
+                    }
+
+                    return (
+                      <tr key={uni.id} className="hover:bg-slate-800/60 transition-colors">
+                        
+                        {/* School Name & Code */}
+                        <td className="py-4 px-6 font-bold text-white max-w-xs">
+                          <div className="flex items-center gap-2">
+                            <span className="text-rose-400 font-mono font-black text-xs px-2 py-0.5 bg-rose-500/10 border border-rose-500/20 rounded-md">
+                              {uni.code}
+                            </span>
+                            <span className="text-[10px] text-slate-400 font-semibold">{uni.location}</span>
+                          </div>
+                          <div className="font-extrabold text-sm text-slate-100 mt-1 leading-snug">{uni.name}</div>
+                          {uni.admissionMethod && (
+                            <div className="text-[10px] text-emerald-400 font-medium mt-0.5">
+                              ✓ {uni.admissionMethod}
+                            </div>
+                          )}
+                        </td>
+
+                        {/* Major Name & Notes */}
+                        <td className="py-4 px-6 max-w-sm">
+                          <div className="font-extrabold text-xs text-amber-300 leading-snug">{uni.major}</div>
+                          <div className="text-[11px] text-slate-400 font-normal mt-1 leading-relaxed">{uni.notes}</div>
+                        </td>
+
+                        {/* Benchmark Scores for 4 Years */}
+                        <td className="py-4 px-6 text-center font-mono font-bold text-slate-400">
+                          {uni.score2022 ? uni.score2022 : '—'}
+                        </td>
+                        <td className="py-4 px-6 text-center font-mono font-bold text-slate-300">
+                          {uni.score2023}
+                        </td>
+                        <td className="py-4 px-6 text-center font-mono font-extrabold text-slate-200">
+                          {uni.score2024}
+                        </td>
+                        <td className="py-4 px-6 text-center font-mono font-black text-amber-400 text-sm bg-amber-500/5">
+                          {uni.score2025}
+                        </td>
+
+                        {/* Score Trend */}
+                        <td className="py-4 px-6 text-center font-mono text-[11px]">
+                          {totalDiff4Years > 0 ? (
+                            <span className="text-rose-400 font-bold flex items-center justify-center gap-0.5" title={`Tăng ${totalDiff4Years} điểm từ ${scoreOldest} lên ${uni.score2025}`}>
+                              <TrendingUp className="w-3.5 h-3.5" />
+                              <span>+{totalDiff4Years}đ</span>
+                            </span>
+                          ) : totalDiff4Years < 0 ? (
+                            <span className="text-emerald-400 font-bold flex items-center justify-center gap-0.5" title={`Giảm ${Math.abs(totalDiff4Years)} điểm`}>
+                              <TrendingDown className="w-3.5 h-3.5" />
+                              <span>{totalDiff4Years}đ</span>
+                            </span>
+                          ) : (
+                            <span className="text-slate-400 font-bold flex items-center justify-center gap-0.5">
+                              <Minus className="w-3.5 h-3.5" />
+                              <span>Ổn định</span>
+                            </span>
+                          )}
+                        </td>
+
+                        {/* Opportunity Evaluation */}
+                        <td className="py-4 px-6 text-center">
+                          {statusBadge}
+                        </td>
+
+                        {/* Save Button */}
+                        <td className="py-4 px-6 text-center">
+                          <button
+                            onClick={() => toggleSave(uni.id)}
+                            className={`p-2.5 rounded-xl border transition-all ${
+                              isSaved
+                                ? 'bg-amber-500/20 border-amber-500/50 text-amber-300'
+                                : 'bg-slate-900 border-slate-700 text-slate-400 hover:text-white hover:bg-slate-800'
+                            }`}
+                            title={isSaved ? 'Đã lưu nguyện vọng' : 'Lưu ngành này'}
+                          >
+                            <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-amber-400 text-amber-400' : ''}`} />
+                          </button>
+                        </td>
+
+                      </tr>
                     );
-                  }
-
-                  return (
-                    <tr key={uni.id} className="hover:bg-blue-50/30 transition-colors">
-                      <td className="py-4 px-6 font-bold text-slate-900">
-                        <div className="text-blue-600 font-extrabold text-[11px]">{uni.code}</div>
-                        <div>{uni.name}</div>
-                        <div className="text-[10px] text-slate-400 font-normal">{uni.location}</div>
-                      </td>
-
-                      <td className="py-4 px-6 font-semibold text-slate-800">
-                        <div>{uni.major}</div>
-                        <div className="text-[10px] text-slate-400 font-normal">{uni.notes}</div>
-                      </td>
-
-                      <td className="py-4 px-6 text-center font-semibold text-slate-600">{uni.score2023}</td>
-                      <td className="py-4 px-6 text-center font-semibold text-slate-600">{uni.score2024}</td>
-                      <td className="py-4 px-6 text-center font-bold text-slate-900 text-sm">{uni.score2025}</td>
-
-                      <td className="py-4 px-6 text-center">{statusBadge}</td>
-
-                      <td className="py-4 px-6 text-center">
-                        <button
-                          onClick={() => toggleSave(uni.id)}
-                          className={`p-2 rounded-xl border transition-all ${
-                            isSaved
-                              ? 'bg-amber-50 border-amber-300 text-amber-600'
-                              : 'bg-slate-50 border-slate-200 text-slate-400 hover:text-slate-600'
-                          }`}
-                        >
-                          <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-amber-500' : ''}`} />
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
+                  })
+                ) : (
+                  <tr>
+                    <td colSpan={9} className="py-12 text-center text-slate-400 font-semibold space-y-2">
+                      <div className="text-base font-bold text-slate-300">Không tìm thấy trường/ngành phù hợp với bộ lọc</div>
+                      <p className="text-xs">Vui lòng thử xóa từ khóa tìm kiếm hoặc điều chỉnh lại bộ lọc mức cơ hội/khối ngành.</p>
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
