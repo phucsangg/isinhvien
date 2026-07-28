@@ -1,12 +1,12 @@
 {
-  "name": "vact-mind",
+  "name": "isinhvien",
   "version": "1.0.0",
+  "description": "Sangsang V-ACT - Nền tảng Chẩn đoán Năng lực & Luyện thi ĐGNL ĐHQG TP.HCM 2026",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "scrape": "node dgnl-scraper.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
