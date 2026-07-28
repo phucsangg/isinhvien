@@ -4,7 +4,7 @@ import { UniversityCutoff } from '../../types';
 import { 
   Search, Filter, ArrowUpDown, Bookmark, CheckCircle2, 
   Sparkles, School, TrendingUp, TrendingDown, Minus, MapPin, 
-  Award, X, Layers, Plus, ExternalLink, RefreshCw, Calculator, HelpCircle, ArrowRight, Trash2, Check
+  Award, X, Layers, Plus, ExternalLink, RefreshCw, Calculator, HelpCircle, ArrowRight, Trash2, Check, LayoutGrid, ListFilter
 } from 'lucide-react';
 
 export const UniversityLookupTool: React.FC = () => {
@@ -17,9 +17,10 @@ export const UniversityLookupTool: React.FC = () => {
   const [savedIds, setSavedIds] = useState<string[]>(['hcmus-cs-advanced', 'uit-ai', 'sgu-se']);
   const [showSavedOnly, setShowSavedOnly] = useState<boolean>(false);
 
-  // Comparison State (Up to 3 items)
-  const [compareIds, setCompareIds] = useState<string[]>(['hcmus-cs-advanced', 'uit-ai']);
+  // Comparison State (Up to 10 items)
+  const [compareIds, setCompareIds] = useState<string[]>(['hcmus-cs-advanced', 'uit-ai', 'sgu-se', 'uel-ecom', 'iuh-ib']);
   const [isCompareOpen, setIsCompareOpen] = useState<boolean>(false);
+  const [compareViewMode, setCompareViewMode] = useState<'rows' | 'matrix'>('rows');
 
   // Quick Score Presets
   const scorePresets = [600, 700, 750, 800, 850, 900, 950, 1000];
@@ -103,7 +104,7 @@ export const UniversityLookupTool: React.FC = () => {
   const toggleCompare = (id: string) => {
     setCompareIds(prev => {
       if (prev.includes(id)) return prev.filter(item => item !== id);
-      if (prev.length >= 3) return [...prev.slice(1), id];
+      if (prev.length >= 10) return [...prev.slice(1), id];
       return [...prev, id];
     });
   };
@@ -398,7 +399,7 @@ export const UniversityLookupTool: React.FC = () => {
                 }`}
               >
                 <Layers className="w-3.5 h-3.5" />
-                <span>Bảng Ma Trận So Sánh ({compareIds.length}/3)</span>
+                <span>Bảng So Sánh Ngang ({compareIds.length})</span>
               </button>
 
               {/* Saved Wishlist Toggle */}
@@ -634,52 +635,190 @@ export const UniversityLookupTool: React.FC = () => {
           <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-900 text-white border border-slate-700 px-6 py-3.5 rounded-full shadow-2xl flex items-center gap-4 animate-bounce-short">
             <div className="flex items-center gap-2 text-xs font-bold">
               <Layers className="w-4 h-4 text-rose-400" />
-              <span>Đang so sánh <strong className="text-rose-300 text-sm font-mono font-black">{compareIds.length}/3</strong> ngành đã chọn</span>
+              <span>Đang so sánh <strong className="text-rose-300 text-sm font-mono font-black">{compareIds.length}</strong> ngành đã chọn</span>
             </div>
             <button
               onClick={() => setIsCompareOpen(true)}
               className="px-4 py-1.5 bg-rose-600 hover:bg-rose-500 text-white rounded-full font-black text-xs flex items-center gap-1.5 transition-all shadow-md"
             >
-              <span>Mở Bảng Ma Trận So Sánh</span>
+              <span>Xem Bảng So Sánh Ngang</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
         )}
 
-        {/* POP-UP MATRIX COMPARISON MODAL (Bảng so sánh dạng ma trận song song dễ đối chiếu nhất) */}
+        {/* POP-UP HORIZONTAL COMPARISON MODAL (SO SÁNH NGANG RỘNG RÃI - KHÔNG GIỚI HẠN SỐ LƯỢNG TRƯỜNG!) */}
         {isCompareOpen && (
-          <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 pt-14 pb-6 bg-slate-950/70 backdrop-blur-md animate-fade-in overflow-y-auto">
-            <div className="bg-white border border-slate-300 rounded-3xl p-6 sm:p-7 max-w-6xl w-full max-h-[88vh] overflow-y-auto space-y-6 shadow-2xl my-auto">
+          <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 pt-14 pb-6 bg-slate-950/75 backdrop-blur-md animate-fade-in overflow-y-auto">
+            <div className="bg-white border border-slate-300 rounded-3xl p-6 sm:p-7 max-w-7xl w-full max-h-[88vh] overflow-y-auto space-y-6 shadow-2xl my-auto">
               
               {/* Modal Header */}
-              <div className="flex justify-between items-start border-b border-slate-200 pb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-rose-100 border border-rose-200 rounded-2xl text-rose-600 shadow-sm">
                     <Layers className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-black text-slate-900">Ma Trận Đối Chiếu Ngành Mục Tiêu</h3>
+                    <h3 className="text-xl font-black text-slate-900 flex items-center gap-2">
+                      <span>Bảng So Sánh Ngang Nhiều Trường</span>
+                      <span className="text-xs font-mono font-black text-rose-600 bg-rose-50 px-2.5 py-0.5 rounded-full border border-rose-200">
+                        {compareIds.length} ngành đang chọn
+                      </span>
+                    </h3>
                     <p className="text-xs text-slate-500 font-bold mt-0.5">
-                      Đối chiếu song song điểm thi của bạn (<span className="text-rose-600 font-mono font-black">{userScore} điểm</span>) trực tiếp với điểm chuẩn 2024 & 2025
+                      Đối chiếu song song điểm thi của bạn (<span className="text-rose-600 font-mono font-black">{userScore} điểm</span>) trực tiếp với điểm chuẩn 2022, 2023, 2024 & 2025
                     </p>
                   </div>
                 </div>
-                <button
-                  onClick={() => setIsCompareOpen(false)}
-                  className="p-2.5 text-slate-500 hover:text-slate-900 rounded-2xl bg-slate-100 hover:bg-slate-200 transition-all border border-slate-200"
-                  title="Đóng bảng so sánh"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+
+                <div className="flex items-center gap-2">
+                  {/* Mode Switcher */}
+                  <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
+                    <button
+                      onClick={() => setCompareViewMode('rows')}
+                      className={`px-3 py-1.5 rounded-lg font-black transition-all flex items-center gap-1 ${
+                        compareViewMode === 'rows'
+                          ? 'bg-rose-600 text-white shadow-sm'
+                          : 'text-slate-700 hover:text-slate-900'
+                      }`}
+                    >
+                      <ListFilter className="w-3.5 h-3.5" />
+                      <span>📋 Bảng Ngang (Nhiều trường)</span>
+                    </button>
+
+                    <button
+                      onClick={() => setCompareViewMode('matrix')}
+                      className={`px-3 py-1.5 rounded-lg font-black transition-all flex items-center gap-1 ${
+                        compareViewMode === 'matrix'
+                          ? 'bg-rose-600 text-white shadow-sm'
+                          : 'text-slate-700 hover:text-slate-900'
+                      }`}
+                    >
+                      <LayoutGrid className="w-3.5 h-3.5" />
+                      <span>📊 Ma Trận Cột</span>
+                    </button>
+                  </div>
+
+                  <button
+                    onClick={() => setIsCompareOpen(false)}
+                    className="p-2.5 text-slate-500 hover:text-slate-900 rounded-2xl bg-slate-100 hover:bg-slate-200 transition-all border border-slate-200"
+                    title="Đóng bảng so sánh"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
               </div>
 
-              {/* MATRIX COMPARISON TABLE (Bảng Ma trận đối chiếu theo từng hàng chỉ số) */}
-              {compareItems.length > 0 ? (
-                <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm">
+              {/* MODE 1: BẢNG NGANG TẤT CẢ NGÀNH (So sánh không giới hạn số lượng trường) */}
+              {compareViewMode === 'rows' && compareItems.length > 0 && (
+                <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-md">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="bg-slate-100 border-b border-slate-200 text-[11px] font-black text-slate-700 uppercase tracking-wider">
+                        <th className="py-4 px-5">STT & Trường</th>
+                        <th className="py-4 px-5">Ngành Đào Tạo</th>
+                        <th className="py-4 px-4 text-center">2022</th>
+                        <th className="py-4 px-4 text-center">2023</th>
+                        <th className="py-4 px-4 text-center text-sky-700">2024 (Thực tế)</th>
+                        <th className="py-4 px-4 text-center text-amber-700">2025 (Dự báo)</th>
+                        <th className="py-4 px-5 text-center">Điểm Thi Bạn ({userScore}đ)</th>
+                        <th className="py-4 px-5 text-center">Chênh lệch & Cơ hội</th>
+                        <th className="py-4 px-5">Phương Thức & Chú Thích</th>
+                        <th className="py-4 px-4 text-center">Thao tác</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 text-xs">
+                      {compareItems.map((item, idx) => {
+                        const diff = userScore - item.score2025;
+                        return (
+                          <tr key={item.id} className="hover:bg-slate-50 transition-colors">
+                            
+                            {/* School Code & Name */}
+                            <td className="py-4 px-5 font-bold text-slate-900 max-w-xs">
+                              <div className="flex items-center gap-2">
+                                <span className="text-slate-400 font-mono text-xs">{idx + 1}.</span>
+                                <span className="text-rose-600 font-mono font-black text-xs px-2 py-0.5 bg-rose-50 border border-rose-200 rounded">
+                                  {item.code}
+                                </span>
+                                <span className="text-[10px] text-slate-500 font-semibold">{item.location}</span>
+                              </div>
+                              <div className="font-black text-sm text-slate-900 mt-1 leading-snug">{item.name}</div>
+                            </td>
+
+                            {/* Major Name */}
+                            <td className="py-4 px-5 max-w-xs">
+                              <div className="font-black text-xs text-rose-600 leading-snug">{item.major}</div>
+                              <div className="text-[10px] text-slate-400 mt-0.5">{item.group}</div>
+                            </td>
+
+                            {/* 2022 & 2023 */}
+                            <td className="py-4 px-4 text-center font-mono font-bold text-slate-500">
+                              {item.score2022 || '—'}
+                            </td>
+                            <td className="py-4 px-4 text-center font-mono font-bold text-slate-600">
+                              {item.score2023}
+                            </td>
+
+                            {/* 2024 Actual */}
+                            <td className="py-4 px-4 text-center font-mono font-black text-sky-900 bg-sky-50 border border-sky-200 rounded-xl">
+                              {item.score2024}
+                            </td>
+
+                            {/* 2025 Projected */}
+                            <td className="py-4 px-4 text-center font-mono font-black text-amber-900 text-sm bg-amber-50 border border-amber-300 rounded-xl shadow-sm">
+                              {item.score2025}
+                            </td>
+
+                            {/* Your Score */}
+                            <td className="py-4 px-5 text-center font-mono font-black text-slate-900 text-sm">
+                              {userScore}đ
+                            </td>
+
+                            {/* Opportunity Badge */}
+                            <td className="py-4 px-5 text-center">
+                              <span className={`inline-block font-mono font-black text-xs px-3 py-1.5 rounded-xl border shadow-sm ${
+                                diff > 15 
+                                  ? 'bg-emerald-100 text-emerald-900 border-emerald-300' 
+                                  : diff >= -30 
+                                  ? 'bg-amber-100 text-amber-900 border-amber-300' 
+                                  : 'bg-rose-100 text-rose-900 border-rose-300'
+                              }`}>
+                                {diff >= 0 ? `🟢 +${diff.toFixed(0)}đ (An toàn)` : `🔴 ${diff.toFixed(0)}đ (Cần tăng)`}
+                              </span>
+                            </td>
+
+                            {/* Method & Notes */}
+                            <td className="py-4 px-5 max-w-xs text-slate-600">
+                              <div className="font-bold text-emerald-700 text-xs">✓ {item.admissionMethod}</div>
+                              <div className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">{item.notes}</div>
+                            </td>
+
+                            {/* Remove Action */}
+                            <td className="py-4 px-4 text-center">
+                              <button
+                                onClick={() => toggleCompare(item.id)}
+                                className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all"
+                                title="Bỏ ngành này khỏi so sánh"
+                              >
+                                <X className="w-4 h-4" />
+                              </button>
+                            </td>
+
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {/* MODE 2: MA TRẬN CỘT CUỘN NGANG (Cuộn ngang 5+ cột) */}
+              {compareViewMode === 'matrix' && compareItems.length > 0 && (
+                <div className="overflow-x-auto border border-slate-200 rounded-2xl shadow-md">
                   <table className="w-full text-left border-collapse">
                     <thead>
                       <tr className="bg-slate-100 border-b border-slate-200 text-xs font-black text-slate-700">
-                        <th className="py-4 px-5 w-56 bg-slate-200/80 text-slate-900 uppercase tracking-wider text-[11px]">
+                        <th className="py-4 px-5 w-56 bg-slate-200/80 text-slate-900 uppercase tracking-wider text-[11px] sticky left-0 z-10 shadow-sm">
                           Tiêu Chí Đối Chiếu
                         </th>
                         {compareItems.map(item => (
@@ -700,21 +839,13 @@ export const UniversityLookupTool: React.FC = () => {
                             <div className="text-xs text-rose-600 font-black mt-1">{item.major}</div>
                           </th>
                         ))}
-
-                        {/* Placeholder Column if < 3 items */}
-                        {compareItems.length < 3 && (
-                          <th className="py-4 px-5 border-l border-slate-200 border-dashed bg-slate-50/50 min-w-[200px] text-center text-slate-400 font-normal">
-                            <div className="text-xs font-bold text-slate-500">+ Thêm ngành nữa</div>
-                            <div className="text-[10px] text-slate-400 mt-1">Chọn nút "+ So sánh" ở bảng bên dưới</div>
-                          </th>
-                        )}
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-200 text-xs font-medium">
                       
                       {/* Row 1: Your Score */}
                       <tr className="bg-white">
-                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/60">
+                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/80 sticky left-0 z-10">
                           🎯 Điểm thi của bạn
                         </td>
                         {compareItems.map(item => (
@@ -722,12 +853,11 @@ export const UniversityLookupTool: React.FC = () => {
                             {userScore} / 1.200 đ
                           </td>
                         ))}
-                        {compareItems.length < 3 && <td className="border-l border-slate-200 bg-slate-50/30"></td>}
                       </tr>
 
                       {/* Row 2: Score 2024 (Actual) */}
                       <tr className="bg-slate-50/60">
-                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/60">
+                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/80 sticky left-0 z-10">
                           📊 Điểm chuẩn 2024 (Thực tế)
                         </td>
                         {compareItems.map(item => (
@@ -737,12 +867,11 @@ export const UniversityLookupTool: React.FC = () => {
                             </span>
                           </td>
                         ))}
-                        {compareItems.length < 3 && <td className="border-l border-slate-200 bg-slate-50/30"></td>}
                       </tr>
 
                       {/* Row 3: Score 2025 (Projected) */}
                       <tr className="bg-white">
-                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/60">
+                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/80 sticky left-0 z-10">
                           🔮 Điểm chuẩn 2025 (Dự báo)
                         </td>
                         {compareItems.map(item => (
@@ -752,12 +881,11 @@ export const UniversityLookupTool: React.FC = () => {
                             </span>
                           </td>
                         ))}
-                        {compareItems.length < 3 && <td className="border-l border-slate-200 bg-slate-50/30"></td>}
                       </tr>
 
                       {/* Row 4: Score Difference & Assessment */}
                       <tr className="bg-slate-50/60">
-                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/60">
+                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/80 sticky left-0 z-10">
                           ⚖️ Chênh lệch & Cơ hội
                         </td>
                         {compareItems.map(item => {
@@ -776,12 +904,11 @@ export const UniversityLookupTool: React.FC = () => {
                             </td>
                           );
                         })}
-                        {compareItems.length < 3 && <td className="border-l border-slate-200 bg-slate-50/30"></td>}
                       </tr>
 
                       {/* Row 5: Admission Method */}
                       <tr className="bg-white">
-                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/60">
+                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/80 sticky left-0 z-10">
                           📝 Phương thức tuyển sinh
                         </td>
                         {compareItems.map(item => (
@@ -789,12 +916,11 @@ export const UniversityLookupTool: React.FC = () => {
                             ✓ {item.admissionMethod || 'Xét tuyển V-ACT trực tiếp'}
                           </td>
                         ))}
-                        {compareItems.length < 3 && <td className="border-l border-slate-200 bg-slate-50/30"></td>}
                       </tr>
 
                       {/* Row 6: Notes */}
                       <tr className="bg-slate-50/60">
-                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/60">
+                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/80 sticky left-0 z-10">
                           💡 Đặc điểm & Chú thích
                         </td>
                         {compareItems.map(item => (
@@ -802,35 +928,10 @@ export const UniversityLookupTool: React.FC = () => {
                             {item.notes}
                           </td>
                         ))}
-                        {compareItems.length < 3 && <td className="border-l border-slate-200 bg-slate-50/30"></td>}
-                      </tr>
-
-                      {/* Row 7: Actions */}
-                      <tr className="bg-white">
-                        <td className="py-3.5 px-5 font-black text-slate-900 bg-slate-100/60">
-                          ⚙️ Thao tác
-                        </td>
-                        {compareItems.map(item => (
-                          <td key={item.id} className="py-3.5 px-5 border-l border-slate-200">
-                            <button
-                              onClick={() => toggleCompare(item.id)}
-                              className="w-full py-2 bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white text-xs font-black rounded-xl border border-rose-200 transition-all flex items-center justify-center gap-1 shadow-sm"
-                            >
-                              <X className="w-3.5 h-3.5" />
-                              <span>Bỏ khỏi so sánh</span>
-                            </button>
-                          </td>
-                        ))}
-                        {compareItems.length < 3 && <td className="border-l border-slate-200 bg-slate-50/30"></td>}
                       </tr>
 
                     </tbody>
                   </table>
-                </div>
-              ) : (
-                <div className="py-12 text-center text-slate-500 space-y-2">
-                  <div className="text-base font-bold text-slate-800">Chưa có ngành nào được chọn vào bảng so sánh</div>
-                  <p className="text-xs">Vui lòng nhấp nút "+ So sánh" ở bất kỳ hàng nào trong bảng dữ liệu để đối chiếu.</p>
                 </div>
               )}
 
@@ -847,7 +948,7 @@ export const UniversityLookupTool: React.FC = () => {
                   onClick={() => setIsCompareOpen(false)}
                   className="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-black rounded-xl transition-all shadow-md"
                 >
-                  Đóng Bảng Ma Trận So Sánh
+                  Đóng Bảng So Sánh Ngang
                 </button>
               </div>
 
