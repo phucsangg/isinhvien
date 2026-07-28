@@ -197,6 +197,85 @@ export const UniversityLookupTool: React.FC = () => {
         {/* Multi-criteria Filter Controls Bar */}
         <div className="bg-slate-850 rounded-3xl p-5 border border-slate-750 shadow-xl space-y-4">
           
+          {/* Quick Preset Filter Buttons */}
+          <div className="flex flex-wrap items-center gap-2 pb-3 border-b border-slate-800">
+            <span className="text-xs font-bold text-amber-400 mr-1 flex items-center gap-1">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span>Bộ lọc nhanh:</span>
+            </span>
+            <button
+              onClick={() => {
+                setSelectedLocation('TP. Hồ Chí Minh');
+                setSearchQuery('');
+                setSelectedGroup('all');
+                setSelectedSafety('all');
+              }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 ${
+                selectedLocation === 'TP. Hồ Chí Minh' && !searchQuery && selectedGroup === 'all'
+                  ? 'bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-md shadow-rose-500/30'
+                  : 'bg-slate-900 text-slate-300 hover:text-white border border-slate-700'
+              }`}
+            >
+              <span>🔥 Tất cả trường TP.HCM</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setSearchQuery('ĐHQG TP.HCM');
+                setSelectedLocation('all');
+              }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                searchQuery === 'ĐHQG TP.HCM'
+                  ? 'bg-blue-600 text-white shadow-sm font-black'
+                  : 'bg-slate-900 text-slate-300 hover:text-white border border-slate-700'
+              }`}
+            >
+              <span>🏛️ Khối ĐHQG TP.HCM</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setSelectedGroup('Y Dược & Sinh học');
+                setSearchQuery('');
+              }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                selectedGroup === 'Y Dược & Sinh học'
+                  ? 'bg-purple-600 text-white shadow-sm font-black'
+                  : 'bg-slate-900 text-slate-300 hover:text-white border border-slate-700'
+              }`}
+            >
+              <span>⚕️ Khối Y Dược Sức Khỏe</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setSelectedGroup('Kỹ thuật & Công nghệ');
+                setSearchQuery('');
+              }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                selectedGroup === 'Kỹ thuật & Công nghệ'
+                  ? 'bg-blue-600 text-white shadow-sm font-black'
+                  : 'bg-slate-900 text-slate-300 hover:text-white border border-slate-700'
+              }`}
+            >
+              <span>💻 Khối Kỹ Thuật Công Nghệ</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setSelectedGroup('Kinh tế & Quản trị');
+                setSearchQuery('');
+              }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                selectedGroup === 'Kinh tế & Quản trị'
+                  ? 'bg-amber-600 text-white shadow-sm font-black'
+                  : 'bg-slate-900 text-slate-300 hover:text-white border border-slate-700'
+              }`}
+            >
+              <span>📊 Khối Kinh Tế Quản Trị</span>
+            </button>
+          </div>
+          
           {/* Row 1: Search + Sorting + Saved Filter */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             

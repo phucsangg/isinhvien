@@ -2,10 +2,10 @@ import { UniversityCutoff } from '../types';
 
 export const UNIVERSITIES_DATA: UniversityCutoff[] = [
   // =========================================================================
-  // 1. ĐÃI HỌC QUỐC GIA TP. HỒ CHÍ MINH (VNU-HCM) - 7 ĐƠN VỊ THÀNH VIÊN
+  // I. ĐẠI HỌC QUỐC GIA TP. HỒ CHÍ MINH (VNU-HCM) - 7 ĐƠN VỊ THÀNH VIÊN
   // =========================================================================
 
-  // --- ĐH BÁCH KHOA - ĐHQG TP.HCM (QSB) ---
+  // 1. ĐH BÁCH KHOA - ĐHQG TP.HCM (QSB)
   {
     id: 'hcmut-cs',
     code: 'QSB-01',
@@ -52,7 +52,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     id: 'hcmut-ee',
     code: 'QSB-04',
     name: 'ĐH Bách Khoa - ĐHQG TP.HCM',
-    major: 'Kỹ thuật Điện - Điện tử / Vi mạch',
+    major: 'Kỹ thuật Điện - Điện tử / Thiết kế Vi mạch',
     group: 'Kỹ thuật & Công nghệ',
     score2022: 790,
     score2023: 810,
@@ -77,7 +77,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển kết hợp V-ACT'
   },
 
-  // --- ĐH CÔNG NGHỆ THÔNG TIN - ĐHQG TP.HCM (QSC) ---
+  // 2. ĐH CÔNG NGHỆ THÔNG TIN - ĐHQG TP.HCM (QSC / UIT)
   {
     id: 'uit-se',
     code: 'QSC-01',
@@ -135,7 +135,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐH KHOA HỌC TỰ NHIÊN - ĐHQG TP.HCM (QST) ---
+  // 3. ĐH KHOA HỌC TỰ NHIÊN - ĐHQG TP.HCM (QST)
   {
     id: 'hcmus-ds',
     code: 'QST-01',
@@ -193,7 +193,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐH KINH TẾ - LUẬT - ĐHQG TP.HCM (QSK) ---
+  // 4. ĐH KINH TẾ - LUẬT - ĐHQG TP.HCM (QSK / UEL)
   {
     id: 'uel-finance',
     code: 'QSK-01',
@@ -251,7 +251,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Ưu tiên xét tuyển V-ACT'
   },
 
-  // --- ĐH KHOA HỌC XÃ HỘI & NHÂN VĂN - ĐHQG TP.HCM (QSX) ---
+  // 5. ĐH KHOA HỌC XÃ HỘI & NHÂN VĂN - ĐHQG TP.HCM (QSX)
   {
     id: 'ussh-media',
     code: 'QSX-01',
@@ -309,7 +309,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC QUỐC TẾ - ĐHQG TP.HCM (QSQ) ---
+  // 6. ĐẠI HỌC QUỐC TẾ - ĐHQG TP.HCM (QSQ / IU)
   {
     id: 'iu-ba',
     code: 'QSQ-01',
@@ -339,7 +339,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC SỨC KHỎE / KHOA Y - ĐHQG TP.HCM (QSY) ---
+  // 7. KHOA Y / ĐH SỨC KHỎE - ĐHQG TP.HCM (QSY)
   {
     id: 'qsy-med',
     code: 'QSY-01',
@@ -369,11 +369,27 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT kết hợp'
   },
 
+  // 8. ĐH AN GIANG - PHÂN HIỆU ĐHQG TP.HCM (QAG)
+  {
+    id: 'qag-ba',
+    code: 'QAG-01',
+    name: 'ĐH An Giang - Phân hiệu ĐHQG TP.HCM',
+    major: 'Quản trị Kinh doanh & Công nghệ Thông tin',
+    group: 'Kinh tế & Quản trị',
+    score2022: 600,
+    score2023: 620,
+    score2024: 645,
+    score2025: 660,
+    notes: 'Trường thành viên ĐHQG TP.HCM với điểm chuẩn vừa sức.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+
   // =========================================================================
-  // 2. CÁC ĐẠI HỌC CÔNG LẬP TRỌNG ĐIỂM TẠI TP. HỒ CHÍ MINH
+  // II. CÁC ĐẠI HỌC CÔNG LẬP TRỌNG ĐIỂM TẠI TP. HỒ CHÍ MINH
   // =========================================================================
 
-  // --- ĐẠI HỌC KINH TẾ TP.HCM (UEH) ---
+  // 9. ĐẠI HỌC KINH TẾ TP.HCM (UEH)
   {
     id: 'ueh-mkt',
     code: 'UEH-01',
@@ -417,7 +433,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển quy đổi V-ACT'
   },
 
-  // --- ĐẠI HỌC SƯ PHẠM KỸ THUẬT TP.HCM (HCMUTE) ---
+  // 10. ĐẠI HỌC SƯ PHẠM KỸ THUẬT TP.HCM (HCMUTE / SPK)
   {
     id: 'hcmute-it',
     code: 'SPK-01',
@@ -461,7 +477,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển kết hợp V-ACT'
   },
 
-  // --- ĐẠI HỌC Y DƯỢC TP.HCM (UMP) ---
+  // 11. ĐẠI HỌC Y DƯỢC TP.HCM (UMP)
   {
     id: 'ump-med',
     code: 'UMP-01',
@@ -491,7 +507,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC Y KHOA PHẠM NGỌC THẠCH (PNT) ---
+  // 12. ĐẠI HỌC Y KHOA PHẠM NGỌC THẠCH (PNT)
   {
     id: 'pnt-med',
     code: 'PNT-01',
@@ -521,7 +537,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT kết hợp'
   },
 
-  // --- ĐẠI HỌC SƯ PHẠM TP.HCM (HCMUE) ---
+  // 13. ĐẠI HỌC SƯ PHẠM TP.HCM (HCMUE / SPS)
   {
     id: 'hcmue-math',
     code: 'SPS-01',
@@ -551,7 +567,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC SÀI GÒN (SGU) ---
+  // 14. ĐẠI HỌC SÀI GÒN (SGU)
   {
     id: 'sgu-it',
     code: 'SGU-01',
@@ -581,7 +597,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC LUẬT TP.HCM (LHS) ---
+  // 15. ĐẠI HỌC LUẬT TP.HCM (LHS)
   {
     id: 'lhs-intl',
     code: 'LHS-01',
@@ -597,7 +613,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC NGÂN HÀNG TP.HCM (HUB) ---
+  // 16. ĐẠI HỌC NGÂN HÀNG TP.HCM (HUB)
   {
     id: 'hub-bank',
     code: 'HUB-01',
@@ -627,7 +643,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC NÔNG LÂM TP.HCM (NLS) ---
+  // 17. ĐẠI HỌC NÔNG LÂM TP.HCM (NLS)
   {
     id: 'nls-vet',
     code: 'NLS-01',
@@ -657,7 +673,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC MỞ TP.HCM (OU) ---
+  // 18. ĐẠI HỌC MỞ TP.HCM (OU)
   {
     id: 'ou-it',
     code: 'OU-01',
@@ -687,7 +703,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC CÔNG THƯƠNG TP.HCM (HUIT) ---
+  // 19. ĐẠI HỌC CÔNG THƯƠNG TP.HCM (HUIT)
   {
     id: 'huit-food',
     code: 'HUI-01',
@@ -702,22 +718,8 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     location: 'TP. Hồ Chí Minh',
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
-  {
-    id: 'huit-it',
-    code: 'HUI-02',
-    name: 'Đại học Công Thương TP.HCM (HUIT)',
-    major: 'Công nghệ Thông tin & Thương mại Điện tử',
-    group: 'Kỹ thuật & Công nghệ',
-    score2022: 670,
-    score2023: 690,
-    score2024: 710,
-    score2025: 725,
-    notes: 'Cơ sở vật chất khang trang tại Tân Phú, TP.HCM.',
-    location: 'TP. Hồ Chí Minh',
-    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
-  },
 
-  // --- ĐẠI HỌC GIAO THÔNG VẬN TẢI TP.HCM (UTH) ---
+  // 20. ĐẠI HỌC GIAO THÔNG VẬN TẢI TP.HCM (UTH)
   {
     id: 'uth-logistics',
     code: 'GTS-01',
@@ -733,7 +735,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC TÀI CHÍNH - MARKETING (UFM) ---
+  // 21. ĐẠI HỌC TÀI CHÍNH - MARKETING (UFM)
   {
     id: 'ufm-mkt',
     code: 'DMS-01',
@@ -749,7 +751,75 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- HỌC VIỆN BƯU CHÍNH VIỄN THÔNG TP.HCM (PTIT / BVH) ---
+  // 22. ĐẠI HỌC TÀI NGUYÊN VÀ MÔI TRƯỜNG TP.HCM (HCMUNRE)
+  {
+    id: 'hcmunre-env',
+    code: 'DTM-01',
+    name: 'Đại học Tài nguyên & Môi trường TP.HCM (HCMUNRE)',
+    major: 'Quản lý Đất đai & Công nghệ Môi trường',
+    group: 'Kỹ thuật & Công nghệ',
+    score2022: 620,
+    score2023: 640,
+    score2024: 660,
+    score2025: 675,
+    notes: 'Trường công lập chuyên ngành Quản lý Đất đai & Địa chính.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+
+  // 23. ĐẠI HỌC THỦY LỢI - PHÂN HIỆU TP.HCM (TLU)
+  {
+    id: 'tlu-water',
+    code: 'TLS-01',
+    name: 'Đại học Thủy lợi - Phân hiệu TP.HCM (TLU)',
+    major: 'Kỹ thuật Xây dựng Thủy lợi & Cấp thoát nước',
+    group: 'Kỹ thuật & Công nghệ',
+    score2022: 610,
+    score2023: 630,
+    score2024: 650,
+    score2025: 665,
+    notes: 'Trường công lập thuộc Bộ Nông nghiệp & PTNT.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+
+  // 24. ĐẠI HỌC LAO ĐỘNG - XÃ HỘI CƠ SỞ TP.HCM (ULSA)
+  {
+    id: 'ulsa-hr',
+    code: 'DLX-01',
+    name: 'Đại học Lao động - Xã hội Cơ sở TP.HCM (ULSA)',
+    major: 'Quản trị Nhân lực & Công tác Xã hội',
+    group: 'Xã hội & Nhân văn',
+    score2022: 630,
+    score2023: 650,
+    score2024: 670,
+    score2025: 685,
+    notes: 'Trường thế mạnh đào tạo chuyên gia Quản trị Nhân sự.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+
+  // 25. ĐẠI HỌC THỂ DỤC THỂ THAO TP.HCM (USC)
+  {
+    id: 'usc-sport',
+    code: 'TDS-01',
+    name: 'Đại học Thể dục Thể thao TP.HCM (USC)',
+    major: 'Quản lý Thể dục Thể thao & Giáo dục Thể chất',
+    group: 'Xã hội & Nhân văn',
+    score2022: 580,
+    score2023: 600,
+    score2024: 620,
+    score2025: 635,
+    notes: 'Yêu cầu kiểm tra Năng khiếu Thể thao.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển kết hợp V-ACT'
+  },
+
+  // =========================================================================
+  // III. HỌC VIỆN & TRƯỜNG ĐÀO TẠO ĐẶC THÙ TẠI TP. HỒ CHÍ MINH
+  // =========================================================================
+
+  // 26. HỌC VIỆN BƯU CHÍNH VIỄN THÔNG TP.HCM (PTIT / BVH)
   {
     id: 'ptit-it',
     code: 'BVH-01',
@@ -765,7 +835,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- HỌC VIỆN HÀNG KHÔNG VIỆT NAM (VAA) ---
+  // 27. HỌC VIỆN HÀNG KHÔNG VIỆT NAM (VAA)
   {
     id: 'vaa-aviation',
     code: 'HHK-01',
@@ -781,7 +851,23 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC KIẾN TRÚC TP.HCM (UAH) ---
+  // 28. HỌC VIỆN CÁN BỘ TP.HCM (HVCB)
+  {
+    id: 'hvcb-gov',
+    code: 'HVC-01',
+    name: 'Học viện Cán bộ TP.HCM (HVCB)',
+    major: 'Quản lý Nhà nước & Luật Học',
+    group: 'Xã hội & Nhân văn',
+    score2022: 670,
+    score2023: 690,
+    score2024: 710,
+    score2025: 725,
+    notes: 'Trường đào tạo Cán bộ công chức trực thuộc Thành ủy TP.HCM.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+
+  // 29. ĐẠI HỌC KIẾN TRÚC TP.HCM (UAH)
   {
     id: 'uah-arch',
     code: 'KTS-01',
@@ -797,11 +883,59 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển kết hợp năng khiếu'
   },
 
+  // 30. ĐẠI HỌC MỸ THUẬT TP.HCM (MTH)
+  {
+    id: 'mth-design',
+    code: 'MTS-01',
+    name: 'Đại học Mỹ thuật TP.HCM (MTH)',
+    major: 'Thiết kế Đồ họa & Hội họa',
+    group: 'Xã hội & Nhân văn',
+    score2022: 680,
+    score2023: 700,
+    score2024: 720,
+    score2025: 735,
+    notes: 'Yêu cầu đạt môn thi Hình họa & Trang trí.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển kết hợp năng khiếu'
+  },
+
+  // 31. ĐẠI HỌC VĂN HÓA TP.HCM (VHS)
+  {
+    id: 'vhs-tour',
+    code: 'VHS-01',
+    name: 'Đại học Văn hóa TP.HCM (VHS)',
+    major: 'Quản lý Văn hóa & Du lịch Lữ hành',
+    group: 'Xã hội & Nhân văn',
+    score2022: 620,
+    score2023: 640,
+    score2024: 660,
+    score2025: 675,
+    notes: 'Trường công lập thuộc Bộ Văn hóa, Thể thao & Du lịch.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+
+  // 32. ĐẠI HỌC SÂN KHẤU - ĐIỆN ẢNH TP.HCM (SKDA)
+  {
+    id: 'skda-film',
+    code: 'SKD-01',
+    name: 'Đại học Sân khấu - Điện ảnh TP.HCM',
+    major: 'Đạo diễn Điện ảnh & Diễn viên',
+    group: 'Xã hội & Nhân văn',
+    score2022: 600,
+    score2023: 620,
+    score2024: 640,
+    score2025: 655,
+    notes: 'Kiểm tra Năng khiếu Diễn xuất & Kiến thức Điện ảnh.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển kết hợp năng khiếu'
+  },
+
   // =========================================================================
-  // 3. CÁC ĐẠI HỌC TƯ THỤC & QUỐC TẾ LỚN TẠI TP. HỒ CHÍ MINH
+  // IV. CÁC ĐẠI HỌC TƯ THỤC & QUỐC TẾ LỚN TẠI TP. HỒ CHÍ MINH
   // =========================================================================
 
-  // --- ĐẠI HỌC TÔN ĐỨC THẮNG (TDTU) ---
+  // 33. ĐẠI HỌC TÔN ĐỨC THẮNG (TDTU)
   {
     id: 'tdt-se',
     code: 'TDT-01',
@@ -831,7 +965,23 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển kết hợp V-ACT'
   },
 
-  // --- ĐẠI HỌC VĂN LANG (VLU) ---
+  // 34. ĐẠI HỌC VIỆT ĐỨC (VGU)
+  {
+    id: 'vgu-cs',
+    code: 'VGU-01',
+    name: 'Đại học Việt Đức (VGU)',
+    major: 'Khoa học Máy tính (Computer Science)',
+    group: 'Kỹ thuật & Công nghệ',
+    score2022: 750,
+    score2023: 770,
+    score2024: 795,
+    score2025: 810,
+    notes: 'Cấp bằng đôi bởi Đại học đối tác Cộng hòa Liên bang Đức.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+
+  // 35. ĐẠI HỌC VĂN LANG (VLU)
   {
     id: 'vlu-media',
     code: 'VLU-01',
@@ -861,7 +1011,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC HUTECH (HUTECH) ---
+  // 36. ĐẠI HỌC HUTECH (HUTECH)
   {
     id: 'hutech-it',
     code: 'HTC-01',
@@ -891,7 +1041,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT kết hợp'
   },
 
-  // --- ĐẠI HỌC HOA SEN (HSU) ---
+  // 37. ĐẠI HỌC HOA SEN (HSU)
   {
     id: 'hsu-hotel',
     code: 'HSU-01',
@@ -907,7 +1057,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC NGUYỄN TẤT THÀNH (NTTU) ---
+  // 38. ĐẠI HỌC NGUYỄN TẤT THÀNH (NTTU)
   {
     id: 'nttu-med',
     code: 'NTT-01',
@@ -923,7 +1073,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT kết hợp'
   },
 
-  // --- ĐẠI HỌC QUỐC TẾ HỒNG BÀNG (HIU) ---
+  // 39. ĐẠI HỌC QUỐC TẾ HỒNG BÀNG (HIU)
   {
     id: 'hiu-denta',
     code: 'HIU-01',
@@ -939,7 +1089,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT kết hợp'
   },
 
-  // --- ĐẠI HỌC KINH TẾ - TÀI CHÍNH TP.HCM (UEF) ---
+  // 40. ĐẠI HỌC KINH TẾ - TÀI CHÍNH TP.HCM (UEF)
   {
     id: 'uef-ib',
     code: 'UEF-01',
@@ -955,7 +1105,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC FPT TP.HCM (FPT) ---
+  // 41. ĐẠI HỌC FPT TP.HCM (FPT)
   {
     id: 'fpt-se',
     code: 'FPT-01',
@@ -971,7 +1121,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển quy đổi V-ACT'
   },
 
-  // --- ĐẠI HỌC VĂN HIẾN (VHU) ---
+  // 42. ĐẠI HỌC VĂN HIẾN (VHU)
   {
     id: 'vhu-tour',
     code: 'DVH-01',
@@ -987,7 +1137,7 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC GIA ĐỊNH (GDU) ---
+  // 43. ĐẠI HỌC GIA ĐỊNH (GDU)
   {
     id: 'gdu-it',
     code: 'GDD-01',
@@ -1003,19 +1153,35 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển V-ACT trực tiếp'
   },
 
-  // --- ĐẠI HỌC VIỆT ĐỨC (VGU) ---
+  // 44. ĐẠI HỌC RMIT VIỆT NAM (CƠ SỞ TP.HCM)
   {
-    id: 'vgu-cs',
-    code: 'VGU-01',
-    name: 'Đại học Việt Đức (VGU)',
-    major: 'Khoa học Máy tính (Computer Science)',
+    id: 'rmit-design',
+    code: 'RMI-01',
+    name: 'Đại học RMIT Việt Nam (Cơ sở TP.HCM)',
+    major: 'Thiết kế Truyền thông & CNTT',
     group: 'Kỹ thuật & Công nghệ',
-    score2022: 750,
-    score2023: 770,
-    score2024: 795,
-    score2025: 810,
-    notes: 'Cấp bằng đôi bởi Đại học đối tác Cộng hòa Liên bang Đức.',
+    score2022: 780,
+    score2023: 800,
+    score2024: 820,
+    score2025: 835,
+    notes: 'Quy đổi tiêu chí năng lực tư duy kết hợp chứng chỉ IELTS.',
     location: 'TP. Hồ Chí Minh',
-    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+    admissionMethod: 'Xét tuyển quy đổi V-ACT'
+  },
+
+  // 45. ĐẠI HỌC FULBRIGHT VIỆT NAM (FUV)
+  {
+    id: 'fuv-cs',
+    code: 'FUV-01',
+    name: 'Đại học Fulbright Việt Nam (FUV)',
+    major: 'Khoa học Máy tính & Kinh tế Khai phóng',
+    group: 'Kỹ thuật & Công nghệ',
+    score2022: 820,
+    score2023: 840,
+    score2024: 865,
+    score2025: 880,
+    notes: 'Trường đại học khai phóng phong cách Hoa Kỳ tại Khu Công nghệ cao TP.HCM.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển hồ sơ & V-ACT'
   }
 ];
