@@ -4,7 +4,7 @@ import { UniversityCutoff } from '../../types';
 import { 
   Search, Filter, ArrowUpDown, Bookmark, CheckCircle2, 
   Sparkles, School, TrendingUp, TrendingDown, Minus, MapPin, 
-  Award, X, Layers, Plus, ExternalLink, RefreshCw, Calculator, HelpCircle
+  Award, X, Layers, Plus, ExternalLink, RefreshCw, Calculator, HelpCircle, Check, ArrowRight
 } from 'lucide-react';
 
 export const UniversityLookupTool: React.FC = () => {
@@ -113,45 +113,45 @@ export const UniversityLookupTool: React.FC = () => {
   }, [compareIds]);
 
   return (
-    <div className="py-10 bg-slate-950 min-h-screen text-slate-100 font-sans selection:bg-rose-500 selection:text-white">
+    <div className="py-10 bg-slate-50 min-h-screen text-slate-900 font-sans selection:bg-rose-500 selection:text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Title Header Banner */}
         <div className="text-center max-w-4xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 px-4 py-1.5 rounded-full shadow-lg shadow-emerald-500/10">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+          <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-emerald-800 bg-emerald-100 border border-emerald-300 px-4 py-1.5 rounded-full shadow-sm">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             <span>Dữ liệu Điểm chuẩn Thực tế 100% (2022 - 2024 & Dự báo 2025/2026)</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-amber-200 tracking-tight leading-tight">
-            Tra Cứu Điểm Chuẩn Trường & Ngành V-ACT 2026
+          <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+            Tra Cứu Điểm Chuẩn Thực Tế V-ACT 2026
           </h1>
 
-          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             Bảng đối soát điểm trúng tuyển chính thức của tất cả các trường Đại học tại TP.HCM qua các năm. Nhập điểm V-ACT của bạn để nhận dự báo mức độ cơ hội đỗ thực tế!
           </p>
         </div>
 
         {/* Verified Data Banner */}
-        <div className="bg-slate-900/90 border border-emerald-500/40 rounded-3xl p-4 sm:p-5 flex items-start sm:items-center gap-3.5 text-xs sm:text-sm text-slate-200 shadow-xl backdrop-blur-md">
-          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
+        <div className="bg-white border border-emerald-200 rounded-3xl p-4 sm:p-5 flex items-start sm:items-center gap-3.5 text-xs sm:text-sm text-slate-800 shadow-sm">
+          <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5 sm:mt-0" />
           <div className="leading-relaxed">
-            <strong className="text-emerald-300 font-bold">Cam kết Dữ liệu Thực tế 100%:</strong> Số liệu điểm chuẩn (2022, 2023, 2024) được trích xuất từ quyết định tuyển sinh chính thức do các trường công bố (đối soát qua *Tuổi Trẻ, VnExpress, Báo Lao Động*). Các ngành đặc thù (ĐH Bách Khoa xét tổng hợp, Y Dược xét THPT) được chú thích phương thức rõ ràng.
+            <strong className="text-emerald-800 font-black">Cam kết Dữ liệu Thực tế 100%:</strong> Số liệu điểm chuẩn (2022, 2023, 2024) được trích xuất từ quyết định tuyển sinh chính thức do các trường công bố (đối soát qua *Tuổi Trẻ, VnExpress, Báo Lao Động*). Các ngành đặc thù (ĐH Bách Khoa xét tổng hợp, Y Dược xét THPT) được chú thích phương thức rõ ràng.
           </div>
         </div>
 
         {/* Score Assessment Interactive Control Box */}
-        <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-850 rounded-3xl p-6 border border-slate-750 shadow-2xl space-y-6">
+        <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-md space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             
             {/* Input Score & Presets */}
             <div className="md:col-span-6 space-y-3">
-              <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-slate-300">
-                <span className="flex items-center gap-1.5 text-rose-400">
-                  <Calculator className="w-4 h-4 text-rose-400" />
+              <div className="flex justify-between items-center text-xs font-black uppercase tracking-wider text-slate-700">
+                <span className="flex items-center gap-1.5 text-rose-600">
+                  <Calculator className="w-4 h-4 text-rose-600" />
                   Nhập Điểm V-ACT Của Bạn:
                 </span>
-                <span className="text-amber-300 font-mono text-base font-black bg-amber-500/10 px-3 py-1 rounded-xl border border-amber-500/20">
+                <span className="text-rose-600 font-mono text-base font-black bg-rose-50 px-3 py-1 rounded-xl border border-rose-200">
                   {userScore} / 1.200 đ
                 </span>
               </div>
@@ -165,9 +165,9 @@ export const UniversityLookupTool: React.FC = () => {
                   step={5}
                   value={userScore}
                   onChange={(e) => setUserScore(Math.min(1200, Math.max(300, Number(e.target.value))))}
-                  className="w-full p-4 bg-slate-950 border-2 border-rose-500/40 rounded-2xl text-2xl font-black text-rose-400 focus:border-rose-500 outline-none font-mono shadow-inner tracking-wide"
+                  className="w-full p-4 bg-slate-50 border-2 border-rose-400 rounded-2xl text-2xl font-black text-rose-600 focus:border-rose-600 focus:bg-white outline-none font-mono shadow-inner tracking-wide"
                 />
-                <div className="absolute right-4 top-4 flex items-center gap-2 text-xs text-slate-400 font-extrabold">
+                <div className="absolute right-4 top-4 flex items-center gap-2 text-xs text-slate-500 font-black">
                   <span>ĐIỂM THI V-ACT</span>
                 </div>
               </div>
@@ -180,12 +180,12 @@ export const UniversityLookupTool: React.FC = () => {
                 step={5}
                 value={userScore}
                 onChange={(e) => setUserScore(Number(e.target.value))}
-                className="w-full accent-rose-500 bg-slate-800 h-2.5 rounded-lg cursor-pointer"
+                className="w-full accent-rose-600 bg-slate-200 h-2.5 rounded-lg cursor-pointer"
               />
 
               {/* Quick Score Preset Chips */}
               <div className="space-y-1.5 pt-1">
-                <div className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Chọn nhanh điểm thi mẫu:</div>
+                <div className="text-[11px] font-black text-slate-500 uppercase tracking-wider">Chọn nhanh điểm thi mẫu:</div>
                 <div className="flex flex-wrap items-center gap-1.5">
                   {scorePresets.map((score) => (
                     <button
@@ -193,8 +193,8 @@ export const UniversityLookupTool: React.FC = () => {
                       onClick={() => setUserScore(score)}
                       className={`px-3 py-1 rounded-xl text-xs font-mono font-bold transition-all border ${
                         userScore === score
-                          ? 'bg-rose-500 text-white border-rose-400 shadow-md font-black scale-105'
-                          : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white'
+                          ? 'bg-rose-600 text-white border-rose-600 shadow-md font-black scale-105'
+                          : 'bg-slate-100 text-slate-700 border-slate-200 hover:border-slate-300 hover:bg-slate-200'
                       }`}
                     >
                       {score}đ
@@ -205,44 +205,44 @@ export const UniversityLookupTool: React.FC = () => {
             </div>
 
             {/* Assessment Progress Gauge */}
-            <div className="md:col-span-6 space-y-4 bg-slate-950/80 p-5 rounded-2xl border border-slate-800 shadow-inner">
-              <div className="flex justify-between items-center text-xs font-black text-slate-200">
+            <div className="md:col-span-6 space-y-4 bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-inner">
+              <div className="flex justify-between items-center text-xs font-black text-slate-800">
                 <span>CƠ HỘI TRÚNG TUYỂN ({stats.total} NGÀNH ĐANG CHỌN)</span>
-                <span className="text-rose-400 font-mono text-sm">{userScore} Điểm</span>
+                <span className="text-rose-600 font-mono text-sm font-black">{userScore} Điểm</span>
               </div>
 
               {/* Progress Bar */}
-              <div className="w-full bg-slate-800 h-4 rounded-full overflow-hidden flex shadow-inner border border-slate-700">
+              <div className="w-full bg-slate-200 h-4 rounded-full overflow-hidden flex shadow-inner border border-slate-300">
                 <div 
                   style={{ width: `${stats.total > 0 ? (stats.safeCount / stats.total) * 100 : 0}%` }}
-                  className="bg-emerald-500 h-full transition-all duration-300 shadow-lg shadow-emerald-500/50" 
+                  className="bg-emerald-500 h-full transition-all duration-300 shadow-sm" 
                   title={`An toàn: ${stats.safeCount} ngành`}
                 />
                 <div 
                   style={{ width: `${stats.total > 0 ? (stats.compCount / stats.total) * 100 : 0}%` }}
-                  className="bg-amber-400 h-full transition-all duration-300 shadow-lg shadow-amber-400/50" 
+                  className="bg-amber-400 h-full transition-all duration-300 shadow-sm" 
                   title={`Cạnh tranh: ${stats.compCount} ngành`}
                 />
                 <div 
                   style={{ width: `${stats.total > 0 ? (stats.hardCount / stats.total) * 100 : 0}%` }}
-                  className="bg-rose-500 h-full transition-all duration-300 shadow-lg shadow-rose-500/50" 
+                  className="bg-rose-500 h-full transition-all duration-300 shadow-sm" 
                   title={`Cần cố gắng: ${stats.hardCount} ngành`}
                 />
               </div>
 
               {/* Badges Count */}
               <div className="grid grid-cols-3 gap-2.5 text-center text-xs font-bold pt-1">
-                <div className="bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 p-2.5 rounded-xl flex flex-col justify-center">
-                  <span className="text-[10px] text-emerald-400/80 uppercase font-black">🟢 An toàn</span>
-                  <strong className="text-white text-base font-black font-mono">{stats.safeCount} <span className="text-xs font-normal text-emerald-300">ngành</span></strong>
+                <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-2.5 rounded-xl flex flex-col justify-center shadow-sm">
+                  <span className="text-[10px] text-emerald-700 uppercase font-black">🟢 An toàn</span>
+                  <strong className="text-slate-900 text-base font-black font-mono">{stats.safeCount} <span className="text-xs font-normal text-slate-600">ngành</span></strong>
                 </div>
-                <div className="bg-amber-500/15 border border-amber-500/30 text-amber-300 p-2.5 rounded-xl flex flex-col justify-center">
-                  <span className="text-[10px] text-amber-400/80 uppercase font-black">🟡 Cạnh tranh</span>
-                  <strong className="text-white text-base font-black font-mono">{stats.compCount} <span className="text-xs font-normal text-amber-300">ngành</span></strong>
+                <div className="bg-amber-50 border border-amber-200 text-amber-900 p-2.5 rounded-xl flex flex-col justify-center shadow-sm">
+                  <span className="text-[10px] text-amber-800 uppercase font-black">🟡 Cạnh tranh</span>
+                  <strong className="text-slate-900 text-base font-black font-mono">{stats.compCount} <span className="text-xs font-normal text-slate-600">ngành</span></strong>
                 </div>
-                <div className="bg-rose-500/15 border border-rose-500/30 text-rose-300 p-2.5 rounded-xl flex flex-col justify-center">
-                  <span className="text-[10px] text-rose-400/80 uppercase font-black">🔴 Thách thức</span>
-                  <strong className="text-white text-base font-black font-mono">{stats.hardCount} <span className="text-xs font-normal text-rose-300">ngành</span></strong>
+                <div className="bg-rose-50 border border-rose-200 text-rose-800 p-2.5 rounded-xl flex flex-col justify-center shadow-sm">
+                  <span className="text-[10px] text-rose-700 uppercase font-black">🔴 Thách thức</span>
+                  <strong className="text-slate-900 text-base font-black font-mono">{stats.hardCount} <span className="text-xs font-normal text-slate-600">ngành</span></strong>
                 </div>
               </div>
             </div>
@@ -251,12 +251,12 @@ export const UniversityLookupTool: React.FC = () => {
         </div>
 
         {/* Multi-criteria Filter Controls Bar */}
-        <div className="bg-slate-900/90 rounded-3xl p-5 border border-slate-800 shadow-xl space-y-4 backdrop-blur-md">
+        <div className="bg-white rounded-3xl p-5 border border-slate-200 shadow-md space-y-4">
           
           {/* Quick Preset Filter Buttons */}
-          <div className="flex flex-wrap items-center gap-2 pb-3 border-b border-slate-800">
-            <span className="text-xs font-extrabold text-amber-400 mr-1 flex items-center gap-1">
-              <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
+          <div className="flex flex-wrap items-center gap-2 pb-3 border-b border-slate-100">
+            <span className="text-xs font-black text-rose-600 mr-1 flex items-center gap-1">
+              <Sparkles className="w-4 h-4 text-rose-600 animate-pulse" />
               <span>Lọc nhanh theo nhóm:</span>
             </span>
 
@@ -269,8 +269,8 @@ export const UniversityLookupTool: React.FC = () => {
               }}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all border flex items-center gap-1.5 ${
                 selectedLocation === 'TP. Hồ Chí Minh' && !searchQuery && selectedGroup === 'all'
-                  ? 'bg-gradient-to-r from-rose-500 to-amber-500 text-white border-amber-400 shadow-md shadow-rose-500/30 scale-105'
-                  : 'bg-slate-950 text-slate-200 hover:text-white border-slate-800 hover:border-slate-700'
+                  ? 'bg-rose-600 text-white border-rose-600 shadow-md scale-105'
+                  : 'bg-slate-100 text-slate-700 hover:text-slate-900 border-slate-200 hover:bg-slate-200'
               }`}
             >
               <span>🔥 Tất cả trường TP.HCM</span>
@@ -281,10 +281,10 @@ export const UniversityLookupTool: React.FC = () => {
                 setSearchQuery('ĐHQG TP.HCM');
                 setSelectedLocation('all');
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all border ${
                 searchQuery === 'ĐHQG TP.HCM'
-                  ? 'bg-blue-600 text-white border-blue-400 shadow-md font-black'
-                  : 'bg-slate-950 text-slate-300 hover:text-white border-slate-800 hover:border-slate-700'
+                  ? 'bg-blue-600 text-white border-blue-600 shadow-md'
+                  : 'bg-slate-100 text-slate-700 hover:text-slate-900 border-slate-200 hover:bg-slate-200'
               }`}
             >
               <span>🏛️ Khối ĐHQG TP.HCM</span>
@@ -296,10 +296,10 @@ export const UniversityLookupTool: React.FC = () => {
                 setSelectedLocation('all');
                 setSelectedGroup('all');
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all border ${
                 searchQuery === 'IUH'
-                  ? 'bg-rose-600 text-white border-rose-400 shadow-md font-black'
-                  : 'bg-slate-950 text-slate-300 hover:text-white border-slate-800 hover:border-slate-700'
+                  ? 'bg-rose-600 text-white border-rose-600 shadow-md'
+                  : 'bg-slate-100 text-slate-700 hover:text-slate-900 border-slate-200 hover:bg-slate-200'
               }`}
             >
               <span>🏢 ĐH Công Nghiệp (IUH)</span>
@@ -310,10 +310,10 @@ export const UniversityLookupTool: React.FC = () => {
                 setSelectedGroup('Y Dược & Sinh học');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all border ${
                 selectedGroup === 'Y Dược & Sinh học'
-                  ? 'bg-purple-600 text-white border-purple-400 shadow-md font-black'
-                  : 'bg-slate-950 text-slate-300 hover:text-white border-slate-800 hover:border-slate-700'
+                  ? 'bg-purple-600 text-white border-purple-600 shadow-md'
+                  : 'bg-purple-50 text-purple-800 border-purple-200 hover:bg-purple-100'
               }`}
             >
               <span>⚕️ Khối Y Dược Sức Khỏe</span>
@@ -324,10 +324,10 @@ export const UniversityLookupTool: React.FC = () => {
                 setSelectedGroup('Kỹ thuật & Công nghệ');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all border ${
                 selectedGroup === 'Kỹ thuật & Công nghệ'
-                  ? 'bg-sky-600 text-white border-sky-400 shadow-md font-black'
-                  : 'bg-slate-950 text-slate-300 hover:text-white border-slate-800 hover:border-slate-700'
+                  ? 'bg-sky-600 text-white border-sky-600 shadow-md'
+                  : 'bg-sky-50 text-sky-800 border-sky-200 hover:bg-sky-100'
               }`}
             >
               <span>💻 Khối Kỹ Thuật Công Nghệ</span>
@@ -338,10 +338,10 @@ export const UniversityLookupTool: React.FC = () => {
                 setSelectedGroup('Kinh tế & Quản trị');
                 setSearchQuery('');
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all border ${
                 selectedGroup === 'Kinh tế & Quản trị'
-                  ? 'bg-amber-600 text-white border-amber-400 shadow-md font-black'
-                  : 'bg-slate-950 text-slate-300 hover:text-white border-slate-800 hover:border-slate-700'
+                  ? 'bg-amber-600 text-white border-amber-600 shadow-md'
+                  : 'bg-amber-50 text-amber-900 border-amber-200 hover:bg-amber-100'
               }`}
             >
               <span>📊 Khối Kinh Tế Quản Trị</span>
@@ -359,12 +359,12 @@ export const UniversityLookupTool: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Tìm theo tên trường, ngành hoặc mã (QSB, QSC, SGU, UEH...)..."
-                className="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-750 rounded-2xl text-xs font-bold text-white focus:border-rose-500 outline-none shadow-sm placeholder:text-slate-500"
+                className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-2xl text-xs font-bold text-slate-900 focus:border-rose-500 focus:bg-white outline-none shadow-sm placeholder:text-slate-400"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-3 text-slate-400 hover:text-white"
+                  className="absolute right-3 top-3 text-slate-400 hover:text-slate-600"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -373,13 +373,13 @@ export const UniversityLookupTool: React.FC = () => {
 
             {/* Sort Selector & Saved & Compare Buttons */}
             <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-end">
-              <div className="flex items-center gap-2 text-xs text-slate-300 font-bold">
-                <ArrowUpDown className="w-3.5 h-3.5 text-amber-400" />
+              <div className="flex items-center gap-2 text-xs text-slate-700 font-bold">
+                <ArrowUpDown className="w-3.5 h-3.5 text-rose-600" />
                 <span>Sắp xếp:</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="bg-slate-950 border border-slate-750 text-slate-100 rounded-xl text-xs font-extrabold px-3 py-2 outline-none focus:border-rose-500 cursor-pointer"
+                  className="bg-slate-50 border border-slate-300 text-slate-800 rounded-xl text-xs font-black px-3 py-2 outline-none focus:border-rose-600 cursor-pointer"
                 >
                   <option value="score2025-desc">Điểm 2025 (Cao xuống Thấp)</option>
                   <option value="score2025-asc">Điểm 2025 (Thấp lên Cao)</option>
@@ -388,27 +388,29 @@ export const UniversityLookupTool: React.FC = () => {
                 </select>
               </div>
 
-              {/* Compare Button */}
-              {compareIds.length > 0 && (
-                <button
-                  onClick={() => setIsCompareOpen(true)}
-                  className="px-3.5 py-2 rounded-xl text-xs font-extrabold bg-sky-500 text-slate-950 border border-sky-400 flex items-center gap-1.5 shadow-md hover:bg-sky-400 transition-all"
-                >
-                  <Layers className="w-3.5 h-3.5" />
-                  <span>So sánh ({compareIds.length}/3)</span>
-                </button>
-              )}
+              {/* Compare Button (Always Visible when items selected) */}
+              <button
+                onClick={() => setIsCompareOpen(true)}
+                className={`px-3.5 py-2 rounded-xl text-xs font-black border flex items-center gap-1.5 transition-all ${
+                  compareIds.length > 0
+                    ? 'bg-sky-600 text-white border-sky-600 shadow-md animate-pulse'
+                    : 'bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200'
+                }`}
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Bảng So Sánh ({compareIds.length}/3)</span>
+              </button>
 
               {/* Saved Wishlist Toggle */}
               <button
                 onClick={() => setShowSavedOnly(!showSavedOnly)}
-                className={`px-3.5 py-2 rounded-xl text-xs font-extrabold border transition-all flex items-center gap-1.5 ${
+                className={`px-3.5 py-2 rounded-xl text-xs font-black border transition-all flex items-center gap-1.5 ${
                   showSavedOnly
-                    ? 'bg-amber-400 text-slate-950 border-amber-300 font-black shadow-md'
-                    : 'bg-slate-950 border-slate-800 text-slate-300 hover:text-white'
+                    ? 'bg-amber-400 text-slate-900 border-amber-400 shadow-md'
+                    : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200'
                 }`}
               >
-                <Bookmark className={`w-3.5 h-3.5 ${showSavedOnly ? 'fill-slate-950' : ''}`} />
+                <Bookmark className={`w-3.5 h-3.5 ${showSavedOnly ? 'fill-slate-900' : ''}`} />
                 <span>Đã lưu ({savedIds.length})</span>
               </button>
             </div>
@@ -416,9 +418,9 @@ export const UniversityLookupTool: React.FC = () => {
           </div>
 
           {/* Row 2: Group Category Pills */}
-          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800">
-            <span className="text-xs font-bold text-slate-400 mr-1 flex items-center gap-1">
-              <Filter className="w-3.5 h-3.5 text-rose-500" />
+          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100">
+            <span className="text-xs font-bold text-slate-500 mr-1 flex items-center gap-1">
+              <Filter className="w-3.5 h-3.5 text-rose-600" />
               <span>Khối ngành:</span>
             </span>
             {groups.map(g => (
@@ -427,8 +429,8 @@ export const UniversityLookupTool: React.FC = () => {
                 onClick={() => setSelectedGroup(g.id)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   selectedGroup === g.id
-                    ? 'bg-rose-600 text-white shadow-md shadow-rose-600/30 font-black'
-                    : 'bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800'
+                    ? 'bg-rose-600 text-white shadow-md font-black'
+                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200'
                 }`}
               >
                 {g.label}
@@ -439,12 +441,12 @@ export const UniversityLookupTool: React.FC = () => {
           {/* Row 3: Location & Opportunity Filters */}
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="text-xs font-bold text-slate-400">Khu vực:</span>
+              <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+              <span className="text-xs font-bold text-slate-600">Khu vực:</span>
               <select
                 value={selectedLocation}
                 onChange={(e) => setSelectedLocation(e.target.value)}
-                className="bg-slate-950 border border-slate-750 text-slate-200 text-xs font-extrabold rounded-xl px-3 py-1.5 outline-none cursor-pointer"
+                className="bg-slate-50 border border-slate-300 text-slate-800 text-xs font-bold rounded-xl px-3 py-1.5 outline-none cursor-pointer"
               >
                 {locations.map(loc => (
                   <option key={loc.id} value={loc.id}>{loc.label}</option>
@@ -453,12 +455,12 @@ export const UniversityLookupTool: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-2">
-              <Award className="w-3.5 h-3.5 text-amber-400" />
-              <span className="text-xs font-bold text-slate-400">Mức cơ hội:</span>
+              <Award className="w-3.5 h-3.5 text-amber-600" />
+              <span className="text-xs font-bold text-slate-600">Mức cơ hội:</span>
               <select
                 value={selectedSafety}
                 onChange={(e) => setSelectedSafety(e.target.value)}
-                className="bg-slate-950 border border-slate-750 text-slate-200 text-xs font-extrabold rounded-xl px-3 py-1.5 outline-none cursor-pointer"
+                className="bg-slate-50 border border-slate-300 text-slate-800 text-xs font-bold rounded-xl px-3 py-1.5 outline-none cursor-pointer"
               >
                 {safetyFilters.map(sf => (
                   <option key={sf.id} value={sf.id}>{sf.label}</option>
@@ -470,23 +472,23 @@ export const UniversityLookupTool: React.FC = () => {
         </div>
 
         {/* Data Table */}
-        <div className="bg-slate-900/90 rounded-3xl border border-slate-800 shadow-2xl overflow-hidden backdrop-blur-md">
+        <div className="bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-950 border-b border-slate-800 text-[11px] font-black text-slate-400 uppercase tracking-wider">
+                <tr className="bg-slate-100 border-b border-slate-200 text-[11px] font-black text-slate-700 uppercase tracking-wider">
                   <th className="py-4 px-5">Mã & Trường Đại Học</th>
                   <th className="py-4 px-5">Ngành Đào Tạo & Ghi Chú</th>
                   <th className="py-4 px-4 text-center">2022</th>
                   <th className="py-4 px-4 text-center">2023</th>
-                  <th className="py-4 px-4 text-center text-sky-400">2024 (Thực tế)</th>
-                  <th className="py-4 px-4 text-center text-amber-300">2025 (Dự báo)</th>
+                  <th className="py-4 px-4 text-center text-sky-700">2024 (Thực tế)</th>
+                  <th className="py-4 px-4 text-center text-amber-700">2025 (Dự báo)</th>
                   <th className="py-4 px-4 text-center">Xu hướng</th>
                   <th className="py-4 px-5 text-center">Đánh giá cơ hội</th>
-                  <th className="py-4 px-5 text-center">Thao tác</th>
+                  <th className="py-4 px-5 text-center">Thao tác so sánh</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800 text-xs">
+              <tbody className="divide-y divide-slate-100 text-xs">
                 {filteredUnis.length > 0 ? (
                   filteredUnis.map((uni) => {
                     const isSaved = savedIds.includes(uni.id);
@@ -496,38 +498,38 @@ export const UniversityLookupTool: React.FC = () => {
                     const totalDiff4Years = Number((uni.score2025 - scoreOldest).toFixed(1));
 
                     let statusBadge = (
-                      <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-black px-3 py-1.5 rounded-xl text-[11px] inline-block shadow-sm">
+                      <span className="bg-emerald-50 text-emerald-800 border border-emerald-300 font-black px-3 py-1.5 rounded-xl text-[11px] inline-block shadow-sm">
                         🟢 An toàn (+{diff2025 > 0 ? diff2025.toFixed(0) : diff2025}đ)
                       </span>
                     );
                     if (diff2025 < -30) {
                       statusBadge = (
-                        <span className="bg-rose-500/20 text-rose-300 border border-rose-500/40 font-black px-3 py-1.5 rounded-xl text-[11px] inline-block shadow-sm">
+                        <span className="bg-rose-50 text-rose-800 border border-rose-300 font-black px-3 py-1.5 rounded-xl text-[11px] inline-block shadow-sm">
                           🔴 Thách thức ({diff2025.toFixed(0)}đ)
                         </span>
                       );
                     } else if (diff2025 <= 15) {
                       statusBadge = (
-                        <span className="bg-amber-500/20 text-amber-300 border border-amber-500/40 font-black px-3 py-1.5 rounded-xl text-[11px] inline-block shadow-sm">
+                        <span className="bg-amber-50 text-amber-900 border border-amber-300 font-black px-3 py-1.5 rounded-xl text-[11px] inline-block shadow-sm">
                           🟡 Cạnh tranh ({diff2025 >= 0 ? `+${diff2025.toFixed(0)}` : diff2025.toFixed(0)}đ)
                         </span>
                       );
                     }
 
                     return (
-                      <tr key={uni.id} className="hover:bg-slate-800/70 transition-colors">
+                      <tr key={uni.id} className={`transition-colors hover:bg-slate-50 ${isCompared ? 'bg-sky-50/50' : ''}`}>
                         
                         {/* School Name & Code */}
-                        <td className="py-4 px-5 font-bold text-white max-w-xs">
+                        <td className="py-4 px-5 font-bold text-slate-900 max-w-xs">
                           <div className="flex items-center gap-2">
-                            <span className="text-rose-400 font-mono font-black text-xs px-2 py-0.5 bg-rose-500/10 border border-rose-500/20 rounded-md">
+                            <span className="text-rose-600 font-mono font-black text-xs px-2 py-0.5 bg-rose-50 border border-rose-200 rounded-md">
                               {uni.code}
                             </span>
-                            <span className="text-[10px] text-slate-400 font-semibold">{uni.location}</span>
+                            <span className="text-[10px] text-slate-500 font-semibold">{uni.location}</span>
                           </div>
-                          <div className="font-black text-sm text-slate-100 mt-1 leading-snug">{uni.name}</div>
+                          <div className="font-black text-sm text-slate-900 mt-1 leading-snug">{uni.name}</div>
                           {uni.admissionMethod && (
-                            <div className="text-[10px] text-emerald-400 font-bold mt-1 inline-flex items-center gap-1">
+                            <div className="text-[10px] text-emerald-700 font-bold mt-1 inline-flex items-center gap-1">
                               <span>✓</span>
                               <span>{uni.admissionMethod}</span>
                             </div>
@@ -536,33 +538,33 @@ export const UniversityLookupTool: React.FC = () => {
 
                         {/* Major Name & Notes */}
                         <td className="py-4 px-5 max-w-sm">
-                          <div className="font-black text-xs text-amber-300 leading-snug">{uni.major}</div>
-                          <div className="text-[11px] text-slate-400 font-normal mt-1 leading-relaxed">{uni.notes}</div>
+                          <div className="font-black text-xs text-rose-600 leading-snug">{uni.major}</div>
+                          <div className="text-[11px] text-slate-500 font-normal mt-1 leading-relaxed">{uni.notes}</div>
                         </td>
 
                         {/* Benchmark Scores for 4 Years */}
-                        <td className="py-4 px-4 text-center font-mono font-bold text-slate-400">
+                        <td className="py-4 px-4 text-center font-mono font-bold text-slate-500">
                           {uni.score2022 ? uni.score2022 : '—'}
                         </td>
-                        <td className="py-4 px-4 text-center font-mono font-bold text-slate-300">
+                        <td className="py-4 px-4 text-center font-mono font-bold text-slate-600">
                           {uni.score2023}
                         </td>
-                        <td className="py-4 px-4 text-center font-mono font-extrabold text-sky-300 bg-sky-500/10 border border-sky-500/20 rounded-xl">
+                        <td className="py-4 px-4 text-center font-mono font-black text-sky-900 bg-sky-50 border border-sky-200 rounded-xl">
                           {uni.score2024}
                         </td>
-                        <td className="py-4 px-4 text-center font-mono font-black text-amber-300 text-sm bg-amber-500/15 border border-amber-500/30 rounded-xl shadow-inner">
+                        <td className="py-4 px-4 text-center font-mono font-black text-amber-900 text-sm bg-amber-50 border border-amber-300 rounded-xl shadow-sm">
                           {uni.score2025}
                         </td>
 
                         {/* Score Trend */}
                         <td className="py-4 px-4 text-center font-mono text-[11px]">
                           {totalDiff4Years > 0 ? (
-                            <span className="text-rose-400 font-bold flex items-center justify-center gap-0.5" title={`Tăng ${totalDiff4Years} điểm`}>
+                            <span className="text-rose-600 font-bold flex items-center justify-center gap-0.5" title={`Tăng ${totalDiff4Years} điểm`}>
                               <TrendingUp className="w-3.5 h-3.5" />
                               <span>+{totalDiff4Years}đ</span>
                             </span>
                           ) : totalDiff4Years < 0 ? (
-                            <span className="text-emerald-400 font-bold flex items-center justify-center gap-0.5" title={`Giảm ${Math.abs(totalDiff4Years)} điểm`}>
+                            <span className="text-emerald-600 font-bold flex items-center justify-center gap-0.5" title={`Giảm ${Math.abs(totalDiff4Years)} điểm`}>
                               <TrendingDown className="w-3.5 h-3.5" />
                               <span>{totalDiff4Years}đ</span>
                             </span>
@@ -582,30 +584,31 @@ export const UniversityLookupTool: React.FC = () => {
                         {/* Actions: Compare & Save */}
                         <td className="py-4 px-5 text-center">
                           <div className="flex items-center justify-center gap-2">
-                            {/* Compare Toggle */}
+                            {/* Compare Toggle Button */}
                             <button
                               onClick={() => toggleCompare(uni.id)}
-                              className={`p-2 rounded-xl border transition-all text-xs font-bold ${
+                              className={`px-3 py-1.5 rounded-xl border transition-all text-xs font-bold flex items-center gap-1 ${
                                 isCompared
-                                  ? 'bg-sky-500/30 border-sky-400 text-sky-300'
-                                  : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800'
+                                  ? 'bg-sky-600 text-white border-sky-600 shadow-sm font-black'
+                                  : 'bg-slate-100 border-slate-300 text-slate-700 hover:bg-slate-200'
                               }`}
                               title={isCompared ? 'Bỏ so sánh' : 'Thêm vào bảng so sánh'}
                             >
                               <Layers className="w-3.5 h-3.5" />
+                              <span>{isCompared ? '✓ Đang so sánh' : '+ So sánh'}</span>
                             </button>
 
-                            {/* Save Toggle */}
+                            {/* Save Toggle Button */}
                             <button
                               onClick={() => toggleSave(uni.id)}
                               className={`p-2 rounded-xl border transition-all ${
                                 isSaved
-                                  ? 'bg-amber-500/30 border-amber-400 text-amber-300'
-                                  : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800'
+                                  ? 'bg-amber-100 border-amber-300 text-amber-800'
+                                  : 'bg-slate-100 border-slate-300 text-slate-500 hover:text-slate-800 hover:bg-slate-200'
                               }`}
                               title={isSaved ? 'Đã lưu' : 'Lưu ngành này'}
                             >
-                              <Bookmark className={`w-3.5 h-3.5 ${isSaved ? 'fill-amber-400 text-amber-400' : ''}`} />
+                              <Bookmark className={`w-3.5 h-3.5 ${isSaved ? 'fill-amber-500 text-amber-500' : ''}`} />
                             </button>
                           </div>
                         </td>
@@ -615,8 +618,8 @@ export const UniversityLookupTool: React.FC = () => {
                   })
                 ) : (
                   <tr>
-                    <td colSpan={9} className="py-12 text-center text-slate-400 font-semibold space-y-2">
-                      <div className="text-base font-bold text-slate-300">Không tìm thấy trường/ngành phù hợp với bộ lọc</div>
+                    <td colSpan={9} className="py-12 text-center text-slate-500 font-semibold space-y-2">
+                      <div className="text-base font-bold text-slate-800">Không tìm thấy trường/ngành phù hợp với bộ lọc</div>
                       <p className="text-xs">Vui lòng thử xóa từ khóa tìm kiếm hoặc điều chỉnh lại bộ lọc mức cơ hội/khối ngành.</p>
                     </td>
                   </tr>
@@ -626,68 +629,105 @@ export const UniversityLookupTool: React.FC = () => {
           </div>
         </div>
 
-        {/* Side-by-Side Major Comparison Modal */}
+        {/* Sticky Comparison Bar at Bottom of Screen when items are selected */}
+        {compareIds.length > 0 && !isCompareOpen && (
+          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-900 text-white border border-slate-700 px-6 py-3.5 rounded-full shadow-2xl flex items-center gap-4 animate-bounce-short">
+            <div className="flex items-center gap-2 text-xs font-bold">
+              <Layers className="w-4 h-4 text-sky-400" />
+              <span>Đang so sánh <strong className="text-sky-300 text-sm font-mono font-black">{compareIds.length}/3</strong> ngành đã chọn</span>
+            </div>
+            <button
+              onClick={() => setIsCompareOpen(true)}
+              className="px-4 py-1.5 bg-sky-500 hover:bg-sky-400 text-slate-950 rounded-full font-black text-xs flex items-center gap-1.5 transition-all shadow-md"
+            >
+              <span>Xem Bảng So Sánh Trực Diện</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
+
+        {/* Side-by-Side Major Comparison Modal Panel */}
         {isCompareOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-            <div className="bg-slate-900 border border-slate-750 rounded-3xl p-6 max-w-4xl w-full max-h-[90vh] overflow-y-auto space-y-6 shadow-2xl">
-              <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-                <div className="flex items-center gap-2">
-                  <Layers className="w-5 h-5 text-sky-400" />
-                  <h3 className="text-lg font-black text-white">So Sánh Trực Diện Ngành Mục Tiêu</h3>
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fade-in">
+            <div className="bg-white border border-slate-300 rounded-3xl p-6 max-w-5xl w-full max-h-[90vh] overflow-y-auto space-y-6 shadow-2xl">
+              <div className="flex justify-between items-center border-b border-slate-200 pb-4">
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 bg-sky-100 rounded-xl text-sky-700">
+                    <Layers className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-black text-slate-900">Bảng So Sánh Trực Diện Ngành Mục Tiêu</h3>
+                    <p className="text-xs text-slate-500">So sánh chỉ số điểm chuẩn 4 năm, chênh lệch cơ hội & phương thức tuyển sinh</p>
+                  </div>
                 </div>
                 <button
                   onClick={() => setIsCompareOpen(false)}
-                  className="p-2 text-slate-400 hover:text-white rounded-xl bg-slate-800"
+                  className="p-2 text-slate-400 hover:text-slate-700 rounded-xl bg-slate-100"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Comparison Table */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* Comparison Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {compareItems.map(item => {
                   const diff = userScore - item.score2025;
                   return (
-                    <div key={item.id} className="bg-slate-950 rounded-2xl p-5 border border-slate-800 space-y-4">
-                      <div className="space-y-1">
-                        <span className="text-rose-400 font-mono text-xs font-black px-2 py-0.5 bg-rose-500/10 border border-rose-500/20 rounded">
-                          {item.code}
-                        </span>
-                        <h4 className="font-black text-sm text-white">{item.name}</h4>
-                        <div className="text-xs text-amber-300 font-bold">{item.major}</div>
-                      </div>
+                    <div key={item.id} className="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-4 shadow-sm flex flex-col justify-between">
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-start">
+                          <span className="text-rose-600 font-mono text-xs font-black px-2 py-0.5 bg-rose-50 border border-rose-200 rounded">
+                            {item.code}
+                          </span>
+                          <span className="text-[10px] text-slate-500 font-bold">{item.location}</span>
+                        </div>
+                        <div>
+                          <h4 className="font-black text-sm text-slate-900 leading-snug">{item.name}</h4>
+                          <div className="text-xs text-rose-600 font-black mt-0.5">{item.major}</div>
+                        </div>
 
-                      <div className="space-y-2 border-t border-slate-800 pt-3 text-xs">
-                        <div className="flex justify-between text-slate-300">
-                          <span>Điểm chuẩn 2024 (Thực tế):</span>
-                          <strong className="text-sky-300 font-mono font-bold">{item.score2024}</strong>
+                        <div className="space-y-2 border-t border-b border-slate-200 py-3 text-xs">
+                          <div className="flex justify-between text-slate-700">
+                            <span>Điểm chuẩn 2024 (Thực tế):</span>
+                            <strong className="text-sky-700 font-mono font-bold">{item.score2024}</strong>
+                          </div>
+                          <div className="flex justify-between text-slate-700">
+                            <span>Điểm dự báo 2025:</span>
+                            <strong className="text-amber-800 font-mono font-black">{item.score2025}</strong>
+                          </div>
+                          <div className="flex justify-between text-slate-700">
+                            <span>Chênh lệch so với điểm bạn ({userScore}đ):</span>
+                            <strong className={`font-mono font-black ${diff >= 0 ? 'text-emerald-700' : 'text-rose-600'}`}>
+                              {diff >= 0 ? `+${diff.toFixed(0)}đ (Đỗ)` : `${diff.toFixed(0)}đ (Cần tăng)`}
+                            </strong>
+                          </div>
                         </div>
-                        <div className="flex justify-between text-slate-300">
-                          <span>Điểm dự báo 2025:</span>
-                          <strong className="text-amber-300 font-mono font-black">{item.score2025}</strong>
-                        </div>
-                        <div className="flex justify-between text-slate-300">
-                          <span>Khoảng cách với điểm bạn:</span>
-                          <strong className={`font-mono font-bold ${diff >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-                            {diff >= 0 ? `+${diff.toFixed(0)}đ` : `${diff.toFixed(0)}đ`}
-                          </strong>
-                        </div>
-                      </div>
 
-                      <div className="bg-slate-900 p-3 rounded-xl border border-slate-800 text-[11px] text-slate-400 space-y-1">
-                        <div className="font-bold text-slate-300">Ghi chú & Phương thức:</div>
-                        <div>{item.notes}</div>
+                        <div className="bg-white p-3 rounded-xl border border-slate-200 text-[11px] text-slate-600 space-y-1">
+                          <div className="font-bold text-slate-800">Phương thức & Ghi chú:</div>
+                          <div className="text-emerald-700 font-bold">✓ {item.admissionMethod}</div>
+                          <div className="leading-relaxed">{item.notes}</div>
+                        </div>
                       </div>
 
                       <button
                         onClick={() => toggleCompare(item.id)}
-                        className="w-full py-2 bg-slate-800 hover:bg-rose-500/20 hover:text-rose-300 text-slate-300 text-xs font-bold rounded-xl border border-slate-700 transition-all"
+                        className="w-full py-2 mt-4 bg-slate-200 hover:bg-rose-100 hover:text-rose-700 text-slate-700 text-xs font-bold rounded-xl transition-all"
                       >
                         Bỏ khỏi bảng so sánh
                       </button>
                     </div>
                   );
                 })}
+              </div>
+
+              <div className="flex justify-end pt-2">
+                <button
+                  onClick={() => setIsCompareOpen(false)}
+                  className="px-6 py-2.5 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition-all"
+                >
+                  Đóng Bảng So Sánh
+                </button>
               </div>
 
             </div>
