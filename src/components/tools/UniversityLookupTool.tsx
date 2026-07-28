@@ -102,7 +102,7 @@ export const UniversityLookupTool: React.FC = () => {
             Tra Cứu Điểm Chuẩn Trường & Ngành V-ACT 2026
           </h1>
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
-            Hệ thống tổng hợp điểm chuẩn thi ĐGNL ĐHQG TP.HCM trong <strong className="text-amber-300">4 năm liên tiếp (2022, 2023, 2024, 2025)</strong> của 40+ trường Đại học hàng đầu.
+            Hệ thống tổng hợp điểm chuẩn thi ĐGNL ĐHQG TP.HCM trong <strong className="text-amber-300">4 năm liên tiếp (2022, 2023, 2024, 2025)</strong> của tất cả 34+ trường Đại học (70+ ngành đào tạo) tại TP. Hồ Chí Minh.
           </p>
         </div>
 
