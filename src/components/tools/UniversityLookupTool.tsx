@@ -235,6 +235,21 @@ export const UniversityLookupTool: React.FC = () => {
 
             <button
               onClick={() => {
+                setSearchQuery('IUH');
+                setSelectedLocation('all');
+                setSelectedGroup('all');
+              }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                searchQuery === 'IUH'
+                  ? 'bg-rose-600 text-white shadow-sm font-black'
+                  : 'bg-slate-900 text-slate-300 hover:text-white border border-slate-700'
+              }`}
+            >
+              <span>🏢 ĐH Công Nghiệp (IUH)</span>
+            </button>
+
+            <button
+              onClick={() => {
                 setSelectedGroup('Y Dược & Sinh học');
                 setSearchQuery('');
               }}

@@ -433,6 +433,92 @@ export const UNIVERSITIES_DATA: UniversityCutoff[] = [
     admissionMethod: 'Xét tuyển quy đổi V-ACT'
   },
 
+  // --- ĐẠI HỌC CÔNG NGHIỆP TP.HCM (IUH) ---
+  {
+    id: 'iuh-it',
+    code: 'IUH-01',
+    name: 'Đại học Công nghiệp TP.HCM (IUH)',
+    major: 'Công nghệ Thông tin & Khoa học Máy tính',
+    group: 'Kỹ thuật & Công nghệ',
+    score2022: 750,
+    score2023: 770,
+    score2024: 795,
+    score2025: 810,
+    notes: 'Trường đại học công lập quy mô lớn tại Gò Vấp, TP.HCM với chỉ tiêu V-ACT hấp dẫn.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+  {
+    id: 'iuh-auto',
+    code: 'IUH-02',
+    name: 'Đại học Công nghiệp TP.HCM (IUH)',
+    major: 'Công nghệ Kỹ thuật Ô tô & Cơ điện tử',
+    group: 'Kỹ thuật & Công nghệ',
+    score2022: 730,
+    score2023: 750,
+    score2024: 770,
+    score2025: 785,
+    notes: 'Thế mạnh đào tạo kỹ thuật thực hành hàng đầu TP.HCM.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+  {
+    id: 'iuh-ba',
+    code: 'IUH-03',
+    name: 'Đại học Công nghiệp TP.HCM (IUH)',
+    major: 'Quản trị Kinh doanh & Kinh doanh Quốc tế',
+    group: 'Kinh tế & Quản trị',
+    score2022: 720,
+    score2023: 740,
+    score2024: 760,
+    score2025: 775,
+    notes: 'Được kiểm định chất lượng quốc tế AUN-QA.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+  {
+    id: 'iuh-food',
+    code: 'IUH-04',
+    name: 'Đại học Công nghiệp TP.HCM (IUH)',
+    major: 'Công nghệ Thực phẩm & Kỹ thuật Hóa học',
+    group: 'Kỹ thuật & Công nghệ',
+    score2022: 700,
+    score2023: 720,
+    score2024: 740,
+    score2025: 755,
+    notes: 'Hệ thống phòng thí nghiệm hiện đại đạt chuẩn Bộ Giáo dục.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+  {
+    id: 'iuh-fin',
+    code: 'IUH-05',
+    name: 'Đại học Công nghiệp TP.HCM (IUH)',
+    major: 'Tài chính - Ngân hàng & Kế toán',
+    group: 'Kinh tế & Quản trị',
+    score2022: 710,
+    score2023: 730,
+    score2024: 750,
+    score2025: 765,
+    notes: 'Chương trình ứng dụng thực tế với ngân hàng đối tác.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+  {
+    id: 'iuh-eng',
+    code: 'IUH-06',
+    name: 'Đại học Công nghiệp TP.HCM (IUH)',
+    major: 'Ngôn ngữ Anh & Luật Kinh tế',
+    group: 'Xã hội & Nhân văn',
+    score2022: 690,
+    score2023: 710,
+    score2024: 730,
+    score2025: 745,
+    notes: 'Yêu cầu thí sinh có điểm Tiếng Anh V-ACT khá trở lên.',
+    location: 'TP. Hồ Chí Minh',
+    admissionMethod: 'Xét tuyển V-ACT trực tiếp'
+  },
+
   // 10. ĐẠI HỌC SƯ PHẠM KỸ THUẬT TP.HCM (HCMUTE / SPK)
   {
     id: 'hcmute-it',
