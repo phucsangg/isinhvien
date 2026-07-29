@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { MessageSquare, ThumbsUp, MessageCircle, Send, CheckCircle2, User, Search, Filter, Sparkles, Award } from 'lucide-react';
+import { MessageSquare, ThumbsUp, MessageCircle, Send, CheckCircle2, User, Search, Filter, Sparkles, Award, Plus, X, ShieldCheck } from 'lucide-react';
+import { Modal } from '../common/Modal';
 
 interface DiscussionItem {
   id: string;
@@ -11,6 +12,7 @@ interface DiscussionItem {
   questionContent: string;
   timestamp: string;
   upvotes: number;
+  isUpvoted?: boolean;
   answersCount: number;
   isAnsweredByTeacher: boolean;
   teacherAnswer?: {
@@ -24,10 +26,13 @@ interface DiscussionItem {
 export const DiscussionForumTab: React.FC = () => {
   const [activeSubject, setActiveSubject] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [teacherOnly, setTeacherOnly] = useState<boolean>(false);
+  
+  // Ask Question Modal State
+  const [isAsking, setIsAsking] = useState<boolean>(false);
   const [newTitle, setNewTitle] = useState<string>('');
   const [newContent, setNewContent] = useState<string>('');
   const [selectedSubject, setSelectedSubject] = useState<string>('Logic');
-  const [isAsking, setIsAsking] = useState<boolean>(false);
 
   const [discussions, setDiscussions] = useState<DiscussionItem[]>([
     {
@@ -78,25 +83,46 @@ export const DiscussionForumTab: React.FC = () => {
       questionContent: 'Cho em xin công thức chuẩn để bấm máy tính Casio bài phân tích tốc độ tăng trưởng số liệu với ạ.',
       timestamp: '4 giờ trước',
       upvotes: 9,
-      answersCount: 0,
-      isAnsweredByTeacher: false
+      answersCount: 1,
+      isAnsweredByTeacher: true,
+      teacherAnswer: {
+        teacherName: 'Thạc sĩ Bùi Văn Công',
+        teacherAvatar: '/images/teachers/thay_bui_van_cong.png',
+        answerContent: 'Tốc độ tăng trưởng liên hoàn = (Giá trị năm T / Giá trị năm T-1 - 1) x 100%. Em bấm phím Ans/Prev trên máy Casio 580 là ra kết quả ngay.',
+        timestamp: '3 giờ trước'
+      }
     }
   ]);
 
-  const handlePostQuestion = (e: React.FormEvent) => {
+  const handleToggleUpvote = (id: string) => {
+    setDiscussions(prev => prev.map(d => {
+      if (d.id === id) {
+        const nextUpvoted = !d.isUpvoted;
+        return {
+          ...d,
+          isUpvoted: nextUpvoted,
+          upvotes: nextUpvoted ? d.upvotes + 1 : d.upvotes - 1
+        };
+      }
+      return d;
+    }));
+  };
+
+  const handleAddQuestion = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTitle.trim() || !newContent.trim()) return;
 
     const newItem: DiscussionItem = {
       id: `d-${Date.now()}`,
-      author: 'Học sinh Sangsang (Bạn)',
+      author: 'Bạn (Học sinh Sangsang)',
       authorRole: 'student',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+      avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80',
       subject: selectedSubject,
       questionTitle: newTitle,
       questionContent: newContent,
       timestamp: 'Vừa xong',
       upvotes: 1,
+      isUpvoted: true,
       answersCount: 0,
       isAnsweredByTeacher: false
     };
@@ -107,194 +133,254 @@ export const DiscussionForumTab: React.FC = () => {
     setIsAsking(false);
   };
 
-  const handleUpvote = (id: string) => {
-    setDiscussions(prev => prev.map(d => d.id === id ? { ...d, upvotes: d.upvotes + 1 } : d));
-  };
+  const filteredDiscussions = discussions.filter(item => {
+    const q = searchQuery.toLowerCase().trim();
+    const matchesSearch = !q || 
+      item.questionTitle.toLowerCase().includes(q) || 
+      item.questionContent.toLowerCase().includes(q);
 
-  const filteredDiscussions = discussions.filter(d => {
-    const matchSubject = activeSubject === 'all' || d.subject === activeSubject;
-    const matchSearch = d.questionTitle.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                        d.questionContent.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchSubject && matchSearch;
+    const matchesSubject = activeSubject === 'all' || item.subject === activeSubject;
+    const matchesTeacher = !teacherOnly || item.isAnsweredByTeacher;
+
+    return matchesSearch && matchesSubject && matchesTeacher;
   });
 
   return (
-    <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
-      
-      {/* Header & Controls */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
-        <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">
-            Cộng đồng Hỏi Đáp Sangsang 24/7
-          </span>
-          <h2 className="text-xl sm:text-2xl font-black text-slate-900 mt-2 flex items-center gap-2">
-            <MessageSquare className="w-6 h-6 text-rose-500" />
-            <span>Diễn Đàn Hỏi Đáp Cùng Thầy Bùi Văn Công & Trợ Giảng</span>
-          </h2>
-          <p className="text-xs text-slate-500 mt-1">Nơi giải đáp 100% thắc mắc tư duy bài tập V-ACT trong vòng 15 phút</p>
+    <div className="py-8 bg-slate-50 min-h-screen text-slate-900 font-sans selection:bg-rose-500 selection:text-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        
+        {/* Header Banner */}
+        <div className="bg-gradient-to-r from-slate-900 via-rose-950 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-rose-300 bg-rose-500/20 px-3 py-1 rounded-full border border-rose-500/30">
+              <MessageSquare className="w-4 h-4 text-amber-400" />
+              <span>Diễn Đàn Hỏi Đáp V-ACT 24/7</span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-black text-white">
+              Hỏi Đáp Trực Tiếp Với Thầy Cô & Thủ Khoa
+            </h1>
+            <p className="text-xs sm:text-sm text-slate-300">
+              Đặt câu hỏi bài tập khó, thắc mắc đáp án hoặc xin mẹo bấm máy tính Casio. Đội ngũ Thạc sĩ Bùi Văn Công giải đáp trực tiếp!
+            </p>
+          </div>
+
+          <button
+            onClick={() => setIsAsking(true)}
+            className="px-6 py-3.5 bg-rose-600 hover:bg-rose-700 text-white rounded-2xl text-xs font-black shadow-lg shadow-rose-600/30 flex items-center gap-2 transition-all shrink-0"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Đặt Câu Hỏi Mới</span>
+          </button>
         </div>
 
-        <button
-          onClick={() => setIsAsking(!isAsking)}
-          className="px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white font-extrabold text-xs rounded-xl shadow-md transition-colors flex items-center gap-2 shrink-0"
-        >
-          <Sparkles className="w-4 h-4 text-amber-200" />
-          <span>{isAsking ? 'Đóng khung đặt câu hỏi' : 'Đặt câu hỏi mới'}</span>
-        </button>
+        {/* Filter Controls Bar */}
+        <div className="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+          
+          {/* Search Input */}
+          <div className="relative w-full md:w-80">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Tìm câu hỏi theo chủ đề, từ khóa..."
+              className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-300 rounded-2xl text-xs font-bold text-slate-900 focus:border-rose-500 focus:bg-white outline-none shadow-sm placeholder:text-slate-400"
+            />
+          </div>
+
+          {/* Subject Pills */}
+          <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
+            {[
+              { id: 'all', label: 'Tất cả' },
+              { id: 'Logic', label: '🧠 Logic' },
+              { id: 'Số liệu', label: '📊 Số liệu' },
+              { id: 'Tiếng Việt', label: '📖 Tiếng Việt' },
+              { id: 'Sinh học', label: '🧬 Sinh học' }
+            ].map(sub => (
+              <button
+                key={sub.id}
+                onClick={() => setActiveSubject(sub.id)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all ${
+                  activeSubject === sub.id
+                    ? 'bg-rose-600 text-white shadow-sm'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+                }`}
+              >
+                {sub.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Teacher Answered Filter Toggle */}
+          <button
+            onClick={() => setTeacherOnly(!teacherOnly)}
+            className={`px-3.5 py-2 rounded-xl text-xs font-black border transition-all flex items-center gap-1.5 ${
+              teacherOnly
+                ? 'bg-emerald-100 text-emerald-800 border-emerald-300 shadow-sm'
+                : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200'
+            }`}
+          >
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+            <span>Có lời giải Thầy Cô</span>
+          </button>
+
+        </div>
+
+        {/* Discussions List */}
+        <div className="space-y-4">
+          {filteredDiscussions.length > 0 ? (
+            filteredDiscussions.map((item) => (
+              <div key={item.id} className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4 hover:border-slate-300 transition-all">
+                
+                {/* Author & Subject Badge */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <img src={item.avatar} alt={item.author} className="w-9 h-9 rounded-full object-cover border border-slate-200" />
+                    <div>
+                      <div className="text-xs font-black text-slate-900">{item.author}</div>
+                      <div className="text-[10px] text-slate-500 font-medium">{item.timestamp}</div>
+                    </div>
+                  </div>
+
+                  <span className="text-[11px] font-black uppercase text-rose-600 bg-rose-50 border border-rose-200 px-2.5 py-0.5 rounded-lg font-mono">
+                    {item.subject}
+                  </span>
+                </div>
+
+                {/* Question Title & Content */}
+                <div className="space-y-1.5">
+                  <h3 className="text-base font-black text-slate-900 leading-snug">{item.questionTitle}</h3>
+                  <p className="text-xs text-slate-600 font-medium leading-relaxed">{item.questionContent}</p>
+                </div>
+
+                {/* Teacher Official Answer Box */}
+                {item.teacherAnswer && (
+                  <div className="bg-slate-900 text-white rounded-2xl p-4 border border-slate-800 space-y-2 shadow-inner">
+                    <div className="flex items-center gap-2 text-xs font-black text-emerald-400">
+                      <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                      <span>{item.teacherAnswer.teacherName} (Giáo viên Sangsang)</span>
+                      <span className="text-[10px] text-slate-400 font-normal">({item.teacherAnswer.timestamp})</span>
+                    </div>
+                    <p className="text-xs text-slate-200 font-medium leading-relaxed pl-6">
+                      "{item.teacherAnswer.answerContent}"
+                    </p>
+                  </div>
+                )}
+
+                {/* Actions Footer */}
+                <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => handleToggleUpvote(item.id)}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border transition-all font-bold ${
+                        item.isUpvoted
+                          ? 'bg-rose-50 text-rose-600 border-rose-200 font-black'
+                          : 'bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200'
+                      }`}
+                    >
+                      <ThumbsUp className={`w-3.5 h-3.5 ${item.isUpvoted ? 'fill-rose-600 text-rose-600' : ''}`} />
+                      <span>{item.upvotes} Hữu ích</span>
+                    </button>
+
+                    <span className="text-slate-500 font-medium flex items-center gap-1">
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      <span>{item.answersCount} Phản hồi</span>
+                    </span>
+                  </div>
+
+                  {item.isAnsweredByTeacher && (
+                    <span className="text-[11px] font-black text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-md flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Đã giải đáp</span>
+                    </span>
+                  )}
+                </div>
+
+              </div>
+            ))
+          ) : (
+            <div className="bg-white rounded-3xl p-12 text-center text-slate-500 space-y-2 border border-slate-200">
+              <div className="text-base font-bold text-slate-800">Không tìm thấy câu hỏi phù hợp</div>
+              <p className="text-xs">Hãy thử đổi từ khóa tìm kiếm hoặc bấm nút đặt câu hỏi mới!</p>
+            </div>
+          )}
+        </div>
+
       </div>
 
-      {/* Post Question Form */}
+      {/* ASK QUESTION MODAL */}
       {isAsking && (
-        <form onSubmit={handlePostQuestion} className="p-5 bg-rose-50/50 rounded-2xl border border-rose-200 space-y-4 animate-fadeIn">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div className="sm:col-span-2">
-              <label className="block text-xs font-bold text-slate-700 mb-1">Tiêu đề câu hỏi *</label>
+        <Modal
+          isOpen={isAsking}
+          onClose={() => setIsAsking(false)}
+          title="Đặt Câu Hỏi Cho Giáo Viên & Thủ Khoa V-ACT"
+          maxWidth="max-w-lg"
+        >
+          <form onSubmit={handleAddQuestion} className="space-y-4 py-2">
+            <div>
+              <label className="block text-xs font-black uppercase tracking-wider text-slate-700 mb-1">
+                Môn học / Chuyên đề:
+              </label>
+              <select
+                value={selectedSubject}
+                onChange={(e) => setSelectedSubject(e.target.value)}
+                className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold text-slate-900 outline-none focus:border-rose-500"
+              >
+                <option value="Logic">🧠 Logic & Suy luận Mệnh đề</option>
+                <option value="Số liệu">📊 Phân tích Số liệu / Biểu đồ</option>
+                <option value="Tiếng Việt">📖 Tiếng Việt & Đọc hiểu</option>
+                <option value="Sinh học">🧬 Sinh học & Khoa học</option>
+                <option value="Toán học">📐 Toán học ứng dụng</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-black uppercase tracking-wider text-slate-700 mb-1">
+                Tiêu đề câu hỏi:
+              </label>
               <input
                 type="text"
-                required
                 value={newTitle}
                 onChange={(e) => setNewTitle(e.target.value)}
-                placeholder="VD: Mẹo giải nhanh câu suy luận mệnh đề 4 đối tượng?"
-                className="w-full p-2.5 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-rose-500 outline-none"
+                placeholder="VD: Cách giải nhanh dạng bài biểu đồ cột chồng 2026..."
+                className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold text-slate-900 outline-none focus:border-rose-500"
+                required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Phân môn *</label>
-              <select
-                value={selectedSubject}
-                onChange={(e) => setSelectedSubject(e.target.value)}
-                className="w-full p-2.5 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-rose-500 outline-none"
-              >
-                <option value="Logic">Tư duy Logic</option>
-                <option value="Toán">Toán học V-ACT</option>
-                <option value="Số liệu">Phân tích số liệu</option>
-                <option value="Vật lý">Vật lý 12</option>
-                <option value="Hóa học">Hóa học 12</option>
-                <option value="Sinh học">Sinh học 12</option>
-                <option value="Lịch sử">Lịch sử V-ACT</option>
-              </select>
+              <label className="block text-xs font-black uppercase tracking-wider text-slate-700 mb-1">
+                Chi tiết thắc mắc:
+              </label>
+              <textarea
+                value={newContent}
+                onChange={(e) => setNewContent(e.target.value)}
+                placeholder="Mô tả chi tiết câu hỏi hoặc bước bị vướng..."
+                className="w-full h-32 p-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium text-slate-900 outline-none focus:border-rose-500 resize-none"
+                required
+              />
             </div>
-          </div>
 
-          <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Nội dung chi tiết thắc mắc *</label>
-            <textarea
-              required
-              rows={3}
-              value={newContent}
-              onChange={(e) => setNewContent(e.target.value)}
-              placeholder="Mô tả chi tiết câu hỏi hoặc chụp đề bài để nhận trợ giúp từ Thầy Cô..."
-              className="w-full p-3 bg-white border border-slate-200 rounded-xl text-xs font-medium text-slate-900 focus:ring-2 focus:ring-rose-500 outline-none"
-            />
-          </div>
-
-          <div className="flex justify-end gap-2">
-            <button
-              type="button"
-              onClick={() => setIsAsking(false)}
-              className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold rounded-xl transition-colors"
-            >
-              Hủy
-            </button>
-            <button
-              type="submit"
-              className="px-5 py-2 bg-rose-500 hover:bg-rose-600 text-white text-xs font-extrabold rounded-xl shadow transition-colors flex items-center gap-1.5"
-            >
-              <Send className="w-3.5 h-3.5" />
-              <span>Gửi câu hỏi tới Thầy Bùi Văn Công</span>
-            </button>
-          </div>
-        </form>
-      )}
-
-      {/* Filter Tabs & Search Bar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
-          {['all', 'Logic', 'Toán', 'Số liệu', 'Vật lý', 'Hóa học', 'Sinh học'].map((subj) => (
-            <button
-              key={subj}
-              onClick={() => setActiveSubject(subj)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
-                activeSubject === subj
-                  ? 'bg-slate-900 text-white shadow-sm'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              {subj === 'all' ? 'Tất cả chủ đề' : subj}
-            </button>
-          ))}
-        </div>
-
-        <div className="relative w-full sm:w-64">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Tìm thảo luận..."
-            className="w-full pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 outline-none focus:ring-2 focus:ring-rose-500"
-          />
-        </div>
-      </div>
-
-      {/* Questions List */}
-      <div className="space-y-4">
-        {filteredDiscussions.map((item) => (
-          <div key={item.id} className="p-5 rounded-2xl border border-slate-200 bg-white hover:border-rose-200 shadow-sm transition-all space-y-3">
-            
-            {/* User Meta */}
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <img src={item.avatar} alt={item.author} className="w-9 h-9 rounded-full object-cover border border-slate-200" />
-                <div>
-                  <div className="text-xs font-bold text-slate-900">{item.author}</div>
-                  <div className="text-[10px] text-slate-500">{item.timestamp} • <span className="font-semibold text-rose-600">{item.subject}</span></div>
-                </div>
-              </div>
+            <div className="flex gap-2 pt-2">
+              <button
+                type="button"
+                onClick={() => setIsAsking(false)}
+                className="w-1/3 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition-all"
+              >
+                Hủy
+              </button>
 
               <button
-                onClick={() => handleUpvote(item.id)}
-                className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-xs font-bold text-slate-600 transition-colors"
+                type="submit"
+                className="w-2/3 py-3 bg-rose-600 hover:bg-rose-700 text-white font-black text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5"
               >
-                <ThumbsUp className="w-3.5 h-3.5" />
-                <span>{item.upvotes}</span>
+                <Send className="w-4 h-4" />
+                <span>Gửi câu hỏi ngay</span>
               </button>
             </div>
-
-            {/* Question Body */}
-            <div>
-              <h3 className="text-sm font-bold text-slate-900">{item.questionTitle}</h3>
-              <p className="text-xs text-slate-600 mt-1 leading-relaxed">{item.questionContent}</p>
-            </div>
-
-            {/* Verified Teacher Answer Block (If answered) */}
-            {item.isAnsweredByTeacher && item.teacherAnswer && (
-              <div className="p-4 bg-emerald-50/70 border border-emerald-200/80 rounded-2xl space-y-2 mt-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <img src={item.teacherAnswer.teacherAvatar} alt={item.teacherAnswer.teacherName} className="w-7 h-7 rounded-full object-cover border border-emerald-400" />
-                    <div>
-                      <div className="text-xs font-extrabold text-emerald-900 flex items-center gap-1">
-                        <span>{item.teacherAnswer.teacherName}</span>
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 fill-emerald-100" />
-                      </div>
-                      <div className="text-[10px] text-emerald-700 font-medium">Giải đáp chính thức từ Sangsang • {item.teacherAnswer.timestamp}</div>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-bold text-emerald-800 bg-emerald-200/60 px-2 py-0.5 rounded-full">
-                    Đã duyệt đáp án
-                  </span>
-                </div>
-                <p className="text-xs text-emerald-950 font-medium leading-relaxed pl-9">
-                  {item.teacherAnswer.answerContent}
-                </p>
-              </div>
-            )}
-
-          </div>
-        ))}
-      </div>
+          </form>
+        </Modal>
+      )}
 
     </div>
   );
