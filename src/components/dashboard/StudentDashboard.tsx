@@ -1,13 +1,28 @@
 import React, { useState } from 'react';
 import { INITIAL_DAILY_TASKS, INITIAL_SKILL_SCORES } from '../../data/mock-student-data';
 import { DailyTask } from '../../types';
-import { Calendar, Target, Flame, BookOpen, RotateCcw, TrendingUp, CheckCircle2, PlayCircle, Award, ArrowRight, ChevronRight, QrCode, Download, ShieldCheck, Sparkles, Lock, AlertCircle, Clock } from 'lucide-react';
+import { 
+  Calendar, Target, Flame, BookOpen, RotateCcw, TrendingUp, CheckCircle2, 
+  PlayCircle, Award, ArrowRight, ChevronRight, QrCode, Download, ShieldCheck, 
+  Sparkles, Lock, AlertCircle, Clock, Zap, BarChart2, CheckCircle, RefreshCw, X, Lightbulb
+} from 'lucide-react';
 import { Modal } from '../common/Modal';
 import { TaskPracticeModal } from './TaskPracticeModal';
 import { InteractiveVideoPlayerModal } from '../learn/InteractiveVideoPlayerModal';
 
 interface StudentDashboardProps {
   setActiveTab: (tab: string) => void;
+}
+
+interface BadgeItem {
+  id: string;
+  title: string;
+  icon: string;
+  desc: string;
+  unlocked: boolean;
+  progress: number; // 0 - 100
+  requirement: string;
+  rewardXp: number;
 }
 
 export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab }) => {
@@ -20,10 +35,88 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
+  // Badge Modal State
+  const [selectedBadge, setSelectedBadge] = useState<BadgeItem | null>(null);
+
   // Business Rule: Certificate is ONLY for students who are LOGGED IN and HAVE COMPLETED A FULL 120-QUESTION MOCK EXAM
   const [hasCompletedFullExam, setHasCompletedFullExam] = useState<boolean>(false);
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
   const [showLockAlert, setShowLockAlert] = useState(false);
+
+  // Badges Dataset
+  const badges: BadgeItem[] = [
+    { 
+      id: 'b1', 
+      title: 'Học giả Kiên trì', 
+      icon: '🔥', 
+      desc: 'Chuỗi 7 ngày học liên tiếp', 
+      unlocked: true,
+      progress: 100,
+      requirement: 'Đăng nhập và luyện tập ít nhất 15 phút mỗi ngày trong 7 ngày liên tục.',
+      rewardXp: 100
+    },
+    { 
+      id: 'b2', 
+      title: 'Chiến thần Logic', 
+      icon: '⚡', 
+      desc: 'Đạt 80%+ bài suy luận mệnh đề', 
+      unlocked: true,
+      progress: 100,
+      requirement: 'Trả lời đúng 8/10 câu hỏi dạng Ma trận Mệnh đề và Suy luận Logic.',
+      rewardXp: 150
+    },
+    { 
+      id: 'b3', 
+      title: 'Bậc thầy Số liệu', 
+      icon: '📊', 
+      desc: 'Giải 5 bài biểu đồ không sai', 
+      unlocked: true,
+      progress: 100,
+      requirement: 'Phân tích chính xác 5 bộ số liệu biểu đồ cột & đường liên tiếp.',
+      rewardXp: 120
+    },
+    { 
+      id: 'b4', 
+      title: 'Chuyên gia Đèn dầu', 
+      icon: '🏆', 
+      desc: 'Hoàn thành 50+ bài tập nâng cao', 
+      unlocked: false,
+      progress: 65,
+      requirement: 'Giải thành công 50 bài tập mức độ Vận dụng Cao trong Ngân hàng đề V-ACT.',
+      rewardXp: 300
+    }
+  ];
+
+  // Weak spot topics dataset
+  const weakSpots = [
+    { 
+      id: 'ws-1', 
+      topic: 'Suy luận Mệnh đề & Ma trận Logic', 
+      part: 'Tư duy Logic', 
+      accuracy: 45, 
+      status: 'Cần khắc phục gấp', 
+      recommendedQuestions: 10,
+      taskId: 'task-2'
+    },
+    { 
+      id: 'ws-2', 
+      topic: 'Đọc hiểu Văn bản Nghệ thuật Tiếng Việt', 
+      part: 'Tiếng Việt', 
+      accuracy: 58, 
+      status: 'Cần cải thiện', 
+      recommendedQuestions: 8,
+      taskId: 'task-1'
+    },
+    { 
+      id: 'ws-3', 
+      topic: 'Phân tích Đồ thị Vật Lý - Hóa Học', 
+      part: 'Suy luận Khoa Học', 
+      accuracy: 62, 
+      status: 'Đang tiến bộ', 
+      recommendedQuestions: 12,
+      taskId: 'task-5'
+    }
+  ];
 
   const toggleTask = (id: string) => {
     setTasks(prev => prev.map(t => {
@@ -81,15 +174,8 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
   const completedCount = tasks.filter(t => t.completed).length;
   const progressPercent = Math.round((completedCount / tasks.length) * 100);
 
-  const badges = [
-    { title: 'Học giả Kiên trì', icon: '🔥', desc: 'Chuỗi 7 ngày học liên tiếp', unlocked: true },
-    { title: 'Chiến thần Logic', icon: '⚡', desc: 'Đạt 80%+ bài suy luận mệnh đề', unlocked: true },
-    { title: 'Bậc thầy Số liệu', icon: '📊', desc: 'Giải 5 bài biểu đồ không sai', unlocked: true },
-    { title: 'Chuyên gia Đèn dầu', icon: '🏆', desc: 'Hoàn thành 50+ bài tập nâng cao', unlocked: false }
-  ];
-
   return (
-    <div className="py-8 bg-slate-50 min-h-screen">
+    <div className="py-8 bg-slate-50 min-h-screen text-slate-900 font-sans selection:bg-rose-500 selection:text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Top Student Welcome Header Banner */}
@@ -100,7 +186,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Đã đăng nhập • Học sinh Sangsang</span>
               </span>
-              <span className="text-xs text-slate-400">Còn 45 ngày đến Đợt 1</span>
+              <span className="text-xs text-slate-400 font-medium">Còn 45 ngày đến Đợt 1</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-white">
               Chào bạn! Hôm nay bạn cần học gì?
@@ -111,13 +197,13 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
           </div>
 
           {/* Streak & XP Stats */}
-          <div className="flex items-center gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700/80 shrink-0">
+          <div className="flex items-center gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700/80 shrink-0 shadow-inner">
             <div className="text-center px-3">
               <div className="flex items-center justify-center gap-1 text-amber-400 font-black text-xl">
                 <Flame className="w-5 h-5 fill-amber-400" />
                 <span>{streakCount} ngày</span>
               </div>
-              <div className="text-[10px] text-slate-400 uppercase font-bold">Chuỗi học liên tiếp</div>
+              <div className="text-[10px] text-slate-400 uppercase font-extrabold">Chuỗi học liên tiếp</div>
             </div>
 
             <div className="w-px h-8 bg-slate-700"></div>
@@ -127,32 +213,32 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
                 <Award className="w-5 h-5" />
                 <span>{userXp} XP</span>
               </div>
-              <div className="text-[10px] text-slate-400 uppercase font-bold">Điểm tích lũy</div>
+              <div className="text-[10px] text-slate-400 uppercase font-extrabold">Điểm tích lũy</div>
             </div>
           </div>
         </div>
 
-        {/* Dashboard Grid */}
+        {/* Dashboard Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
-          {/* Main Column: Daily Tasks (Hôm nay) */}
+          {/* Main Left Column (Nhiệm vụ & Lỗ hổng kiến thức) */}
           <div className="lg:col-span-8 space-y-6">
             
             {/* Daily Quest Card */}
             <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                  <h2 className="text-lg font-black text-slate-900 flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-rose-500" />
                     <span>Nhiệm vụ hôm nay</span>
                   </h2>
-                  <p className="text-xs text-slate-500 mt-0.5">Hoàn thành để duy trì chuỗi học và lấp lỗ hổng kiến thức</p>
+                  <p className="text-xs text-slate-500 font-medium mt-0.5">Hoàn thành để duy trì chuỗi học và lấp lỗ hổng kiến thức</p>
                 </div>
 
                 <div className="text-right">
-                  <div className="text-xs font-bold text-rose-600">{completedCount} / {tasks.length} Hoàn thành</div>
-                  <div className="w-28 bg-slate-100 h-2 rounded-full mt-1 overflow-hidden">
-                    <div className="bg-rose-500 h-full transition-all" style={{ width: `${progressPercent}%` }}></div>
+                  <div className="text-xs font-black text-rose-600">{completedCount} / {tasks.length} Hoàn thành</div>
+                  <div className="w-32 bg-slate-100 h-2.5 rounded-full mt-1.5 overflow-hidden border border-slate-200">
+                    <div className="bg-gradient-to-r from-rose-500 to-amber-500 h-full transition-all duration-300" style={{ width: `${progressPercent}%` }}></div>
                   </div>
                 </div>
               </div>
@@ -181,23 +267,23 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
                       </button>
 
                       <div className="min-w-0">
-                        <div className={`text-xs sm:text-sm font-bold truncate ${task.completed ? 'line-through text-slate-500' : ''}`}>
+                        <div className={`text-xs sm:text-sm font-bold truncate ${task.completed ? 'line-through text-slate-500' : 'text-slate-900'}`}>
                           {task.title}
                         </div>
-                        <div className="flex items-center gap-2.5 text-[11px] text-slate-500 mt-0.5">
-                          <span className="font-semibold text-rose-600">{task.durationMinutes} phút</span>
+                        <div className="flex items-center gap-2.5 text-[11px] text-slate-500 mt-0.5 font-semibold">
+                          <span className="text-rose-600 font-bold">{task.durationMinutes} phút</span>
                           <span>•</span>
-                          <span className="text-emerald-600 font-bold">+{task.xpPoints} XP</span>
+                          <span className="text-emerald-600 font-black">+{task.xpPoints} XP</span>
                         </div>
                       </div>
                     </div>
 
                     <button
                       onClick={() => handleExecuteTask(task)}
-                      className={`px-3.5 py-1.5 rounded-xl font-bold text-xs shrink-0 transition-colors ${
+                      className={`px-4 py-2 rounded-xl font-black text-xs shrink-0 transition-all ${
                         task.completed
-                          ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'
-                          : 'bg-rose-500 hover:bg-rose-600 text-white shadow-sm'
+                          ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200'
+                          : 'bg-rose-600 hover:bg-rose-700 text-white shadow-md'
                       }`}
                     >
                       {task.completed ? 'Làm lại' : 'Thực hiện'}
@@ -207,19 +293,64 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
               </div>
             </div>
 
-            {/* Quick Action Navigation Grid */}
+            {/* WEAK SPOTS & RECOMMENDED MICRO-DRILLS WIDGET */}
+            <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-base font-black text-slate-900 flex items-center gap-2">
+                    <AlertCircle className="w-5 h-5 text-amber-500" />
+                    <span>Lỗ hổng kiến thức cần vá ngay</span>
+                  </h3>
+                  <p className="text-xs text-slate-500 font-medium">Thuật toán chẩn đoán tự động phát hiện qua các bài thi thử</p>
+                </div>
+                <span className="text-xs font-bold text-amber-600 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
+                  3 Chuyên đề cần ưu tiên
+                </span>
+              </div>
+
+              <div className="space-y-3 pt-1">
+                {weakSpots.map((ws) => (
+                  <div key={ws.id} className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-amber-300 transition-all">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-black uppercase text-slate-600 bg-slate-200 px-2 py-0.5 rounded">
+                          {ws.part}
+                        </span>
+                        <span className="text-xs font-black text-rose-600">Accuracy: {ws.accuracy}%</span>
+                      </div>
+                      <h4 className="font-black text-sm text-slate-900">{ws.topic}</h4>
+                      <p className="text-[11px] text-slate-500 font-medium">Khuyên dùng: Luyện thêm {ws.recommendedQuestions} câu dạng này</p>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        const matchedTask = tasks.find(t => t.id === ws.taskId);
+                        if (matchedTask) handleExecuteTask(matchedTask);
+                        else setActiveTab('practice-room');
+                      }}
+                      className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-black text-xs rounded-xl shadow-sm transition-all shrink-0 flex items-center justify-center gap-1.5"
+                    >
+                      <Zap className="w-3.5 h-3.5 text-amber-400" />
+                      <span>Vá lỗi ngay</span>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Action Navigation Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div 
                 onClick={() => setActiveTab('wrong-notebook')}
                 className="bg-white p-5 rounded-3xl border border-slate-200 hover:border-rose-300 shadow-sm hover:shadow-md transition-all cursor-pointer flex items-center justify-between group"
               >
                 <div className="flex items-center gap-3.5">
-                  <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center font-black">
                     <RotateCcw className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-slate-900 group-hover:text-rose-600 transition-colors">Sổ Câu Sai</h3>
-                    <p className="text-xs text-slate-500">3 câu cần rà soát lặp lại ngắt quãng</p>
+                    <h3 className="text-sm font-black text-slate-900 group-hover:text-rose-600 transition-colors">Sổ Câu Sai</h3>
+                    <p className="text-xs text-slate-500 font-medium">3 câu cần rà soát lặp lại ngắt quãng</p>
                   </div>
                 </div>
                 <ChevronRight className="w-5 h-5 text-slate-400 group-hover:translate-x-1 transition-transform" />
@@ -230,12 +361,12 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
                 className="bg-white p-5 rounded-3xl border border-slate-200 hover:border-rose-300 shadow-sm hover:shadow-md transition-all cursor-pointer flex items-center justify-between group"
               >
                 <div className="flex items-center gap-3.5">
-                  <div className="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center font-bold">
+                  <div className="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center font-black">
                     <Target className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-slate-900 group-hover:text-rose-600 transition-colors">Tra Cứu Điểm Chuẩn</h3>
-                    <p className="text-xs text-slate-500">So sánh điểm 2023-2025 ĐHQG TP.HCM</p>
+                    <h3 className="text-sm font-black text-slate-900 group-hover:text-rose-600 transition-colors">Tra Cứu Điểm Chuẩn</h3>
+                    <p className="text-xs text-slate-500 font-medium">So sánh điểm 2022-2025 ĐHQG TP.HCM</p>
                   </div>
                 </div>
                 <ChevronRight className="w-5 h-5 text-slate-400 group-hover:translate-x-1 transition-transform" />
@@ -244,33 +375,34 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
 
           </div>
 
-          {/* Right Column: Badges & Digital Verification Certificate Card */}
+          {/* Right Sidebar Column: Badges & Digital Verification Certificate Card */}
           <div className="lg:col-span-4 space-y-6">
             
             {/* Achievement Badges Card */}
             <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-1.5">
+                <h3 className="text-sm font-black text-slate-900 flex items-center gap-1.5">
                   <Award className="w-4 h-4 text-amber-500" />
                   <span>Huy Hiệu & Danh Hiệu</span>
                 </h3>
-                <span className="text-xs text-slate-500 font-bold">3/4 Đã mở</span>
+                <span className="text-xs text-slate-500 font-extrabold">3/4 Đã mở</span>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                {badges.map((b, idx) => (
-                  <div 
-                    key={idx}
-                    className={`p-3 rounded-2xl border text-center space-y-1 transition-all ${
+                {badges.map((b) => (
+                  <button 
+                    key={b.id}
+                    onClick={() => setSelectedBadge(b)}
+                    className={`p-3 rounded-2xl border text-center space-y-1 transition-all cursor-pointer hover:scale-105 ${
                       b.unlocked 
-                        ? 'bg-amber-50/50 border-amber-200 text-slate-900' 
-                        : 'bg-slate-50 border-slate-200 opacity-50 grayscale'
+                        ? 'bg-amber-50/60 border-amber-200 text-slate-900 shadow-sm' 
+                        : 'bg-slate-50 border-slate-200 opacity-60 grayscale'
                     }`}
                   >
                     <div className="text-2xl">{b.icon}</div>
-                    <div className="text-xs font-bold">{b.title}</div>
-                    <div className="text-[10px] text-slate-500 leading-tight">{b.desc}</div>
-                  </div>
+                    <div className="text-xs font-black">{b.title}</div>
+                    <div className="text-[10px] text-slate-500 leading-tight font-medium">{b.desc}</div>
+                  </button>
                 ))}
               </div>
             </div>
@@ -278,18 +410,18 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
             {/* Digital Completion Certificate Card with Locked/Unlocked Business Rules */}
             <div className="bg-gradient-to-br from-slate-900 to-rose-950 text-white rounded-3xl p-6 border border-rose-500/30 shadow-lg space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-rose-300 bg-rose-500/20 px-2.5 py-0.5 rounded-full border border-rose-500/30">
+                <span className="text-[10px] font-black uppercase tracking-widest text-rose-300 bg-rose-500/20 px-2.5 py-0.5 rounded-full border border-rose-500/30">
                   Chứng nhận xác thực Sangsang
                 </span>
                 {hasCompletedFullExam ? <QrCode className="w-4 h-4 text-emerald-400" /> : <Lock className="w-4 h-4 text-amber-400" />}
               </div>
 
               <div>
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <h3 className="text-base font-black text-white flex items-center gap-2">
                   <span>Chứng Nhận Năng Lực V-ACT</span>
-                  {!hasCompletedFullExam && <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-md font-bold uppercase">Yêu cầu 120 câu</span>}
+                  {!hasCompletedFullExam && <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-md font-extrabold uppercase">Yêu cầu 120 câu</span>}
                 </h3>
-                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                <p className="text-xs text-slate-300 mt-1 leading-relaxed font-medium">
                   {hasCompletedFullExam
                     ? 'Cấp chứng chỉ số chính thức có QR Code xác thực kết quả thi thử 120 câu.'
                     : 'Mở khóa chứng nhận QR Code sau khi bạn hoàn thành Bài thi Mô phỏng đầy đủ 120 câu (150 phút).'}
@@ -298,9 +430,9 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
 
               <button
                 onClick={handleCertClick}
-                className={`w-full py-3 font-extrabold text-xs rounded-xl shadow-md transition-colors flex items-center justify-center gap-2 ${
+                className={`w-full py-3 font-black text-xs rounded-xl shadow-md transition-colors flex items-center justify-center gap-2 ${
                   hasCompletedFullExam
-                    ? 'bg-rose-500 hover:bg-rose-600 text-white'
+                    ? 'bg-rose-600 hover:bg-rose-700 text-white'
                     : 'bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/40'
                 }`}
               >
@@ -315,6 +447,41 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
 
       </div>
 
+      {/* BADGE DETAIL MODAL */}
+      {selectedBadge && (
+        <Modal
+          isOpen={!!selectedBadge}
+          onClose={() => setSelectedBadge(null)}
+          title={`Chi Tiết Huy Hiệu: ${selectedBadge.title}`}
+          maxWidth="max-w-md"
+        >
+          <div className="text-center space-y-4 py-2 text-slate-900">
+            <div className="text-5xl">{selectedBadge.icon}</div>
+            
+            <div className="space-y-1">
+              <h3 className="text-lg font-black text-slate-900">{selectedBadge.title}</h3>
+              <p className="text-xs text-slate-500 font-medium">{selectedBadge.desc}</p>
+            </div>
+
+            <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs text-left space-y-2">
+              <div className="font-black text-slate-800 uppercase tracking-wider text-[10px]">Đầu kiện mở khóa:</div>
+              <p className="text-slate-600 font-medium leading-relaxed">{selectedBadge.requirement}</p>
+              <div className="flex justify-between items-center pt-2 border-t border-slate-200">
+                <span className="font-bold text-slate-700">Phần thưởng XP:</span>
+                <span className="font-black text-emerald-600">+{selectedBadge.rewardXp} XP</span>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setSelectedBadge(null)}
+              className="w-full py-2.5 bg-slate-900 text-white font-black text-xs rounded-xl shadow transition-colors"
+            >
+              Đóng chi tiết
+            </button>
+          </div>
+        </Modal>
+      )}
+
       {/* REQUIREMENT UNLOCK ALERT MODAL */}
       <Modal
         isOpen={showLockAlert}
@@ -328,8 +495,8 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
           </div>
 
           <div className="space-y-2">
-            <h3 className="text-lg font-bold text-slate-900">Cần Hoàn Thành Bài Thi Mô Phỏng 120 Câu</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <h3 className="text-lg font-black text-slate-900">Cần Hoàn Thành Bài Thi Mô Phỏng 120 Câu</h3>
+            <p className="text-xs text-slate-600 leading-relaxed font-medium">
               Tài khoản của bạn đã được xác thực đăng nhập. Tuy nhiên, <strong>Chứng nhận Năng lực QR Code chính thức</strong> (có chữ ký Thạc sĩ Bùi Văn Công) chỉ cấp khi bạn hoàn thành <strong>BÀI THI MÔ PHỎNG ĐẦY ĐỦ 120 CÂU (150 PHÚT)</strong>.
             </p>
           </div>
@@ -351,7 +518,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
                 setHasCompletedFullExam(true);
                 setIsCertModalOpen(true);
               }}
-              className="w-full py-3 bg-rose-500 hover:bg-rose-600 text-white font-extrabold text-xs rounded-xl shadow transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-black text-xs rounded-xl shadow transition-colors flex items-center justify-center gap-2"
             >
               <Award className="w-4 h-4" />
               <span>Thi ngay Bài mô phỏng 120 câu để mở khóa</span>
@@ -381,13 +548,13 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
               <h2 className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-amber-300 to-emerald-400">
                 SANGSANG COMPETENCY CERTIFICATE
               </h2>
-              <p className="text-xs text-slate-400">Mã định danh xác thực: <strong className="text-mono text-slate-200">SS-VACT-2026-9821</strong></p>
+              <p className="text-xs text-slate-400 font-mono">Mã định danh xác thực: <strong className="text-slate-200">SS-VACT-2026-9821</strong></p>
             </div>
 
             <div className="p-6 bg-slate-900/90 rounded-2xl border border-slate-800 space-y-3">
               <div className="text-sm font-bold text-slate-300">Xác nhận học sinh: <strong className="text-white text-base">Học Sinh Sangsang (Đã xác thực)</strong></div>
               <div className="text-xs text-slate-400">Đã hoàn thành xuất sắc Bài thi Mô phỏng 120 câu chuẩn ma trận V-ACT 2026 (150 phút)</div>
-              <div className="text-2xl font-black text-emerald-400">Dự báo điểm: 820 – 870 / 1.200 V-ACT</div>
+              <div className="text-2xl font-black text-emerald-400 font-mono">Dự báo điểm: 820 – 870 / 1.200 V-ACT</div>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 text-xs border-t border-slate-800">
@@ -415,7 +582,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({ setActiveTab
 
             <button
               onClick={() => window.print()}
-              className="w-full py-3 bg-rose-500 hover:bg-rose-600 text-white font-extrabold text-xs rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-xs rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2"
             >
               <Download className="w-4 h-4" />
               <span>Tải / In bản chứng nhận PDF</span>
